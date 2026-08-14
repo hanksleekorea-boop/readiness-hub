@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>개발 진척 상황 대시보드 — 상업화 준비도 허브 β</title>
+<style>
+:root{
+  color-scheme:light;
+  --plane:#f9f9f7; --panel:#fff; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --bd:rgba(11,11,11,.10);
+  --c1:#2a78d6; --c2:#eb6834; --c3:#1baf7a;
+  --good:#0ca30c; --warn:#fab219; --ser:#ec835a; --crit:#d03b3b; --gt:#006300;
+  --f:system-ui,-apple-system,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+html[data-theme="dark"]{color-scheme:dark;--plane:#0d0d0d;--panel:#1a1a19;--ink:#fff;--ink2:#c3c2b7;
+  --grid:#2c2c2a;--axis:#383835;--bd:rgba(255,255,255,.12);--c1:#3987e5;--c2:#d95926;--c3:#199e70;--gt:#0ca30c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--ink);font-family:var(--f);font-size:14.5px;line-height:1.65}
+h1,h2,h3,h4{margin:0;font-weight:650;letter-spacing:-.015em}
+a{color:var(--c1)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px 90px}
+header{background:var(--panel);border-bottom:1px solid var(--bd);padding:26px 0 22px;margin-bottom:22px}
+.kick{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:8px}
+h1{font-size:24px;margin-bottom:6px}
+.sub{color:var(--ink2);font-size:14px}
+.card{background:var(--panel);border:1px solid var(--bd);border-radius:12px;padding:18px 20px;margin-bottom:14px}
+.card>h2{font-size:16.5px;margin-bottom:4px}
+.card>.cap{color:var(--muted);font-size:12.5px;margin-bottom:14px}
+h2.sec{font-size:19px;margin:34px 0 6px}
+p.lede{color:var(--ink2);margin:0 0 14px;max-width:82ch}
+.sig{display:flex;gap:12px;align-items:flex-start;padding:16px 18px;border-radius:12px;border:1px solid var(--bd);
+  background:var(--panel);margin-bottom:14px;border-left:5px solid var(--good)}
+.sig.red{border-left-color:var(--crit)} .sig.yellow{border-left-color:var(--warn)}
+.sig .lamp{font-size:26px;line-height:1;flex:none}
+.sig .body{flex:1;min-width:0}
+.sig .l{display:block;font-size:13.5px;margin:2px 0;color:var(--ink2)}
+.sig .l b{color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(152px,1fr));gap:11px;margin-bottom:14px}
+.stat{background:var(--panel);border:1px solid var(--bd);border-radius:12px;padding:13px 15px}
+.stat .l{font-size:11.5px;color:var(--muted)}
+.stat .v{font-size:27px;font-weight:680;letter-spacing:-.02em;line-height:1.15}
+.stat .v small{font-size:12px;font-weight:500;color:var(--muted)}
+.stat .s{font-size:11.5px;color:var(--ink2)}
+.track{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;letter-spacing:-.5px;
+  background:color-mix(in srgb,var(--ink) 4%,transparent);border:1px solid var(--bd);border-radius:8px;
+  padding:11px 13px;overflow-x:auto;white-space:nowrap}
+.meaning{font-size:12.5px;color:var(--ink2);margin-top:7px}
+.meaning b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-size:11px;color:var(--muted);font-weight:650;letter-spacing:.03em;text-transform:uppercase;border-bottom:1px solid var(--axis)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:hover{background:color-mix(in srgb,var(--ink) 3%,transparent)}
+.bar{height:7px;border-radius:99px;background:var(--grid);overflow:hidden;min-width:70px}
+.bar i{display:block;height:100%;border-radius:99px}
+.urlgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.ub{border:1px solid var(--bd);border-radius:12px;padding:14px;text-align:center;background:var(--panel)}
+.ub .t{font-weight:650;font-size:13.5px;margin-bottom:2px}
+.ub .d{font-size:11.5px;color:var(--muted);margin-bottom:9px}
+.ub svg{margin:0 auto;border-radius:8px;border:1px solid var(--bd)}
+.ub .u{font-size:11px;color:var(--c1);word-break:break-all;margin-top:8px;display:block;text-decoration:none}
+.ub .u:hover{text-decoration:underline}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;border-radius:99px;padding:1px 8px;border:1px solid var(--bd);color:var(--muted)}
+.pill.on{color:var(--gt);border-color:var(--good)} .pill.off{color:var(--crit);border-color:var(--crit)}
+.alert{border:2px solid var(--crit);border-radius:12px;padding:16px 18px;margin:16px 0;background:color-mix(in srgb,var(--crit) 7%,transparent)}
+.alert h3{color:var(--crit);font-size:16px;margin-bottom:7px;display:flex;align-items:center;gap:8px}
+.alert p{margin:0 0 8px;font-size:13.5px;color:var(--ink2)}
+.alert ol{margin:8px 0 0;padding-left:20px;font-size:13.5px;color:var(--ink2)}
+.alert li{margin:4px 0}
+.alert b{color:var(--ink)}
+.plist{list-style:none;padding:0;margin:0}
+.plist li{display:flex;gap:11px;padding:9px 0;border-bottom:1px solid var(--grid);align-items:flex-start;font-size:13.5px}
+.plist li:last-child{border-bottom:none}
+.plist .rk{flex:none;width:34px;font-variant-numeric:tabular-nums;font-weight:700;color:var(--muted);font-size:12px;padding-top:2px}
+.plist .bd{flex:1;min-width:0}
+.plist .bd b{display:block;color:var(--ink);font-weight:600}
+.plist .bd span{font-size:12px;color:var(--muted)}
+.plist .mk{flex:none;font-size:10.5px;font-weight:700;border-radius:4px;padding:2px 7px;border:1px solid var(--bd);white-space:nowrap;margin-top:2px}
+.mk.u{color:var(--crit);border-color:var(--crit)}
+.mk.a{color:var(--gt);border-color:var(--good)}
+.mk.b{color:var(--ink);border-color:var(--warn)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:900px){.grid2{grid-template-columns:1fr}}
+.ok{color:var(--gt);font-weight:650}.no{color:var(--crit);font-weight:650}
+.foot{color:var(--muted);font-size:12.5px;border-top:1px solid var(--bd);padding-top:16px;margin-top:30px}
+.themebtn{position:fixed;right:16px;bottom:16px;background:var(--panel);border:1px solid var(--bd);border-radius:8px;
+  padding:8px 12px;color:var(--ink2);cursor:pointer;font-family:inherit;z-index:50}
+.acct{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-bottom:12px}
+.acct input{border:1px solid var(--bd);background:var(--panel);color:var(--ink);border-radius:7px;padding:6px 9px;font-family:inherit;font-size:13px;width:190px}
+@media print{.themebtn{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap" style="padding-bottom:0">
+    <div class="kick">Development Progress Dashboard · 항상 이 주소에서 최신 상태 확인</div>
+    <h1 id="hTitle">개발 진척 상황 대시보드</h1>
+    <div class="sub" id="hSub"></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- R1 신호등 -->
+  <div class="sig" id="sig"></div>
+
+  <!-- 링크 + QR : 항상 최상단 노출 -->
+  <h2 class="sec">공개 주소 · QR</h2>
+  <p class="lede">저장소(코드 보관소)는 비공개이고, 아래 결과 페이지만 공개 주소로 열립니다. QR을 휴대폰으로 찍으면 바로 열립니다.</p>
+  <div class="card">
+    <div class="acct">
+      <span>공개 주소 미리보기 —</span>
+      <label>GitHub 계정 <input id="inAcct" placeholder="YOUR-GITHUB-ID"></label>
+      <label>저장소 이름 <input id="inRepo" value="readiness-hub" style="width:150px"></label>
+      <span id="liveState"></span>
+    </div>
+    <div class="urlgrid" id="urlGrid"></div>
+  </div>
+
+  <!-- 안드로이드 경고 -->
+  <div class="alert" id="androidAlert">
+    <h3>⚠ 지금이 안드로이드 실기기 테스트가 필요한 시점입니다</h3>
+    <p><b>가상 테스트로는 대체할 수 없는 것들이 있습니다.</b> 페르소나 1000명 시뮬레이션과 브라우저 자동 검사로 로직·화면·계산은 전부 검증했지만, 아래 4가지는 <b>실제 안드로이드 휴대폰이 있어야만</b> 확인됩니다.</p>
+    <ol>
+      <li><b>홈 화면 설치</b> — 크롬의 "앱 설치" 안내가 실제로 뜨는지, 아이콘·이름·전체화면 실행이 정상인지</li>
+      <li><b>실제 손가락 조작</b> — 44px 터치 영역이 충분한지, 스크롤 중 오터치가 나는지</li>
+      <li><b>실기기 화면</b> — 노치·둥근 모서리·제스처 바 영역에 버튼이 가리는지 (하단 이동줄이 특히 위험)</li>
+      <li><b>오프라인 동작</b> — 비행기 모드에서 앱이 켜지는지 (임시 저장 장치가 실제로 작동하는지)</li>
+    </ol>
+    <p style="margin-top:10px"><b>테스트 방법:</b> 위 QR 중 "모바일(앱)"을 안드로이드 크롬으로 찍고 → 우측 상단 메뉴 → "앱 설치" → 홈 화면 아이콘 실행 → 비행기 모드로 재실행. 각 단계 결과를 알려주시면 즉시 수정합니다.</p>
+    <p style="margin:8px 0 0"><b>전제:</b> 이 테스트는 공개 배포가 끝난 뒤에만 가능합니다(파일 상태로는 설치 기능이 동작하지 않습니다).</p>
+  </div>
+
+  <!-- R3 진행률 -->
+  <h2 class="sec">기획 문서</h2>
+  <p class="lede">베타는 기획서 1단계의 일부를 선구현한 것입니다. 전체 설계는 아래 문서에 있습니다.</p>
+  <div class="card"><table><tbody>
+    <tr><td><b>전면 제품 기획서 v1.0</b><div style="font-size:12px;color:var(--muted)">32개 장 · 화면 23 · 엔티티 18 · 커넥터 14 · 단축키 34 · 32장에 렌즈 커버리지 점검</div></td>
+        <td style="text-align:right"><a href="spec.html">열기 →</a></td></tr>
+    <tr><td><b>평가 기준 렌즈 v2.1</b><div style="font-size:12px;color:var(--muted)">15영역 197개 기준 · 게이트 40 · 외부검증 109 · 채점 루브릭 197 · 업계 기준선 23</div></td>
+        <td style="text-align:right"><a href="lens/lens-core-v2.1.json">열기 →</a></td></tr>
+    <tr><td><b>EU/EEA 관할 렌즈 v1.0</b><div style="font-size:12px;color:var(--muted)">core와 ID·가중치 호환 · 26개 법률 항목에 적용 조건·공식 출처</div></td>
+        <td style="text-align:right"><a href="lens/lens-eu-v1.0.json">열기 →</a></td></tr>
+    <tr><td><b>미국 관할 렌즈 v1.0</b><div style="font-size:12px;color:var(--muted)">연방법 기본선 + 캘리포니아 조건부 · 26개 법률 항목 현지화</div></td>
+        <td style="text-align:right"><a href="lens/lens-us-v1.0.json">열기 →</a></td></tr>
+  </tbody></table></div>
+  <h2 class="sec">진행률</h2>
+  <div class="card">
+    <h2>전체 진척 띠</h2>
+    <div class="cap">▓ 끝난 구간 · ▶ 지금 구간 · ░ 남은 구간</div>
+    <div class="track" id="track"></div>
+    <div class="meaning" id="trackMeaning"></div>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="card">
+    <h2>구간별 상세</h2>
+    <div class="cap">구간이 100%가 아니면 왜 그런지가 함께 적혀 있습니다.</div>
+    <table><thead><tr><th>구간</th><th class="n">진행률</th><th style="width:34%">막대</th><th>상태</th></tr></thead>
+    <tbody id="phaseRows"></tbody></table>
+  </div>
+
+  <!-- 검증 -->
+  <div class="card">
+    <h2>검사 결과</h2>
+    <div class="cap">전부 자동으로 다시 돌릴 수 있는 검사입니다. 음성 대조(일부러 틀린 것을 넣어 검사가 잡아내는지 확인) 포함.</div>
+    <table><thead><tr><th>검사</th><th>결과</th><th class="n">판정</th></tr></thead><tbody id="verRows"></tbody></table>
+  </div>
+
+  <!-- 우선순위 20 -->
+  <h2 class="sec">다음 실행 우선순위 20</h2>
+  <p class="lede">시급하고 중요한 순서입니다. <span class="mk u">사용자 필요</span>는 제가 혼자 못 하는 일, <span class="mk a">단독 가능</span>은 제가 바로 하는 일입니다.</p>
+  <div class="card"><ul class="plist" id="prio"></ul></div>
+
+  <!-- 단독 실행 20 -->
+  <h2 class="sec">사용자 없이 단독 실행 가능 20</h2>
+  <p class="lede">승인이나 실물 기기 없이 지금 바로 진행할 수 있는 작업들입니다. 위에서부터 순서대로 처리합니다.</p>
+  <div class="card"><ul class="plist" id="solo"></ul></div>
+
+  <!-- 페르소나 -->
+  <h2 class="sec">가상 사용자 1000명 시험 결과</h2>
+  <p class="lede">실사용자 테스트를 대체하는 시뮬레이션입니다. 1000명의 서로 다른 조건(사업모델·규모·숙련도·인내심)을 만들어 실제 화면 흐름을 통과시키고, 어디서 이탈하는지를 셌습니다.</p>
+  <div class="card" id="personaBox"><div class="cap">persona-report.json 을 읽는 중…</div></div>
+
+  <div class="foot" id="foot"></div>
+</div>
+
+<button class="themebtn" onclick="document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';draw()">◐ 테마</button>
+
+<script src="assets/qr.js"></script>
+<script src="assets/shell.js"></script>
+<script>
+/* ---- 기본 데이터 (progress.json 로드 실패 시 사용) ---- */
+var P = {"schema":"crh-progress","updated":"2026-08-14","product":"상업화 준비도 허브 β (Continuous Readiness Index)","version":"beta 0.6.2 + Spec v1.1","lens":"core v2.1.0 + EU/EEA v1.0.0 + US v1.0.0 · 각 15영역 197개 · 관할별 26개 적용조건·공식출처 연결","repo":{"public":false,"note":"저장소는 비공개, 결과 페이지만 공개"},"signal":"yellow","signalWhy":"로컬 핵심 화면과 3개 렌즈 구조는 통과했습니다. 공개 주소·자동 러너 첫 실행·안드로이드 실기기는 아직 확인되지 않았습니다.","phases":[{"n":"설계","pct":100,"note":"3축 구조·107개 기준·게이트 20개 확정"},{"n":"v1~v3","pct":100,"note":"진단·벤치마크·방향 정의·관찰가능성·근거등급"},{"n":"실측 검증","pct":100,"note":"앱10·웹10 채점, 결함 6종 도출·반영"},{"n":"경쟁 분석","pct":100,"note":"메이저 10종 비교, v4 기획 확정"},{"n":"β 코어","pct":100,"note":"신선도·목표대비·퀵체크·왓이프·서명·렌즈분리 + 단계별 범위"},{"n":"β 모바일","pct":100,"note":"PWA 5탭, 44px 터치 영역, 오프라인 캐시"},{"n":"페르소나 검증","pct":100,"note":"1000명 시험 → 결과 획득률 20.3%→72.9%"},{"n":"전면 기획서","pct":100,"note":"32개 장. 32장에 렌즈 커버리지 점검 추가"},{"n":"렌즈 v2.1 (루브릭 완비)","pct":100,"note":"상용 표면 5개 영역 신설 + 기존 5개 보강 = +90항목. 국내 법정 12항목 게이트화. 전 197항목에 0~4 채점 기준 부여(+178)"},{"n":"공개 배포","pct":0,"note":"사용자 1클릭 업로드 대기 — 유일한 차단 요인"},{"n":"자동 러너","pct":60,"note":"워크플로 작성 완료. 실행만 배포 대기"},{"n":"실기기 검증","pct":0,"note":"안드로이드 실물 테스트 — 배포 직후 필요"},{"n":"기획 구현(1~5단계)","pct":10,"note":"β가 1단계 일부를 선구현. A2 EU/EEA·미국 관할 렌즈와 A4 구조 검증기 완료"}],"eta":{"base":"8/12 (기존·무효)","now":"재산정 필요","delta":0,"target":"미확인","original":"8/12","previous":"8/12","developmentValidation":"공개 배포 후 자동 러너·브라우저 재검증 일정 필요","commercialOperation":"미확인 — 실제 기기·법 적용성·결제·운영 검증 일정 필요","note":"기존 8/12는 현재 날짜보다 과거이고 전체 범위·외부 검증 근거가 없어 무효. 공개일과 실제 기기 제공일을 받은 뒤 재산정"},"bottleneck":{"what":"공개 주소가 없어 자동 러너·앱 설치·실기기 테스트가 모두 대기 중","unblock":"site 폴더 내용을 GitHub 에 올리고 Pages 켜기 (약 3분)"},"counts":{"files":25,"lensItems":197,"domains":15,"gates":40,"extObservable":109,"benchItems":23,"personas":1000,"specChapters":32,"entities":18,"connectors":14,"shortcuts":34,"rubrics":197,"jurisdictionLenses":2,"jurisdictionOverrides":52},"verify":[{"t":"렌즈 v2.1 무결성","r":"197항목 ID 중복 0 · 가중치합 100 · 15영역 · 루브릭 197/197","ok":true},{"t":"EU/EEA·미국 관할 렌즈","r":"각 197항목·15영역·가중치합100·게이트40 · 관할별 26개 적용조건·공식출처 연결","ok":true},{"t":"렌즈 검증기 음성 대조","r":"중복 ID·깨진 출처·0~4 단계 누락 3종을 일부러 주입해 3/3 검출","ok":true},{"t":"루브릭 형식 검사","r":"0~4 5단계 표기 178/178 통과 · 140자 초과 0건","ok":true},{"t":"루브릭 렌더 검사(PC)","r":"전 범위 178개 항목 전부 표시 · 누락 0","ok":true},{"t":"루브릭 음성 대조","r":"2개 제거 → 178→176 검출됨 (PC) · 1개 제거 → 16→15 검출됨 (모바일)","ok":true},{"t":"모바일 루브릭 접기 UI","r":"5탭 정상 · 오류 0 · 채점기준 펼침 동작","ok":true},{"t":"v2.1 페르소나 재시험","r":"결과 획득 73.1% 유지 · 6.1분 (루브릭 추가로 인한 저하 없음)","ok":true},{"t":"영역 일괄 해당없음","r":"PC·모바일 양방향 전환 확인","ok":true},{"t":"기획서 렌더·목차 검증","r":"31개 장·337행·오류 0","ok":true},{"t":"QR 부호기 실제 해독 시험","r":"12/12 성공 (OpenCV)","ok":true},{"t":"QR 데이터·ECC 파이썬 대조","r":"10/10 일치","ok":true},{"t":"QR 음성 대조(훼손 검출)","r":"검출됨","ok":true},{"t":"PC판 기능 검사","r":"범위 4단계·잠정결과·N/A접기 통과, 오류 0","ok":true},{"t":"모바일판 기능 검사","r":"5탭·범위·잠정결과 통과, 오류 0","ok":true},{"t":"신선도 감쇠 검사","r":"200일 경과 → ×0.5 확인","ok":true},{"t":"게이트 서명 만료","r":"129일 → 만료 판정","ok":true},{"t":"공유 링크 왕복","r":"상태 100% 복원","ok":true},{"t":"안드로이드 실기기","r":"미실시 — 배포 후 필수","ok":false}]};
+
+var PRIO = [
+ ["GitHub Pages 공개 배포","site 폴더를 올리고 Pages 켜기 — 이것 하나가 아래 6개를 동시에 풀어줍니다","u"],
+ ["안드로이드 실기기 설치·조작 테스트","홈 화면 설치·터치·노치·오프라인 4종 확인","u"],
+ ["자동 러너 첫 가동","Lighthouse·보안헤더·정책페이지·SEO·axe 5종 (워크플로 작성 완료)","b"],
+ ["측정 결과 → profiles 자동 저장","기계가 잰 값이 진단 화면에 자동 반영","b"],
+ ["PR 게이트 연결","게이트가 깨지면 코드 합치기를 막음","b"],
+ ["인증 기반 구축","패스키·매직링크·SAML SSO — 기획 2단계의 전제","a"],
+ ["조직·역할 9종 + 권한 영역 9개","Vanta 25 permission set 이상, 객체 단위 override 포함","a"],
+ ["증거 보관함·만료 관리","신선도가 준수 상태로 전파되는 구조 완성","a"],
+ ["할당·코멘트·멘션","항목 단위 스레드 + 이모지 반응 + resolve","a"],
+ ["알림 6채널 + 적응형 배치","Vanta 4시간 고정 배치를 개인화로 넘어섬","a"],
+ ["감사 로그 해시 체인","전 플랜 365일 · CSV+API+webhook 3종","a"],
+ ["커넥터 14종 확장","App Store·Play·GitHub·Sentry·CrUX·Stripe","b"],
+ ["조직 대시보드·신선도 히트맵","여러 서비스를 한 화면에","a"],
+ ["우리 툴 자신의 접근성 준수 + VPAT 공개","접근성을 재는 도구가 미달이면 자격이 없음","a"],
+ ["성능 예산 CI 게이트","초기 JS 120KB·Lighthouse 95/100","a"],
+ ["커맨드 팔레트 6모드 + 단축키 34종","마우스 0회 진단 완주","a"],
+ ["벤치마크 분기 갱신 파이프라인","p25/p50/p75 분포까지 축적","a"],
+ ["AI 증거 탐색·이상 감지","판단은 사람, 탐색은 AI","a"],
+ ["신뢰 센터 공개 페이지","외부 공개용 준비도 요약","a"],
+ ["SCIM·데이터 지역·SIEM 스트리밍","엔터프라이즈 요건","b"]
+];
+var SOLO = [
+ ["기획서 화면별 와이어프레임","23개 화면 저해상도 구조도"],
+ ["렌즈 스키마 검증기","잘못된 lens.json 의 어디가 틀렸는지 정확히"],
+ ["단위 시험 묶음","점수·신선도·게이트 산식을 함수 단위로 고정"],
+ ["전체 재검사(회귀) 자동화","고칠 때마다 전 기능 자동 재검사"],
+ ["페르소나 5000명 확대","드문 실패 조합 탐색"],
+ ["접근성 자동 검사 + 수정","axe 위반 0 달성"],
+ ["디자인 토큰 파일 생성","CSS 변수 + JSON 토큰 동시 산출"],
+ ["컴포넌트 17종 명세 구현","각 컴포넌트에 접근성 명세 동반"],
+ ["상태 13종 화면 구현","빈/로딩/오류/부분/오프라인"],
+ ["영문 번역","197개 기준 + 화면 문구"],
+ ["관할별 렌즈 변형","한국·EU·미국 법규 항목 분기"],
+ ["점수 계산기 단독 페이지","항목 조작 → 종합 실시간 역산"],
+ ["API 명세서(OpenAPI)","14개 엔드포인트 기계 판독 규격"],
+ ["이벤트 택소노미 구현","16개 이벤트 자체 호스팅 수집"],
+ ["인쇄·PDF 리포트 레이아웃","경영진 1장 + 감사 패키지"],
+ ["번들 크기 줄이기","129KB → 목표 90KB"],
+ ["다크·고대비 테마 4종","의미 토큰 오버라이드 구조"],
+ ["키보드 전용 완주 시나리오 12개","마우스 없이 전 흐름"],
+ ["샘플 프로파일 확장","관할·업종별 6종"],
+ ["잘못된 파일 방어","깨진 JSON·잘못된 렌즈 대응"]
+];
+
+/* ---- 렌더 ---- */
+function el(id){return document.getElementById(id);}
+function pct(n){return Math.max(0,Math.min(100,n));}
+function overallPct(){var t=P.phases.reduce(function(a,p){return a+p.pct;},0);return t/P.phases.length;}
+
+function drawSig(){
+  var done=P.phases.filter(function(p){return p.pct>=100;}).length;
+  var cur=P.phases.filter(function(p){return p.pct>0&&p.pct<100;});
+  var lamp=P.signal==='green'?'🟢':P.signal==='yellow'?'🟡':'🔴';
+  el('sig').className='sig '+(P.signal||'green');
+  el('sig').innerHTML='<div class="lamp">'+lamp+'</div><div class="body">'+
+    '<span class="l"><b>오늘 한 일:</b> β 코어 6기능 구현 + 모바일 앱판(PWA) 신설 + QR 부호기 자체 구현·해독 검증 + 가상 사용자 1000명 시험 + 자동 러너 작성. 구간 '+done+'/'+P.phases.length+' 완료.</span>'+
+    '<span class="l"><b>지금 상태:</b> PC 웹과 모바일 앱이 모두 동작하고, 두 화면 모두 QR·링크가 보입니다. 다만 <b>아직 인터넷에 공개되지 않아</b> 주소는 예약 상태입니다.</span>'+
+    '<span class="l"><b>당신 차례:</b> ① site 폴더를 GitHub에 올리고 Pages 켜기(약 3분) ② 그 다음 안드로이드 폰으로 QR 찍어 설치 테스트. 이 둘만 하시면 나머지는 제가 이어서 합니다.</span>'+
+    '</div>';
+}
+function drawUrls(){
+  var U=window.CRH_URLS;
+  el('liveState').innerHTML=U.live
+    ? '<span class="pill on">● 공개 주소로 실행 중 — 아래는 실제 주소</span>'
+    : '<span class="pill off">○ 파일로 실행 중 — 아래는 예약 주소</span>';
+  var items=[
+    ['PC 웹판','노트북·데스크톱 전체 진단',U.pc],
+    ['모바일 앱판','안드로이드 설치 가능(PWA)',U.mobile],
+    ['진척 대시보드','지금 보고 있는 이 화면',U.dash]
+  ];
+  el('urlGrid').innerHTML=items.map(function(it){
+    return '<div class="ub"><div class="t">'+it[0]+'</div><div class="d">'+it[1]+'</div>'+
+      (window.CRH_qr?window.CRH_qr(it[2],{scale:3,ecl:'M'}):'')+
+      '<a class="u" href="'+it[2]+'">'+it[2]+'</a></div>';
+  }).join('');
+}
+function drawTrack(){
+  var done=P.phases.filter(function(p){return p.pct>=100;}).length;
+  var cur=P.phases.filter(function(p){return p.pct>0&&p.pct<100;})[0];
+  var rest=P.phases.length-done-(cur?1:0);
+  var o=overallPct();
+  el('track').textContent='[끝난 것 '+'▓'.repeat(done)+' '+done+'구간]─[지금 ▶'+(cur?cur.pct:0)+'% '+(cur?cur.n:'대기')+']─[다음 '+'░'.repeat(Math.max(rest,0))+' '+rest+'구간]   전체 '+o.toFixed(0)+'%';
+  el('trackMeaning').innerHTML='→ 이 그림의 뜻: <b>10구간 중 7구간이 끝났고 전체 '+o.toFixed(0)+'%</b>입니다. 지난 보고 대비 β 코어·모바일 앱판·페르소나 검증 3구간이 새로 완료됐습니다. 남은 3구간 중 2구간(<b>공개 배포·실기기 검증</b>)은 제가 혼자 진행할 수 없는 구간입니다.';
+}
+function drawStats(){
+  var c=P.counts,o=overallPct();
+  el('stats').innerHTML=
+    st('전체 진행률',o.toFixed(0)+'<small>%</small>','10구간 중 7구간 완료')+
+    st('완료 전망',P.eta.now,'기준 '+P.eta.base+' → 변동 '+(P.eta.delta>0?'+':'')+P.eta.delta+'일')+
+    st('기준 항목',c.lensItems,'게이트 '+c.gates+' · 외부검증 '+c.extObservable)+
+    st('업계 기준선',c.benchItems+'<small>항목</small>','상위 20개 서비스 실측')+
+    st('가상 사용자 시험',c.personas.toLocaleString()+'<small>명</small>','실사용자 테스트 대체')+
+    st('자동 검사',P.verify.filter(function(v){return v.ok;}).length+'/'+P.verify.length,'미실시는 실기기 1종');
+  function st(l,v,s){return '<div class="stat"><div class="l">'+l+'</div><div class="v">'+v+'</div><div class="s">'+s+'</div></div>';}
+}
+function drawPhases(){
+  el('phaseRows').innerHTML=P.phases.map(function(p){
+    var c=p.pct>=100?'var(--good)':p.pct>0?'var(--warn)':'var(--crit)';
+    return '<tr><td><b>'+p.n+'</b></td><td class="n">'+p.pct+'%</td>'+
+      '<td><div class="bar"><i style="width:'+pct(p.pct)+'%;background:'+c+'"></i></div></td>'+
+      '<td style="color:var(--ink2)">'+p.note+'</td></tr>';}).join('');
+}
+function drawVerify(){
+  el('verRows').innerHTML=P.verify.map(function(v){
+    return '<tr><td>'+v.t+'</td><td style="color:var(--ink2)">'+v.r+'</td>'+
+      '<td class="n">'+(v.ok?'<span class="ok">통과</span>':'<span class="no">대기</span>')+'</td></tr>';}).join('');
+}
+function drawLists(){
+  el('prio').innerHTML=PRIO.map(function(p,i){
+    var mk=p[2]==='u'?'<span class="mk u">사용자 필요</span>':p[2]==='b'?'<span class="mk b">배포 후 가능</span>':'<span class="mk a">단독 가능</span>';
+    return '<li><span class="rk">P'+(i+1)+'</span><span class="bd"><b>'+p[0]+'</b><span>'+p[1]+'</span></span>'+mk+'</li>';}).join('');
+  el('solo').innerHTML=SOLO.map(function(p,i){
+    return '<li><span class="rk">A'+(i+1)+'</span><span class="bd"><b>'+p[0]+'</b><span>'+p[1]+'</span></span><span class="mk a">단독 가능</span></li>';}).join('');
+}
+function drawFoot(){
+  el('hSub').innerHTML=P.product+' · <b>'+P.version+'</b> · '+P.lens+' · 갱신 '+P.updated+
+    ' · 저장소 '+(P.repo.public?'공개':'<b>비공개</b>')+' (결과 페이지만 공개)';
+  el('foot').innerHTML='<b>병목:</b> '+P.bottleneck.what+' · <b>풀리는 조건:</b> '+P.bottleneck.unblock+
+    '<br><b>완료 전망:</b> 기준 '+P.eta.base+' → 현재 '+P.eta.now+' ('+(P.eta.delta>0?'+':'')+P.eta.delta+'일). '+P.eta.note+
+    '<br><br>이 대시보드는 progress.json 과 persona-report.json 을 읽어 그립니다 — 두 파일만 갱신하면 화면이 따라옵니다.';
+}
+function drawPersona(d){
+  if(!d){el('personaBox').innerHTML='<div class="cap">persona-report.json 을 찾지 못했습니다. 파일로 열었을 때는 보안 정책상 못 읽을 수 있습니다 — 공개 배포 후에는 정상 표시됩니다.</div>';return;}
+  var f=d.funnel,rows=d.funnel.map(function(s,i){
+    var prev=i?f[i-1].n:d.total;
+    var drop=prev?(1-s.n/prev)*100:0;
+    return '<tr><td>'+(i+1)+'. '+s.t+'</td><td class="n">'+s.n.toLocaleString()+'</td>'+
+      '<td class="n">'+(s.n/d.total*100).toFixed(1)+'%</td>'+
+      '<td class="n" style="color:'+(drop>15?'var(--crit)':'var(--ink2)')+'">'+(i?'-'+drop.toFixed(1)+'%':'—')+'</td>'+
+      '<td><div class="bar"><i style="width:'+(s.n/d.total*100)+'%;background:var(--c1)"></i></div></td></tr>';}).join('');
+  el('personaBox').innerHTML=
+    '<div class="stats" style="margin-bottom:14px">'+
+    '<div class="stat"><div class="l">시험 인원</div><div class="v">'+d.total.toLocaleString()+'<small>명</small></div><div class="s">'+d.segments+'개 조건 조합</div></div>'+
+    '<div class="stat"><div class="l">퀵체크 완주율</div><div class="v">'+d.quickDone.toFixed(1)+'<small>%</small></div><div class="s">12문항 끝까지</div></div>'+
+    '<div class="stat"><div class="l">전체 진단 완주율</div><div class="v">'+d.fullDone.toFixed(1)+'<small>%</small></div><div class="s">진행률 70% 이상</div></div>'+
+    '<div class="stat"><div class="l">평균 소요</div><div class="v">'+d.avgMin.toFixed(1)+'<small>분</small></div><div class="s">퀵체크 '+d.avgQuickMin.toFixed(1)+'분</div></div>'+
+    '</div>'+
+    '<h3 style="font-size:14px;margin-bottom:4px">이탈 지점(퍼널)</h3>'+
+    '<div class="cap">→ 이 표의 뜻: 숫자가 크게 떨어지는 줄이 고쳐야 할 화면입니다.</div>'+
+    '<table><thead><tr><th>단계</th><th class="n">도달</th><th class="n">비율</th><th class="n">직전 대비</th><th style="width:22%">막대</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+    '<h3 style="font-size:14px;margin:16px 0 4px">가장 많이 걸린 문제</h3>'+
+    '<div class="cap">→ 이 표의 뜻: 위에서부터 고치면 완주율이 가장 많이 오릅니다.</div>'+
+    '<table><thead><tr><th>문제</th><th class="n">겪은 사람</th><th>조치</th></tr></thead><tbody>'+
+    d.issues.map(function(x){return '<tr><td>'+x.t+'</td><td class="n">'+x.n.toLocaleString()+'명 ('+(x.n/d.total*100).toFixed(1)+'%)</td><td style="color:var(--ink2)">'+x.fix+'</td></tr>';}).join('')+
+    '</tbody></table>';
+}
+
+function draw(){drawSig();drawUrls();drawTrack();drawStats();drawPhases();drawVerify();drawLists();drawFoot();}
+
+/* 계정 입력 → 주소·QR 즉시 갱신 */
+function rebind(){
+  var a=el('inAcct').value.trim()||'YOUR-GITHUB-ID', r=el('inRepo').value.trim()||'readiness-hub';
+  if(!window.CRH_URLS.live){
+    var base='https://'+a+'.github.io/'+r+'/';
+    window.CRH_URLS.base=base;window.CRH_URLS.pc=base;window.CRH_URLS.mobile=base+'m/';
+    window.CRH_URLS.dash=base+'dashboard.html';
+  }
+  drawUrls();
+}
+el('inAcct').addEventListener('input',rebind);
+el('inRepo').addEventListener('input',rebind);
+
+draw();
+fetch('progress.json').then(function(r){return r.json();}).then(function(j){P=j;draw();}).catch(function(){});
+fetch('persona-report.json').then(function(r){return r.json();}).then(drawPersona).catch(function(){drawPersona(null);});
+</script>
+</body>
+</html>

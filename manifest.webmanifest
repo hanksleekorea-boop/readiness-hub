@@ -1,0 +1,47 @@
+{
+  "name": "상업화 준비도 허브 β",
+  "short_name": "준비도 허브",
+  "id": "/readiness-hub/",
+  "start_url": "./m/",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f4f1",
+  "theme_color": "#0b0b0b",
+  "lang": "ko",
+  "description": "모바일앱·PC웹 상업화 준비도를 3축(기준·벤치마크·방향)으로 진단하고 업계 실측 기준선과 비교하는 도구",
+  "categories": [
+    "productivity",
+    "business"
+  ],
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "퀵체크",
+      "url": "./m/#quick"
+    },
+    {
+      "name": "진척 대시보드",
+      "url": "./dashboard.html"
+    }
+  ]
+}

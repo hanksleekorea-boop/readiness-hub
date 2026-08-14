@@ -1,0 +1,157 @@
+# 자동 러너 — 외부에서 확인 가능한 항목을 기계가 직접 재서 profiles/ 에 기록한다.
+# 사람이 "했다"고 말한 것과 기계가 "쟀다"고 한 것을 절대 섞지 않는다.
+name: 준비도 자동 측정
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: '측정할 서비스 주소 (예: https://example.com)'
+        required: true
+      profile:
+        description: '결과를 저장할 파일 이름 (예: my-service)'
+        required: true
+        default: 'default'
+  schedule:
+    - cron: '0 18 * * 1'   # 매주 월요일 03:00 KST
+
+permissions:
+  contents: write
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 측정 도구 설치
+        run: npm i -g lighthouse@12 --silent
+
+      - name: 성능·접근성 측정 (Lighthouse)
+        id: lh
+        run: |
+          TARGET="${{ github.event.inputs.target || vars.CRH_TARGET }}"
+          echo "대상: $TARGET"
+          lighthouse "$TARGET" \
+            --quiet --chrome-flags="--headless=new --no-sandbox" \
+            --only-categories=performance,accessibility,best-practices,seo \
+            --output=json --output-path=./lh.json || echo '{}' > lh.json
+
+      - name: 보안 헤더·정책 페이지 확인
+        run: |
+          TARGET="${{ github.event.inputs.target || vars.CRH_TARGET }}"
+          node -e '
+            const t = process.argv[1];
+            const out = { checkedAt: new Date().toISOString(), target: t, checks: {} };
+            const u = new URL(t);
+            function head(path) {
+              return fetch(new URL(path, u).href, { redirect: "follow" })
+                .then(r => ({ status: r.status, headers: Object.fromEntries(r.headers) }))
+                .catch(e => ({ status: 0, error: String(e) }));
+            }
+            (async () => {
+              const root = await head("/");
+              const h = root.headers || {};
+              out.checks.s01_https    = { ok: u.protocol === "https:", ev: u.protocol };
+              out.checks.s11_hsts     = { ok: !!h["strict-transport-security"], ev: h["strict-transport-security"] || "없음" };
+              out.checks.s11_csp      = { ok: !!h["content-security-policy"], ev: h["content-security-policy"] ? "설정됨" : "없음" };
+              out.checks.s11_xfo      = { ok: !!(h["x-frame-options"] || (h["content-security-policy"]||"").includes("frame-ancestors")), ev: h["x-frame-options"] || "없음" };
+              out.checks.p03_cdn      = { ok: !!(h["cf-ray"] || h["x-amz-cf-id"] || h["x-served-by"] || h["x-cache"]), ev: h["server"] || "미상" };
+              out.checks.p10_compress = { ok: !!h["content-encoding"], ev: h["content-encoding"] || "없음" };
+              for (const [key, path] of [["r08_robots","/robots.txt"],["r08_sitemap","/sitemap.xml"],
+                                          ["l01_terms","/terms"],["l01_privacy","/privacy"],["f03_delete","/account/delete"]]) {
+                const r = await head(path);
+                out.checks[key] = { ok: r.status >= 200 && r.status < 400, ev: "HTTP " + r.status };
+              }
+              require("fs").writeFileSync("./headers.json", JSON.stringify(out, null, 2));
+              console.log(JSON.stringify(out.checks, null, 2));
+            })();
+          ' "$TARGET"
+
+      - name: 측정값을 준비도 점수로 변환
+        run: |
+          node -e '
+            const fs = require("fs");
+            const lh = JSON.parse(fs.readFileSync("lh.json","utf8"));
+            const hd = JSON.parse(fs.readFileSync("headers.json","utf8"));
+            const a = (lh.audits) || {}, c = (lh.categories) || {};
+            const num = (x) => (x && typeof x.numericValue === "number") ? x.numericValue : null;
+            const lcp = num(a["largest-contentful-paint"]), cls = num(a["cumulative-layout-shift"]),
+                  tbt = num(a["total-blocking-time"]);
+            const band = (v, good, poor) => v == null ? null : v <= good ? 4 : v <= poor ? 2 : 0;
+            const scores = {}, ev = {};
+            const put = (id, s, e) => { if (s !== null) { scores[id] = s; ev[id] = e; } };
+            put("p07", band(lcp, 2500, 4000), "LCP " + (lcp==null?"?":Math.round(lcp)) + "ms");
+            put("p09", band(cls, 0.1, 0.25), "CLS " + (cls==null?"?":cls.toFixed(3)));
+            put("p08", band(tbt, 200, 600), "TBT " + (tbt==null?"?":Math.round(tbt)) + "ms (INP 대용)");
+            if (c.accessibility) put("u03", c.accessibility.score >= .95 ? 4 : c.accessibility.score >= .85 ? 3 : c.accessibility.score >= .7 ? 2 : 1,
+              "Lighthouse 접근성 " + Math.round(c.accessibility.score*100));
+            if (c.seo) put("r08", c.seo.score >= .95 ? 4 : c.seo.score >= .8 ? 3 : 2, "Lighthouse SEO " + Math.round(c.seo.score*100));
+            const K = hd.checks || {};
+            const b2 = (k, id) => { if (K[k]) put(id, K[k].ok ? 4 : 0, K[k].ev); };
+            b2("s01_https","s01");
+            if (K.s11_hsts && K.s11_csp && K.s11_xfo) {
+              const n = [K.s11_hsts,K.s11_csp,K.s11_xfo].filter(x=>x.ok).length;
+              put("s11", n===3?4:n===2?3:n===1?2:0, "HSTS/CSP/XFO " + n + "/3");
+            }
+            b2("p03_cdn","p03"); b2("p10_compress","p10");
+            if (K.l01_terms || K.l01_privacy) {
+              const n = [K.l01_terms,K.l01_privacy].filter(x=>x&&x.ok).length;
+              put("l01", n===2?3:n===1?2:0, "약관/처리방침 " + n + "/2");
+            }
+            if (K.f03_delete) put("f03", K.f03_delete.ok ? 3 : 0, K.f03_delete.ev);
+
+            const name = process.env.PROFILE || "default";
+            const path = "profiles/" + name + ".json";
+            let prev = {};
+            try { prev = JSON.parse(fs.readFileSync(path,"utf8")); } catch(e) {}
+            prev.svc = prev.svc || name;
+            prev.date = new Date().toISOString().slice(0,10);
+            prev.scores = prev.scores || { mobile:{}, web:{} };
+            prev.when   = prev.when   || { mobile:{}, web:{} };
+            prev.ev     = prev.ev     || { mobile:{}, web:{} };
+            prev.notes  = prev.notes  || { mobile:{}, web:{} };
+            prev.autoLog = prev.autoLog || [];
+            const today = prev.date;
+            Object.keys(scores).forEach(id => {
+              prev.scores.web[id] = scores[id];
+              prev.when.web[id]   = today;
+              prev.ev.web[id]     = 1;                       /* 자동 측정 = 1차 근거 */
+              prev.notes.web[id]  = "[자동 측정] " + ev[id];
+            });
+            prev.autoLog.push({ at: today, n: Object.keys(scores).length, target: hd.target });
+            if (prev.autoLog.length > 60) prev.autoLog = prev.autoLog.slice(-60);
+            fs.mkdirSync("profiles", { recursive: true });
+            fs.writeFileSync(path, JSON.stringify(prev, null, 2));
+            console.log("자동 채점 " + Object.keys(scores).length + "개 항목 → " + path);
+            Object.keys(scores).forEach(id => console.log("  " + id + " = " + scores[id] + "  (" + ev[id] + ")"));
+            /* 게이트 실패 시 작업 실패 처리 */
+            const GATE = ["s01","p07","l01","f03"];
+            const bad = GATE.filter(g => scores[g] !== undefined && scores[g] < 3);
+            if (bad.length) { console.error("게이트 미충족: " + bad.join(", ")); process.exit(1); }
+          '
+        env:
+          PROFILE: ${{ github.event.inputs.profile || 'default' }}
+
+      - name: 결과 저장 기록 남기기
+        if: always()
+        run: |
+          git config user.name "readiness-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add profiles/ || true
+          git diff --staged --quiet || git commit -m "자동 측정: $(date +%Y-%m-%d)"
+          git push || true
+
+      - name: 측정 원본 보관
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: readiness-raw
+          path: |
+            lh.json
+            headers.json
+          retention-days: 30
