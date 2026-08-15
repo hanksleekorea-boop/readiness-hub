@@ -54,6 +54,21 @@
   }
   W.CRH_injectNav = injectNav;
 
+  /* 모든 화면에서 정책·삭제 경로를 같은 위치에 노출한다. */
+  function injectLegalFooter() {
+    if (document.querySelector('.crh-legal-footer')) return;
+    var css = '.crh-legal-footer{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;padding:18px 16px 22px;border-top:1px solid rgba(127,127,127,.24);font:12px/1.5 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#777;background:rgba(127,127,127,.04)}'
+      + '.crh-legal-footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}';
+    var s = document.createElement('style'); s.textContent = css; document.head.appendChild(s);
+    var f = document.createElement('footer'); f.className = 'crh-legal-footer';
+    f.innerHTML = '<span>beta 0.6.3</span><a href="' + URLS.base + 'terms/">이용약관</a>'
+      + '<a href="' + URLS.base + 'privacy/">개인정보 처리방침</a>'
+      + '<a href="' + URLS.base + 'account/delete/">계정·데이터 삭제</a>';
+    document.body.appendChild(f);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', injectLegalFooter);
+  else injectLegalFooter();
+
   /* QR 그리기 */
   W.CRH_qr = function (text, opt) {
     if (!W.QRLite) return '<span style="font-size:11px;color:#888">QR 생성기 미로드</span>';

@@ -48,13 +48,14 @@ jobs:
             const t = process.argv[1];
             const out = { checkedAt: new Date().toISOString(), target: t, checks: {} };
             const u = new URL(t);
+            if (!u.pathname.endsWith("/")) u.pathname += "/";
             function head(path) {
               return fetch(new URL(path, u).href, { redirect: "follow" })
                 .then(r => ({ status: r.status, headers: Object.fromEntries(r.headers) }))
                 .catch(e => ({ status: 0, error: String(e) }));
             }
             (async () => {
-              const root = await head("/");
+              const root = await head("./");
               const h = root.headers || {};
               out.checks.s01_https    = { ok: u.protocol === "https:", ev: u.protocol };
               out.checks.s11_hsts     = { ok: !!h["strict-transport-security"], ev: h["strict-transport-security"] || "없음" };
@@ -62,8 +63,8 @@ jobs:
               out.checks.s11_xfo      = { ok: !!(h["x-frame-options"] || (h["content-security-policy"]||"").includes("frame-ancestors")), ev: h["x-frame-options"] || "없음" };
               out.checks.p03_cdn      = { ok: !!(h["cf-ray"] || h["x-amz-cf-id"] || h["x-served-by"] || h["x-cache"]), ev: h["server"] || "미상" };
               out.checks.p10_compress = { ok: !!h["content-encoding"], ev: h["content-encoding"] || "없음" };
-              for (const [key, path] of [["r08_robots","/robots.txt"],["r08_sitemap","/sitemap.xml"],
-                                          ["l01_terms","/terms"],["l01_privacy","/privacy"],["f03_delete","/account/delete"]]) {
+              for (const [key, path] of [["r08_robots","robots.txt"],["r08_sitemap","sitemap.xml"],
+                                          ["l01_terms","terms/"],["l01_privacy","privacy/"],["f03_delete","account/delete/"]]) {
                 const r = await head(path);
                 out.checks[key] = { ok: r.status >= 200 && r.status < 400, ev: "HTTP " + r.status };
               }

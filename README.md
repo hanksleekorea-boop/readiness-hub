@@ -25,6 +25,9 @@
 index.html              PC 웹판
 m/index.html            모바일 앱판 (안드로이드 설치 가능)
 dashboard.html          개발 진척 대시보드
+terms/index.html        무료 베타 이용약관
+privacy/index.html      실제 데이터 흐름 기준 개인정보 처리방침
+account/delete/index.html  계정 없음 안내 + 브라우저 로컬 데이터 삭제
 lens/lens-core-v2.1.json  한국 기준 포함 기본 렌즈 197개
 lens/lens-eu-v1.0.json    EU/EEA 관할 호환 렌즈 197개
 lens/lens-us-v1.0.json    미국 연방+캘리포니아 조건부 호환 렌즈 197개
@@ -32,7 +35,9 @@ profiles/*.json         서비스별 진단 상태 (자동 러너가 갱신)
 progress.json           대시보드가 읽는 진척 데이터
 persona-report.json     가상 사용자 1000명 시험 결과
 assets/qr.js            QR 부호기 (자체 구현, 외부 의존 없음)
-assets/shell.js         공개 주소 자동 인식 + 상단 이동줄
+assets/shell.js         공개 주소 자동 인식 + 정책·삭제 링크
+assets/legal.css        정책 페이지 공통 스타일
+robots.txt, sitemap.xml 검색 로봇·정본 URL 안내
 .github/workflows/readiness.yml   자동 측정 러너
 sw.js, manifest.webmanifest       오프라인·설치 지원
 ```

@@ -1,7 +1,8 @@
 /* 오프라인 지원 — 앱 껍데기를 임시 저장(캐시)해 두고 네트워크 실패 시 되돌려준다 */
-var V = 'crh-beta-v3';
+var V = 'crh-beta-v4';
 var ASSETS = ['./','./index.html','./m/','./m/index.html','./dashboard.html',
-  './assets/qr.js','./assets/shell.js','./manifest.webmanifest',
+  './terms/','./privacy/','./account/delete/','./robots.txt','./sitemap.xml',
+  './assets/qr.js','./assets/shell.js','./assets/legal.css','./manifest.webmanifest',
   './assets/icon-192.png','./assets/icon-512.png','./progress.json','./persona-report.json',
   './lens/lens-core-v2.1.json','./lens/lens-eu-v1.0.json','./lens/lens-us-v1.0.json'];
 self.addEventListener('install', function (e) {

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hanksleekorea-boop.github.io/readiness-hub/sitemap.xml
