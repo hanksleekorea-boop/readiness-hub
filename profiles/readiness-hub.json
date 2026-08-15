@@ -6,9 +6,9 @@
     "web": {
       "p07": 4,
       "p09": 4,
-      "p08": 2,
-      "u03": 3,
-      "r08": 3,
+      "p08": 0,
+      "u03": 4,
+      "r08": 4,
       "s01": 4,
       "s11": 2,
       "p03": 4,
@@ -52,11 +52,11 @@
   "notes": {
     "mobile": {},
     "web": {
-      "p07": "[자동 측정] LCP 1722ms",
+      "p07": "[자동 측정] LCP 1327ms",
       "p09": "[자동 측정] CLS 0.000",
-      "p08": "[자동 측정] TBT 205ms (INP 대용)",
-      "u03": "[자동 측정] Lighthouse 접근성 94",
-      "r08": "[자동 측정] Lighthouse SEO 90",
+      "p08": "[자동 측정] TBT 630ms (INP 대용)",
+      "u03": "[자동 측정] Lighthouse 접근성 96",
+      "r08": "[자동 측정] Lighthouse SEO 100",
       "s01": "[자동 측정] https:",
       "s11": "[자동 측정] HSTS/CSP/XFO 1/3",
       "p03": "[자동 측정] GitHub.com",
@@ -68,6 +68,11 @@
   "autoLog": [
     {
       "at": "2026-08-14",
+      "n": 11,
+      "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
+    },
+    {
+      "at": "2026-08-15",
       "n": 11,
       "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
     },
