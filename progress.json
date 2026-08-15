@@ -2,7 +2,7 @@
   "schema": "crh-progress",
   "updated": "2026-08-15",
   "product": "상업화 준비도 허브 β (Continuous Readiness Index)",
-  "version": "beta 0.6.3 + Spec v1.1",
+  "version": "beta 0.6.4 + Spec v1.1",
   "lens": "core v2.1.0 + EU/EEA v1.0.0 + US v1.0.0 · 각 15영역 197개 · 관할별 26개 적용조건·공식출처 연결",
   "repo": {
     "public": true,
@@ -64,7 +64,7 @@
     {
       "n": "자동 러너",
       "pct": 100,
-      "note": "첫 실행 완료 · 11항목 자동 측정 · GitHub Project Pages 기준 경로 계산 오류 수정"
+      "note": "자동 측정 11항목 통과 · 법적 표면/삭제 경로 게이트 통과 · 접근성·SEO 재검증 진행"
     },
     {
       "n": "법적 표면·삭제 경로",

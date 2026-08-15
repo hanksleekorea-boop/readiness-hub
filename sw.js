@@ -1,5 +1,5 @@
 /* 오프라인 지원 — 앱 껍데기를 임시 저장(캐시)해 두고 네트워크 실패 시 되돌려준다 */
-var V = 'crh-beta-v4';
+var V = 'crh-beta-v5';
 var ASSETS = ['./','./index.html','./m/','./m/index.html','./dashboard.html',
   './terms/','./privacy/','./account/delete/','./robots.txt','./sitemap.xml',
   './assets/qr.js','./assets/shell.js','./assets/legal.css','./manifest.webmanifest',

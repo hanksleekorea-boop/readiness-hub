@@ -3,12 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="모바일앱과 PC웹의 상업화 준비도를 197개 기준, 업계 기준선, 증거 신선도로 진단하는 무료 베타 도구.">
+<link rel="icon" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>상업화 준비도 허브 β — Continuous Readiness Index (PC Web Beta)</title>
 <style>
 :root{
   color-scheme: light;
   --surface-1:#fcfcfb; --plane:#f9f9f7; --panel:#ffffff;
-  --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --ink:#0b0b0b; --ink-2:#52514e; --muted:#686762;
   --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,0.10);
   --s-mobile:#2a78d6; --s-web:#eb6834;
   --good:#0ca30c; --warn:#fab219; --serious:#ec835a; --crit:#d03b3b;
@@ -114,7 +117,7 @@ details.dom:hover .domna{opacity:1}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media (max-width:900px){.grid2{grid-template-columns:1fr}}
 .chart-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
-.chart-card h3{font-size:14px;margin-bottom:2px}
+.chart-card h2,.chart-card h3{font-size:14px;margin-bottom:2px}
 .chart-card .cap{font-size:12px;color:var(--muted);margin-bottom:12px}
 .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--ink-2);margin-bottom:10px}
 .legend span{display:inline-flex;align-items:center;gap:6px}
@@ -268,7 +271,7 @@ td.nowrap{white-space:nowrap}
     <div class="grid2">
       <div>
         <div class="chart-card" style="margin-bottom:12px">
-          <h3>⚡ 퀵체크 — 12문항 · 3분</h3>
+          <h2>⚡ 퀵체크 — 12문항 · 3분</h2>
           <div class="cap">방향 9문항 + 핵심 게이트 3문항. 결과는 세계 상위 20개 서비스 실측 기준선과 즉시 비교되고, 응답은 그대로 3축 방향 프로파일로 이어집니다. 로그인·저장 없음.</div>
         </div>
         <div id="quickQs"></div>
@@ -3497,6 +3500,6 @@ bootLoad().then(msg => {
   if (msg) console.info(msg);
 });
 </script>
-<script src="assets/shell.js?v=0.6.3"></script>
+<script src="assets/shell.js?v=0.6.4"></script>
 </body>
 </html>
