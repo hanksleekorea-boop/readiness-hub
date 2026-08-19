@@ -39,6 +39,8 @@ assets/shell.js         공개 주소 자동 인식 + 정책·삭제 링크
 assets/legal.css        정책 페이지 공통 스타일
 engine/readiness-engine.mjs  대상 프로젝트 증거 JSON을 실제 점수·갭·벤치마크 보고서로 계산하는 Node 엔진
 engine/project-evidence.example.json  엔진 입력 예제
+engine/engine-manifest.json  공개 엔진·렌즈·예제의 SHA-256 파일 지문값
+engine/AUTOMATIC_ANALYSIS_PROMPT.md  대상 Codex용 증거 수집→실행→자체검사 프롬프트 2.0
 robots.txt, sitemap.xml 검색 로봇·정본 URL 안내
 .github/workflows/readiness.yml   자동 측정 러너
 sw.js, manifest.webmanifest       오프라인·설치 지원

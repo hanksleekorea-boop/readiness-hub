@@ -10,7 +10,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const ENGINE_VERSION = '1.0.0';
+const ENGINE_VERSION = '1.0.1';
 const PLATFORM = { mobile: new Set(['C', 'M']), web: new Set(['C', 'W']) };
 const FRESH_DAYS = { 1: 180, 2: 120, 3: 60, auto: 180, self: 365 };
 const GRADE = [[90, 'L5', '출시·확장 가능'], [75, 'L4', '정식 출시 준비'], [60, 'L3', '오픈 베타 준비'], [40, 'L2', '기능 구축 중'], [0, 'L1', '기획·초기 구축']];
@@ -151,7 +151,19 @@ function combine(mobile, web, mix) { if (mobile === null && web === null) return
 function benchmark(input, scores) {
   const bench = input.benchmark || {}, comparators = Array.isArray(bench.comparators) ? bench.comparators : [];
   if (comparators.length < 3) return { score: null, status: 'unavailable', reason: '비교 대상이 3개 미만입니다.', comparators: comparators.length, dimensions: [] };
-  const derived = { feat: scores.combinedDomains.d1, ux: scores.combinedDomains.d8, perf: average([scores.combinedDomains.d2, scores.combinedDomains.d3]), monet: scores.combinedDomains.d5 };
+  const toFive = value => value === null || value === undefined ? null : round(value / 20);
+  const derived = {
+    feat: toFive(scores.combinedDomains.d1),
+    ux: toFive(scores.combinedDomains.d8),
+    perf: toFive(average([scores.combinedDomains.d2, scores.combinedDomains.d3])),
+    monet: toFive(scores.combinedDomains.d5),
+  };
+  const derivedCoverage = {
+    feat: scores.combinedDomainCoverage.d1,
+    ux: scores.combinedDomainCoverage.d8,
+    perf: average([scores.combinedDomainCoverage.d2, scores.combinedDomainCoverage.d3]),
+    monet: scores.combinedDomainCoverage.d5,
+  };
   const ours = { ...derived, ...(bench.ours || {}) };
   const dimensions = [];
   for (const [key, name] of DIMENSIONS) {
@@ -160,10 +172,12 @@ function benchmark(input, scores) {
     if (!Number.isFinite(own) || own < 0 || own > 5 || values.length < 3) continue;
     const below = values.filter(value => value < own - 1e-9).length;
     const equal = values.filter(value => Math.abs(value - own) <= 1e-9).length;
-    dimensions.push({ key, name, ours: round(own), percentile: round((below + 0.5 * equal) / values.length * 100), comparisonCount: values.length, source: Object.hasOwn(bench.ours || {}, key) ? 'input' : 'derived-from-readiness' });
+    const fromInput = Object.hasOwn(bench.ours || {}, key);
+    dimensions.push({ key, name, ours: round(own), percentile: round((below + 0.5 * equal) / values.length * 100), comparisonCount: values.length, source: fromInput ? 'input' : 'derived-from-readiness', readinessCoverage: fromInput ? null : round(derivedCoverage[key]) });
   }
   if (!dimensions.length) return { score: null, status: 'unavailable', reason: '3개 이상 비교 가능한 차원이 없습니다.', comparators: comparators.length, dimensions: [] };
-  return { score: round(average(dimensions.map(row => row.percentile))), status: 'calculated', comparators: comparators.length, dimensions };
+  const lowCoverage = dimensions.filter(row => row.source === 'derived-from-readiness' && (row.readinessCoverage === null || row.readinessCoverage < 0.7));
+  return { score: round(average(dimensions.map(row => row.percentile))), status: 'calculated', confidence: lowCoverage.length ? 'low' : 'normal', caution: lowCoverage.length ? `준비도에서 자동 유도한 ${lowCoverage.length}개 차원의 증거 진행률이 70% 미만입니다.` : null, comparators: comparators.length, dimensions };
 }
 function average(values) { const valid = values.filter(value => value !== null && value !== undefined && Number.isFinite(value)); return valid.length ? valid.reduce((sum, value) => sum + value, 0) / valid.length : null; }
 function directionAxis(lens, evidence, config) {
@@ -197,8 +211,8 @@ function gapAnalysis(lens, evidence, selected, weights, platform) {
 function reportMarkdown(result) {
   const project = result.project || {}, featureRows = (project.features || []).slice(0, 30).map(feature => `| ${plain(feature.name || feature.feature || '이름 없음')} | ${plain(feature.platform || '공통')} | ${plain(feature.status || '미확인')} | ${plain(feature.evidence || feature.note || '')} |`).join('\n') || '| 입력된 기능이 없습니다. | - | - | - |';
   const gaps = result.gaps.slice(0, 20).map((gap, i) => `${i + 1}. **${gap.title}** (${gap.platform}, ${gap.domain}) — 현재 ${gap.currentScore ?? '미평가'}/4, 영향도 ${gap.impact}${gap.gate ? ', 필수 게이트' : ''}`).join('\n') || '입력된 범위에 갭이 없습니다.';
-  const bench = result.benchmark.status === 'calculated' ? result.benchmark.dimensions.map(row => `| ${row.name} | ${row.ours}/5 | ${row.percentile}% | ${row.comparisonCount} | ${row.source} |`).join('\n') : `계산 불가: ${result.benchmark.reason}`;
-  return `# ${plain(project.name || '대상 프로젝트')} — Continuous Readiness Index 분석 보고서\n\n생성 시각: ${result.generatedAt}\n\n## 판정 요약\n\n| 구분 | 점수 | 등급 | 진행률 | 필수 게이트 실패 |\n|---|---:|---|---:|---:|\n| 모바일 | ${result.mobile.score ?? '—'} | ${result.mobile.grade.code} | ${round(result.mobile.progress * 100)}% | ${result.mobile.gates.fail} |\n| PC 웹 | ${result.web.score ?? '—'} | ${result.web.grade.code} | ${round(result.web.progress * 100)}% | ${result.web.gates.fail} |\n| 통합 준비도 | ${result.composite.score ?? '—'} | ${result.composite.grade?.code ?? '—'} | - | ${result.composite.blockers} |\n\n→ 이 표의 뜻: 점수와 등급은 입력된 증거만 사용하며, 진행률 70% 미만은 등급 끝의 ?로 표시합니다.\n\n## 대상 제품과 확인 기능\n\n${plain(project.description || '설명 미입력')}\n\n| 기능 | 플랫폼 | 상태 | 근거 |\n|---|---|---|---|\n${featureRows}\n\n→ 이 표의 뜻: 대상 프로젝트에서 실제로 제공한다고 입력된 기능과 그 근거를 기록합니다.\n\n## 가장 큰 갭 20개\n\n${gaps}\n\n## 시장 상대 위치\n\n${result.benchmark.status === 'calculated' ? `비교 백분위: **${result.benchmark.score}%** (비교 서비스 ${result.benchmark.comparators}개)\n\n| 차원 | 우리 점수 | 백분위 | 비교 수 | 산출 근거 |\n|---|---:|---:|---:|---|\n${bench}\n\n→ 이 표의 뜻: 높을수록 입력된 비교 서비스 집단 안에서 상대 위치가 높다는 의미이며, 시장 전체 순위는 아닙니다.` : bench}\n\n## 방향 정합도\n\n${result.direction.status === 'calculated' ? `방향 핵심 항목 점수: **${result.direction.score}점** (${result.direction.rated}/${result.direction.total}개 증거 입력)` : `계산 불가: ${result.direction.reason}`}\n\n## 해석 주의\n\n- 이 결과는 ${result.lens.itemCount}개 기준과 입력 증거를 바탕으로 한 제품 준비도 진단이며, 법률 자문·준수 인증·시장 성과 보증이 아닙니다.\n- 자동/외부 검증과 자가 신고는 입력의 근거 등급과 확인일로 구분합니다. 실제 Android 기기 시험은 별도 증거가 없으면 미실시입니다.\n- 경고 ${result.warnings.length}건: ${result.warnings.length ? result.warnings.join(' / ') : '없음'}\n`;
+  const bench = result.benchmark.status === 'calculated' ? result.benchmark.dimensions.map(row => `| ${row.name} | ${row.ours}/5 | ${row.percentile}% | ${row.comparisonCount} | ${row.source} | ${row.readinessCoverage === null ? '—' : `${round(row.readinessCoverage * 100)}%`} |`).join('\n') : `계산 불가: ${result.benchmark.reason}`;
+  return `# ${plain(project.name || '대상 프로젝트')} — Continuous Readiness Index 분석 보고서\n\n생성 시각: ${result.generatedAt}\n\n## 판정 요약\n\n| 구분 | 점수 | 등급 | 진행률 | 필수 게이트 실패 |\n|---|---:|---|---:|---:|\n| 모바일 | ${result.mobile.score ?? '—'} | ${result.mobile.grade.code} | ${round(result.mobile.progress * 100)}% | ${result.mobile.gates.fail} |\n| PC 웹 | ${result.web.score ?? '—'} | ${result.web.grade.code} | ${round(result.web.progress * 100)}% | ${result.web.gates.fail} |\n| 통합 준비도 | ${result.composite.score ?? '—'} | ${result.composite.grade?.code ?? '—'} | - | ${result.composite.blockers} |\n\n→ 이 표의 뜻: 점수와 등급은 입력된 증거만 사용하며, 진행률 70% 미만은 등급 끝의 ?로 표시합니다.\n\n## 대상 제품과 확인 기능\n\n${plain(project.description || '설명 미입력')}\n\n| 기능 | 플랫폼 | 상태 | 근거 |\n|---|---|---|---|\n${featureRows}\n\n→ 이 표의 뜻: 대상 프로젝트에서 실제로 제공한다고 입력된 기능과 그 근거를 기록합니다.\n\n## 가장 큰 갭 20개\n\n${gaps}\n\n## 시장 상대 위치\n\n${result.benchmark.status === 'calculated' ? `비교 백분위: **${result.benchmark.score}%** (비교 서비스 ${result.benchmark.comparators}개, 신뢰도 ${result.benchmark.confidence})${result.benchmark.caution ? `\n\n주의: ${result.benchmark.caution}` : ''}\n\n| 차원 | 우리 점수 | 백분위 | 비교 수 | 산출 근거 | 준비도 증거 진행률 |\n|---|---:|---:|---:|---|---:|\n${bench}\n\n→ 이 표의 뜻: 높을수록 입력된 비교 서비스 집단 안에서 상대 위치가 높다는 의미이며, 시장 전체 순위는 아닙니다. 준비도 증거 진행률이 낮으면 잠정 결과입니다.` : bench}\n\n## 방향 정합도\n\n${result.direction.status === 'calculated' ? `방향 핵심 항목 점수: **${result.direction.score}점** (${result.direction.rated}/${result.direction.total}개 증거 입력)` : `계산 불가: ${result.direction.reason}`}\n\n## 해석 주의\n\n- 이 결과는 ${result.lens.itemCount}개 기준과 입력 증거를 바탕으로 한 제품 준비도 진단이며, 법률 자문·준수 인증·시장 성과 보증이 아닙니다.\n- 자동/외부 검증과 자가 신고는 입력의 근거 등급과 확인일로 구분합니다. 실제 Android 기기 시험은 별도 증거가 없으면 미실시입니다.\n- 경고 ${result.warnings.length}건: ${result.warnings.length ? result.warnings.join(' / ') : '없음'}\n`;
 }
 export function analyze(input, options = {}) {
   if (!input || typeof input !== 'object') fail('입력 JSON 객체가 필요합니다.');
@@ -217,6 +231,11 @@ export function analyze(input, options = {}) {
   mobile.grade = grade(mobile.score, mobile.progress, mobile.gates); web.grade = grade(web.score, web.progress, web.gates);
   const combinedDomains = Object.fromEntries(lens.domains.map(domain => [domain.id, combine(mobile.domains.find(row => row.id === domain.id).score, web.domains.find(row => row.id === domain.id).score, config.mix)]));
   const scores = { combinedDomains };
+  const combinedDomainCoverage = Object.fromEntries(lens.domains.map(domain => {
+    const rows = [mobile, web].map(platform => platform.domains.find(row => row.id === domain.id)).filter(row => row.total > 0);
+    return [domain.id, rows.length ? round(average(rows.map(row => row.done / row.total))) : null];
+  }));
+  scores.combinedDomainCoverage = combinedDomainCoverage;
   const bench = benchmark(input, scores), direction = directionAxis(lens, evidence, config);
   const axisWeights = { a1: Number(input.axisWeights?.a1 ?? 50), a2: Number(input.axisWeights?.a2 ?? 25), a3: Number(input.axisWeights?.a3 ?? 25) };
   const a1 = combine(mobile.score, web.score, config.mix), parts = [[axisWeights.a1, a1], [axisWeights.a2, bench.score], [axisWeights.a3, direction.score]].filter(([, value]) => value !== null && Number.isFinite(value));
