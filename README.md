@@ -37,6 +37,8 @@ persona-report.json     가상 사용자 1000명 시험 결과
 assets/qr.js            QR 부호기 (자체 구현, 외부 의존 없음)
 assets/shell.js         공개 주소 자동 인식 + 정책·삭제 링크
 assets/legal.css        정책 페이지 공통 스타일
+engine/readiness-engine.mjs  대상 프로젝트 증거 JSON을 실제 점수·갭·벤치마크 보고서로 계산하는 Node 엔진
+engine/project-evidence.example.json  엔진 입력 예제
 robots.txt, sitemap.xml 검색 로봇·정본 URL 안내
 .github/workflows/readiness.yml   자동 측정 러너
 sw.js, manifest.webmanifest       오프라인·설치 지원
@@ -60,6 +62,16 @@ sw.js, manifest.webmanifest       오프라인·설치 지원
 `Actions → 준비도 자동 측정 → Run workflow` 에서 대상 주소와 프로파일 이름을 넣으면
 Lighthouse(성능·접근성·SEO)와 보안 헤더·정책 페이지를 자동으로 재서 `profiles/`에 기록합니다.
 자동 측정된 항목은 근거등급 1차, 메모에 `[자동 측정]`이 붙어 자가 신고와 구분됩니다.
+
+## 대상 프로젝트를 자동 분석하기
+
+`engine/` 폴더는 화면을 수동으로 조작하지 않고 Readiness Hub의 산식으로 분석하는 실제 실행 엔진입니다. 대상 프로젝트에서 수집한 증거 JSON을 넣으면 모바일·PC 웹 점수, 40개 필수 게이트, 우선 갭, 비교 서비스 백분위와 방향 정합도를 JSON·Markdown 파일로 반환합니다.
+
+```powershell
+node .\engine\readiness-engine.mjs --input .\project-evidence.json --out .\readiness-analysis.json --markdown .\readiness-analysis.md
+```
+
+입력 예제와 형식은 [engine/README.md](engine/README.md)에 있습니다. 비교 대상이 세 개 미만이거나 자동화할 수 없는 시장 증거가 없을 때는 벤치마크를 계산 불가로 명확히 표시합니다.
 
 ## 기준을 바꾸려면
 
