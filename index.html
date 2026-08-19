@@ -2812,10 +2812,6 @@ function renderAll() {
   renderSummary(); renderQuick(); renderDir(); renderAssess(); renderBench(); renderRadar(); renderBars();
   renderGates(); renderTable(); renderGap(); renderMethod(); renderAxisW();
 }
-function renderInitialView() {
-  renderSummary();
-  renderAssess();
-}
 function renderLight() { renderSummary(); renderRadar(); renderBars(); renderGates(); renderTable(); renderGap(); }
 
 /* =========================== v2: 3-axis modules =========================== */
@@ -3498,13 +3494,9 @@ window.addEventListener('beforeunload', e => {
 /* =========================== boot =========================== */
 S = blank();
 bootLoad().then(msg => {
-  loadMeta(); bindV2(); bindBeta();
+  loadMeta(); renderAll(); bindV2(); bindBeta();
   const empty = !Object.keys(S.scores.mobile).length && !Object.keys(S.scores.web).length && !Object.keys(S.dir).length;
-  if (empty) {
-    const qt = document.querySelector('.tab[data-t="quick"]'); if (qt) qt.click();
-  } else {
-    renderInitialView();
-  }
+  if (empty) { const qt = document.querySelector('.tab[data-t="quick"]'); if (qt) qt.click(); }
   if (msg) console.info(msg);
 });
 </script>
