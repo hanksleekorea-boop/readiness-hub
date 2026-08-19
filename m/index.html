@@ -523,6 +523,7 @@ function renderMore(){
 }
 
 function renderAll(){renderQuick();renderAssess();renderDash();renderGap();renderMore();}
+function renderInitialView(){renderQuick();}
 
 /* ===== 이벤트 ===== */
 document.getElementById('nav').addEventListener('click',function(e){
@@ -608,7 +609,7 @@ document.getElementById('bInstall').onclick=function(){if(!deferred)return;defer
 if('serviceWorker' in navigator && location.protocol!=='file:'){
   navigator.serviceWorker.register('../sw.js').catch(function(){});}
 
-renderAll();
+renderInitialView();
 </script>
 <script src="../assets/shell.js"></script>
 </body>
