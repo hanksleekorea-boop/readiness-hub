@@ -34,7 +34,7 @@ jobs:
       - name: 성능·접근성 측정 (Lighthouse)
         id: lh
         run: |
-          TARGET="${{ github.event.inputs.target || vars.CRH_TARGET }}"
+          TARGET="${{ github.event.inputs.target || vars.CRH_TARGET || 'https://hanksleekorea-boop.github.io/readiness-hub/' }}"
           echo "대상: $TARGET"
           lighthouse "$TARGET" \
             --quiet --chrome-flags="--headless=new --no-sandbox" \
@@ -43,7 +43,7 @@ jobs:
 
       - name: 보안 헤더·정책 페이지 확인
         run: |
-          TARGET="${{ github.event.inputs.target || vars.CRH_TARGET }}"
+          TARGET="${{ github.event.inputs.target || vars.CRH_TARGET || 'https://hanksleekorea-boop.github.io/readiness-hub/' }}"
           node -e '
             const t = process.argv[1];
             const out = { checkedAt: new Date().toISOString(), target: t, checks: {} };
@@ -136,7 +136,7 @@ jobs:
             if (bad.length) { console.error("게이트 미충족: " + bad.join(", ")); process.exit(1); }
           '
         env:
-          PROFILE: ${{ github.event.inputs.profile || 'default' }}
+          PROFILE: ${{ github.event.inputs.profile || vars.CRH_PROFILE || 'readiness-hub' }}
 
       - name: 결과 저장 기록 남기기
         if: always()
@@ -145,7 +145,7 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
           git add profiles/ || true
           git diff --staged --quiet || git commit -m "자동 측정: $(date +%Y-%m-%d)"
-          git push || true
+          git push
 
       - name: 측정 원본 보관
         if: always()
