@@ -31,9 +31,10 @@
 
 ## 3. 엔진 확보와 검증
 
-1. 현재 프로젝트 안에서 `readiness-engine.mjs`, `lens-core-v2.1.json`, `project-evidence.example.json`, `engine-manifest.json`이 함께 있는 공식 번들을 찾는다. 네 파일이 모두 있고 명세의 파일 지문값이 일치하며 엔진이 v1.1.0 이상이면 그 복사본을 `.readiness-analysis/engine/`에 보존해 사용한다.
-2. 없거나 버전이 낮으면 다음 네 파일을 `.readiness-analysis/engine/`에 내려받는다.
+1. 현재 프로젝트 안에서 `readiness-engine.mjs`, `profile-to-evidence.mjs`, `lens-core-v2.1.json`, `project-evidence.example.json`, `engine-manifest.json`이 함께 있는 공식 번들을 찾는다. 다섯 파일이 모두 있고 명세의 파일 지문값이 일치하며 엔진이 v1.1.0 이상이면 그 복사본을 `.readiness-analysis/engine/`에 보존해 사용한다.
+2. 없거나 버전이 낮으면 다음 다섯 파일을 `.readiness-analysis/engine/`에 내려받는다.
    - `https://hanksleekorea-boop.github.io/readiness-hub/engine/readiness-engine.mjs`
+   - `https://hanksleekorea-boop.github.io/readiness-hub/engine/profile-to-evidence.mjs`
    - `https://hanksleekorea-boop.github.io/readiness-hub/engine/lens-core-v2.1.json`
    - `https://hanksleekorea-boop.github.io/readiness-hub/engine/project-evidence.example.json`
    - `https://hanksleekorea-boop.github.io/readiness-hub/engine/engine-manifest.json`
@@ -50,6 +51,7 @@ UTC 기준 `YYYYMMDDTHHMMSSZ` 실행 ID를 만들고 다음 구조를 사용한�
 .readiness-analysis/
   engine/
     readiness-engine.mjs
+    profile-to-evidence.mjs
     lens-core-v2.1.json
     project-evidence.example.json
     engine-manifest.json
@@ -68,6 +70,7 @@ UTC 기준 `YYYYMMDDTHHMMSSZ` 실행 ID를 만들고 다음 구조를 사용한�
 1. **제품 식별:** 프로젝트명, 코드 보관소명, 제품 설명, 목표 사용자, 사업모델, 출시 단계, 실제 제공 기능을 README·기획서·경로·화면·테스트에서 교차 확인한다.
 2. **구조 검사:** 주요 소스, 설정, 의존성, 테스트, CI, 공개 방식, PWA, 정책 페이지, 데이터 처리 경로를 찾는다. 파일 존재만으로 완성됐다고 판정하지 않는다.
 3. **기존 검사:** 프로젝트가 이미 제공하는 읽기·검증 명령을 우선 실행한다. 외부 시스템 변경, 비용 발생, 데이터 변경 명령은 실행하지 않는다.
+   - Readiness Hub의 `profiles/서비스명.json`이 있고 `profile-to-evidence.mjs`가 함께 있으면, 프로필을 새 실행 폴더의 `project-evidence.json`으로 변환한다. 이때 자동 측정의 점수·확인일·근거 등급·원본 Actions 링크를 보존하고, 수동 증거가 있으면 변환 결과에 추가한다.
 4. **실행 확인:** 안전하게 로컬 실행할 수 있으면 PC와 모바일 폭에서 핵심 기능을 확인한다. 공개 URL이 문서에 있으면 실제 HTTP·브라우저 상태를 확인한다.
 5. **플랫폼 구분:** 모바일 네이티브, 모바일 웹/PWA, PC 웹을 혼동하지 않는다. 제공하지 않는 플랫폼도 자동으로 `na` 처리하지 말고 제품 범위 근거를 확인한다.
 6. **기술·상용화:** 테스트·CI·오류 처리·성능·접근성·SEO·HTTPS·보안 헤더·약관·개인정보·삭제 경로·문의·결제·환불·운영 주체를 확인한다.
