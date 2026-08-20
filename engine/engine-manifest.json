@@ -2,20 +2,20 @@
   "schema": "crh-engine-manifest/v1",
   "engineVersion": "1.1.0",
   "lensVersion": "2.1.0",
-  "publishedAt": "2026-08-20T05:43:39Z",
+  "publishedAt": "2026-08-20T05:58:06Z",
   "algorithm": "SHA-256",
   "files": {
     "readiness-engine.mjs": {
-      "bytes": 26870,
-      "sha256": "d9f948d70eda36f7979614cbff1e91514659134ece2dac05243ac557a43f4a7a"
+      "bytes": 26597,
+      "sha256": "e85e942016e6ae3bdd746c23a7158219425d8916fe9b8b2f6a374ea3eff275e2"
     },
     "lens-core-v2.1.json": {
       "bytes": 97832,
       "sha256": "ba293f43a4e12c4f0eb58f654cfb9fa57a586a629b1fb51233a2a5b58d46c094"
     },
     "project-evidence.example.json": {
-      "bytes": 2247,
-      "sha256": "683710d33eb70add151f0003d2dc85b653621babe56d3e8489f5f92b4e918c8c"
+      "bytes": 2210,
+      "sha256": "6d9fe1f50022f540dea2edf5ac81bd8c09c31c67be8d4e0f1d869b56ef826359"
     }
   }
 }
