@@ -1,6 +1,6 @@
 # 자동 실행 분석 엔진
 
-이 폴더는 Continuous Readiness Index의 실제 분석 엔진 v1.0.1입니다. 서버나 npm 설치가 필요 없습니다. Node.js 18 이상에서 대상 프로젝트의 증거 JSON을 넣으면 PC 웹·모바일 점수, 40개 필수 게이트, 우선 갭, 비교 서비스 백분위, 제품 방향 정합도와 Markdown 보고서를 만듭니다.
+이 폴더는 Continuous Readiness Index의 실제 분석 엔진 v1.1.0입니다. 서버나 npm 설치가 필요 없습니다. Node.js 18 이상에서 대상 프로젝트의 증거 JSON을 넣으면 PC 웹·모바일 점수, 증거 진행률·미확인·미입력·적용 제외, 40개 필수 게이트, 우선 갭, 비교 서비스 백분위, 제품 방향 정합도와 Markdown 보고서를 만듭니다.
 
 ```powershell
 node .\readiness-engine.mjs --input .\project-evidence.json --out .\readiness-analysis.json --markdown .\readiness-analysis.md

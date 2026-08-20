@@ -17,7 +17,8 @@
     "mobile": {
       "f01": { "score": 3, "tier": "auto", "observedAt": "2026-08-19", "note": "핵심 흐름 자동 검사" },
       "s03": { "score": 2, "tier": "self", "observedAt": "2026-07-01", "note": "개선 예정" },
-      "r05": "unknown"
+      "r05": { "score": "unknown", "tier": "self", "note": "실제 Android 기기 시험 미실시" },
+      "m10": { "score": "na", "tier": "self", "naReason": "예시 서비스는 인앱결제를 제공하지 않음", "note": "제품 범위 문서로 적용 제외 확인" }
     },
     "web": {
       "f01": { "score": 4, "tier": "auto", "observedAt": "2026-08-19", "note": "E2E 통과" },

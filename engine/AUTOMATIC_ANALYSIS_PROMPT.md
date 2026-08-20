@@ -13,7 +13,7 @@
 1. 현재 프로젝트의 실제 이름·제품 설명·구체 기능·PC 웹·모바일 범위를 확인한다.
 2. Readiness Hub 기본 렌즈의 15개 영역·197개 항목·40개 필수 통과 조건을 모두 순회한다.
 3. 각 항목을 `검증 점수`, `unknown`, 근거 있는 `na` 중 하나로 기록한다. 증거가 없다는 이유로 0점을 주지 않는다.
-4. `crh-project-evidence/v1` JSON을 생성하고 Readiness Hub 엔진 v1.0.1 이상을 실제 실행한다.
+4. `crh-project-evidence/v1` JSON을 생성하고 Readiness Hub 엔진 v1.1.0 이상을 실제 실행한다.
 5. 엔진 결과 JSON과 Markdown 보고서가 생성됐고 서로 핵심 수치가 일치하는지 확인한다.
 6. 결과 파일의 절대 경로 링크, 모바일·PC 점수와 등급, 통과 조건 실패 수, 상위 갭, 경쟁 비교 상태, 방향 정합도, Android 실기기 상태를 최종 응답에 제시한다.
 
@@ -31,7 +31,7 @@
 
 ## 3. 엔진 확보와 검증
 
-1. 현재 프로젝트 안에서 `readiness-engine.mjs`, `lens-core-v2.1.json`, `project-evidence.example.json`, `engine-manifest.json`이 함께 있는 공식 번들을 찾는다. 네 파일이 모두 있고 명세의 파일 지문값이 일치하며 엔진이 v1.0.1 이상이면 그 복사본을 `.readiness-analysis/engine/`에 보존해 사용한다.
+1. 현재 프로젝트 안에서 `readiness-engine.mjs`, `lens-core-v2.1.json`, `project-evidence.example.json`, `engine-manifest.json`이 함께 있는 공식 번들을 찾는다. 네 파일이 모두 있고 명세의 파일 지문값이 일치하며 엔진이 v1.1.0 이상이면 그 복사본을 `.readiness-analysis/engine/`에 보존해 사용한다.
 2. 없거나 버전이 낮으면 다음 네 파일을 `.readiness-analysis/engine/`에 내려받는다.
    - `https://hanksleekorea-boop.github.io/readiness-hub/engine/readiness-engine.mjs`
    - `https://hanksleekorea-boop.github.io/readiness-hub/engine/lens-core-v2.1.json`
@@ -79,6 +79,7 @@ UTC 기준 `YYYYMMDDTHHMMSSZ` 실행 ID를 만들고 다음 구조를 사용한�
 - 0점은 “확인하지 못함”이 아니라, 근거가 실제 부재·실패 상태를 증명할 때만 사용한다.
 - 증거가 부족하거나 서로 충돌하면 `unknown`을 사용한다.
 - `na`는 제품·플랫폼·사업모델상 실제 적용 제외라는 근거가 있고, 그 근거를 장부에 쓴 경우만 사용한다.
+- `na`는 문자열만 쓰지 말고 `{ "score": "na", "naReason": "적용 제외 근거" }` 객체로 입력한다. 엔진 경고가 있으면 결과 자체검사에서 해소 여부를 확인한다.
 - 계획서에 적힌 예정 기능은 구현 점수로 인정하지 않는다. 코드 존재만으로 사용자 여정 통과를 인정하지 않는다.
 - 자동 검사 결과는 `tier: auto`, 공식 외부 자료·관찰은 적절한 1/2/3 등급, 자기 문서만 근거면 `tier: self`로 구분한다.
 - 모든 수치 근거에는 `observedAt`을 YYYY-MM-DD로 넣는다. 확인일을 모르면 임의 날짜를 만들지 않는다.
@@ -139,7 +140,8 @@ node .\.readiness-analysis\engine\readiness-engine.mjs `
 다음을 모두 확인하고 `execution-summary.json`에 성공/실패와 근거를 기록한다.
 
 - 결과 `schema`가 `crh-analysis-result/v1`인가
-- `engineVersion`이 1.0.1 이상인가
+- `engineVersion`이 1.1.0 이상인가
+- 모바일·PC의 `unrated`, `unknown`, `na`, `progressPercent`, `gates.unrated`가 보고서와 일치하는가
 - 렌즈 항목 197개, 필수 통과 조건 40개인가
 - 프로젝트명이 실제 대상과 일치하는가
 - 모바일·PC 점수, 등급, 실패 조건 수가 JSON과 Markdown에서 일치하는가

@@ -34,7 +34,7 @@ jobs:
       - name: 성능·접근성 측정 (Lighthouse)
         id: lh
         run: |
-          TARGET="${{ github.event.inputs.target || vars.CRH_TARGET }}"
+          TARGET="${{ github.event.inputs.target || vars.CRH_TARGET || 'https://hanksleekorea-boop.github.io/readiness-hub/' }}"
           echo "대상: $TARGET"
           lighthouse "$TARGET" \
             --quiet --chrome-flags="--headless=new --no-sandbox" \
@@ -43,7 +43,7 @@ jobs:
 
       - name: 보안 헤더·정책 페이지 확인
         run: |
-          TARGET="${{ github.event.inputs.target || vars.CRH_TARGET }}"
+          TARGET="${{ github.event.inputs.target || vars.CRH_TARGET || 'https://hanksleekorea-boop.github.io/readiness-hub/' }}"
           node -e '
             const t = process.argv[1];
             const out = { checkedAt: new Date().toISOString(), target: t, checks: {} };
@@ -117,14 +117,44 @@ jobs:
             prev.ev     = prev.ev     || { mobile:{}, web:{} };
             prev.notes  = prev.notes  || { mobile:{}, web:{} };
             prev.autoLog = prev.autoLog || [];
+            prev.evidenceV1 = prev.evidenceV1 || { mobile:{}, web:{} };
+            prev.automaticChecks = prev.automaticChecks || {};
             const today = prev.date;
+            const repository = process.env.GITHUB_REPOSITORY || "";
+            const runId = process.env.GITHUB_RUN_ID || "";
+            const sourceUrl = repository && runId ? `https://github.com/${repository}/actions/runs/${runId}` : null;
+            const commit = (process.env.GITHUB_SHA || "").slice(0, 12) || null;
             Object.keys(scores).forEach(id => {
               prev.scores.web[id] = scores[id];
               prev.when.web[id]   = today;
               prev.ev.web[id]     = 1;                       /* 자동 측정 = 1차 근거 */
               prev.notes.web[id]  = "[자동 측정] " + ev[id];
+              prev.evidenceV1.web[id] = {
+                score: scores[id],
+                tier: "auto",
+                observedAt: today,
+                note: ev[id],
+                sourceUrl,
+                target: hd.target
+              };
             });
-            prev.autoLog.push({ at: today, n: Object.keys(scores).length, target: hd.target });
+            const securityHeaders = {
+              hsts: K.s11_hsts || { ok:false, ev:"측정 없음" },
+              csp: K.s11_csp || { ok:false, ev:"측정 없음" },
+              frameProtection: K.s11_xfo || { ok:false, ev:"측정 없음" }
+            };
+            prev.automaticChecks.securityHeaders = { observedAt: hd.checkedAt, target: hd.target, sourceUrl, values: securityHeaders };
+            prev.automaticGaps = Object.entries(securityHeaders)
+              .filter(([, check]) => !check.ok)
+              .map(([header, check]) => ({
+                id: `security-header-${header}`,
+                itemId: "s11",
+                status: "open",
+                severity: header === "hsts" ? "medium" : "high",
+                reason: check.ev,
+                resolution: "호스팅 계층에서 헤더를 적용하거나 CDN·프록시 대안과 책임자를 기록한 뒤 재측정"
+              }));
+            prev.autoLog.push({ at: today, checkedAt: hd.checkedAt, n: Object.keys(scores).length, target: hd.target, sourceUrl, commit, securityGaps: prev.automaticGaps.map(gap => gap.id) });
             if (prev.autoLog.length > 60) prev.autoLog = prev.autoLog.slice(-60);
             fs.mkdirSync("profiles", { recursive: true });
             fs.writeFileSync(path, JSON.stringify(prev, null, 2));
@@ -136,7 +166,7 @@ jobs:
             if (bad.length) { console.error("게이트 미충족: " + bad.join(", ")); process.exit(1); }
           '
         env:
-          PROFILE: ${{ github.event.inputs.profile || 'default' }}
+          PROFILE: ${{ github.event.inputs.profile || vars.CRH_PROFILE || 'readiness-hub' }}
 
       - name: 결과 저장 기록 남기기
         if: always()
@@ -145,7 +175,7 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
           git add profiles/ || true
           git diff --staged --quiet || git commit -m "자동 측정: $(date +%Y-%m-%d)"
-          git push || true
+          git push
 
       - name: 측정 원본 보관
         if: always()

@@ -10,7 +10,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const ENGINE_VERSION = '1.0.1';
+const ENGINE_VERSION = '1.1.0';
 const PLATFORM = { mobile: new Set(['C', 'M']), web: new Set(['C', 'W']) };
 const FRESH_DAYS = { 1: 180, 2: 120, 3: 60, auto: 180, self: 365 };
 const GRADE = [[90, 'L5', '출시·확장 가능'], [75, 'L4', '정식 출시 준비'], [60, 'L3', '오픈 베타 준비'], [40, 'L2', '기능 구축 중'], [0, 'L1', '기획·초기 구축']];
@@ -43,8 +43,8 @@ function fail(message) { throw new Error(`CRH engine: ${message}`); }
 function itemWeight(item) { return item.g ? 2 : 1; }
 function inPlatform(item, platform) { return PLATFORM[platform].has(item.p); }
 function statusValue(raw) {
-  if (raw === 'na' || raw === 'unknown' || raw === 'unk' || raw === null || raw === undefined) return raw === 'unknown' || raw === 'unk' ? 'unk' : raw;
-  const value = typeof raw === 'object' ? raw.score : raw;
+  const value = typeof raw === 'object' && raw ? (raw.score ?? raw.value) : raw;
+  if (value === 'na' || value === 'unknown' || value === 'unk' || value === null || value === undefined) return value === 'unknown' || value === 'unk' ? 'unk' : value;
   if (!Number.isInteger(value) || value < 0 || value > 4) fail(`점수는 0~4 정수여야 합니다: ${value}`);
   return value;
 }
@@ -77,7 +77,9 @@ function normalizeEvidence(input, items, warnings) {
       if (!entry) fail(`${platform}.${id}: 렌즈에 없는 항목 ID입니다.`);
       if (!inPlatform(entry, platform)) fail(`${platform}.${id}: 이 플랫폼에 적용되지 않는 항목입니다.`);
       const value = statusValue(raw);
-      out[platform][id] = { value, raw, fresh: freshness(raw, input.assessedAt, warnings, id, platform) };
+      const naReason = typeof raw === 'object' && raw ? plain(raw.naReason || raw.reason || raw.note) : '';
+      if (value === 'na' && !naReason) warnings.push(`${platform}.${id}: 적용 제외(na) 사유가 없습니다.`);
+      out[platform][id] = { value, raw, naReason: value === 'na' ? naReason || null : null, fresh: freshness(raw, input.assessedAt, warnings, id, platform) };
     }
   }
   return out;
@@ -109,14 +111,14 @@ function scopedItems(lens, config, scope) {
 function domainWeights(lens, config) { return Object.fromEntries(lens.domains.map(d => [d.id, config.weights[d.id] ?? Number(d.weight) ?? 0])); }
 function scorePlatform(lens, evidence, platform, selected, weights) {
   const domains = [];
-  let allTotal = 0, allDone = 0, allUnknown = 0, stale = 0, selfN = 0, extN = 0, selfD = 0, extD = 0;
+  let allTotal = 0, allDone = 0, allUnknown = 0, allNa = 0, stale = 0, selfN = 0, extN = 0, selfD = 0, extD = 0;
   for (const domain of lens.domains) {
     let num = 0, den = 0, total = 0, done = 0, unknown = 0, na = 0, domainStale = 0;
     for (const item of domain.items) {
       if (!inPlatform(item, platform) || !selected.has(item.id)) continue;
       const rated = evidence[platform][item.id];
       const value = rated?.value;
-      if (value === 'na') { na++; continue; }
+      if (value === 'na') { na++; allNa++; continue; }
       total++; allTotal++;
       if (value === 'unk') { unknown++; allUnknown++; continue; }
       if (typeof value !== 'number') continue;
@@ -130,13 +132,14 @@ function scorePlatform(lens, evidence, platform, selected, weights) {
   const active = domains.filter(domain => domain.score !== null);
   const denom = active.reduce((sum, domain) => sum + domain.weight, 0);
   const score = denom ? active.reduce((sum, domain) => sum + domain.weight * domain.score, 0) / denom : null;
-  return { score: round(score), domains, total: allTotal, done: allDone, unknown: allUnknown, stale, progress: allTotal ? round(allDone / allTotal) : 0, selfShare: (selfN + extN) ? round(selfN / (selfN + extN)) : null, externalScore: extD ? round(extN / extD * 100) : null, selfScore: selfD ? round(selfN / selfD * 100) : null };
+  return { score: round(score), domains, total: allTotal, done: allDone, unknown: allUnknown, unrated: Math.max(0, allTotal - allDone - allUnknown), na: allNa, stale, progress: allTotal ? round(allDone / allTotal) : 0, progressPercent: allTotal ? round(allDone / allTotal * 100) : 0, selfShare: (selfN + extN) ? round(selfN / (selfN + extN)) : null, externalScore: extD ? round(extN / extD * 100) : null, selfScore: selfD ? round(selfN / selfD * 100) : null };
 }
 function gates(lens, evidence, platform) {
   const list = lens.domains.flatMap(domain => domain.items.filter(item => item.g && inPlatform(item, platform)).map(item => {
-    const value = evidence[platform][item.id]?.value;
+    const evidenceEntry = evidence[platform][item.id];
+    const value = evidenceEntry?.value;
     const status = value === 'na' ? 'na' : value === 'unk' ? 'unknown' : typeof value !== 'number' ? 'unrated' : value >= 3 ? 'pass' : 'fail';
-    return { id: item.id, title: item.t, domain: domain.name, score: typeof value === 'number' ? value : null, status };
+    return { id: item.id, title: item.t, domain: domain.name, score: typeof value === 'number' ? value : null, status, naReason: status === 'na' ? evidenceEntry?.naReason || null : null };
   }));
   return { items: list, pass: list.filter(x => x.status === 'pass').length, fail: list.filter(x => x.status === 'fail').length, unrated: list.filter(x => x.status === 'unrated' || x.status === 'unknown').length, na: list.filter(x => x.status === 'na').length };
 }
@@ -210,7 +213,8 @@ function gapAnalysis(lens, evidence, selected, weights, platform) {
 }
 function reportMarkdown(result) {
   const project = result.project || {}, featureRows = (project.features || []).slice(0, 30).map(feature => `| ${plain(feature.name || feature.feature || '이름 없음')} | ${plain(feature.platform || '공통')} | ${plain(feature.status || '미확인')} | ${plain(feature.evidence || feature.note || '')} |`).join('\n') || '| 입력된 기능이 없습니다. | - | - | - |';
-  const gaps = result.gaps.slice(0, 20).map((gap, i) => `${i + 1}. **${gap.title}** (${gap.platform}, ${gap.domain}) — 현재 ${gap.currentScore ?? '미평가'}/4, 영향도 ${gap.impact}${gap.gate ? ', 필수 게이트' : ''}`).join('\n') || '입력된 범위에 갭이 없습니다.';
+  const evidenceSummary = `### 증거 입력 완전성\n\n| 플랫폼 | 증거 진행률 | 평가 | 미확인 | 미입력 | 적용 제외 | 실패 게이트 | 미입력 게이트 |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| 모바일 | ${result.mobile.progressPercent}% | ${result.mobile.done} | ${result.mobile.unknown} | ${result.mobile.unrated} | ${result.mobile.na} | ${result.mobile.gates.fail} | ${result.mobile.gates.unrated} |\n| PC 웹 | ${result.web.progressPercent}% | ${result.web.done} | ${result.web.unknown} | ${result.web.unrated} | ${result.web.na} | ${result.web.gates.fail} | ${result.web.gates.unrated} |\n\n→ 이 표의 뜻: 미확인은 조사했지만 결론이 없는 항목, 미입력은 아직 증거 자체가 없는 항목입니다. 적용 제외는 사유가 있는 경우만 인정합니다.`;
+  const gaps = `${evidenceSummary}\n\n### 개선 갭\n\n${result.gaps.slice(0, 20).map((gap, i) => `${i + 1}. **${gap.title}** (${gap.platform}, ${gap.domain}) — 현재 ${gap.currentScore ?? '미평가'}/4, 영향도 ${gap.impact}${gap.gate ? ', 필수 게이트' : ''}`).join('\n') || '입력된 범위에 갭이 없습니다.'}`;
   const bench = result.benchmark.status === 'calculated' ? result.benchmark.dimensions.map(row => `| ${row.name} | ${row.ours}/5 | ${row.percentile}% | ${row.comparisonCount} | ${row.source} | ${row.readinessCoverage === null ? '—' : `${round(row.readinessCoverage * 100)}%`} |`).join('\n') : `계산 불가: ${result.benchmark.reason}`;
   return `# ${plain(project.name || '대상 프로젝트')} — Continuous Readiness Index 분석 보고서\n\n생성 시각: ${result.generatedAt}\n\n## 판정 요약\n\n| 구분 | 점수 | 등급 | 진행률 | 필수 게이트 실패 |\n|---|---:|---|---:|---:|\n| 모바일 | ${result.mobile.score ?? '—'} | ${result.mobile.grade.code} | ${round(result.mobile.progress * 100)}% | ${result.mobile.gates.fail} |\n| PC 웹 | ${result.web.score ?? '—'} | ${result.web.grade.code} | ${round(result.web.progress * 100)}% | ${result.web.gates.fail} |\n| 통합 준비도 | ${result.composite.score ?? '—'} | ${result.composite.grade?.code ?? '—'} | - | ${result.composite.blockers} |\n\n→ 이 표의 뜻: 점수와 등급은 입력된 증거만 사용하며, 진행률 70% 미만은 등급 끝의 ?로 표시합니다.\n\n## 대상 제품과 확인 기능\n\n${plain(project.description || '설명 미입력')}\n\n| 기능 | 플랫폼 | 상태 | 근거 |\n|---|---|---|---|\n${featureRows}\n\n→ 이 표의 뜻: 대상 프로젝트에서 실제로 제공한다고 입력된 기능과 그 근거를 기록합니다.\n\n## 가장 큰 갭 20개\n\n${gaps}\n\n## 시장 상대 위치\n\n${result.benchmark.status === 'calculated' ? `비교 백분위: **${result.benchmark.score}%** (비교 서비스 ${result.benchmark.comparators}개, 신뢰도 ${result.benchmark.confidence})${result.benchmark.caution ? `\n\n주의: ${result.benchmark.caution}` : ''}\n\n| 차원 | 우리 점수 | 백분위 | 비교 수 | 산출 근거 | 준비도 증거 진행률 |\n|---|---:|---:|---:|---|---:|\n${bench}\n\n→ 이 표의 뜻: 높을수록 입력된 비교 서비스 집단 안에서 상대 위치가 높다는 의미이며, 시장 전체 순위는 아닙니다. 준비도 증거 진행률이 낮으면 잠정 결과입니다.` : bench}\n\n## 방향 정합도\n\n${result.direction.status === 'calculated' ? `방향 핵심 항목 점수: **${result.direction.score}점** (${result.direction.rated}/${result.direction.total}개 증거 입력)` : `계산 불가: ${result.direction.reason}`}\n\n## 해석 주의\n\n- 이 결과는 ${result.lens.itemCount}개 기준과 입력 증거를 바탕으로 한 제품 준비도 진단이며, 법률 자문·준수 인증·시장 성과 보증이 아닙니다.\n- 자동/외부 검증과 자가 신고는 입력의 근거 등급과 확인일로 구분합니다. 실제 Android 기기 시험은 별도 증거가 없으면 미실시입니다.\n- 경고 ${result.warnings.length}건: ${result.warnings.length ? result.warnings.join(' / ') : '없음'}\n`;
 }
@@ -228,6 +232,10 @@ export function analyze(input, options = {}) {
   const weights = domainWeights(lens, config);
   const mobile = scorePlatform(lens, evidence, 'mobile', selected, weights), web = scorePlatform(lens, evidence, 'web', selected, weights);
   mobile.gates = gates(lens, evidence, 'mobile'); web.gates = gates(lens, evidence, 'web');
+  for (const [platform, score] of [['mobile', mobile], ['web', web]]) {
+    if (score.progress < 0.7) warnings.push(`${platform}: 증거 진행률 ${score.progressPercent}%로 70% 미만입니다.`);
+    if (score.gates.unrated) warnings.push(`${platform}: 필수 게이트 ${score.gates.unrated}건이 미확인 또는 미입력입니다.`);
+  }
   mobile.grade = grade(mobile.score, mobile.progress, mobile.gates); web.grade = grade(web.score, web.progress, web.gates);
   const combinedDomains = Object.fromEntries(lens.domains.map(domain => [domain.id, combine(mobile.domains.find(row => row.id === domain.id).score, web.domains.find(row => row.id === domain.id).score, config.mix)]));
   const scores = { combinedDomains };
@@ -242,7 +250,7 @@ export function analyze(input, options = {}) {
   const compositeScore = parts.length ? round(parts.reduce((sum, [weight, value]) => sum + weight * value, 0) / parts.reduce((sum, [weight]) => sum + weight, 0)) : null;
   const blockers = mobile.gates.fail + web.gates.fail;
   const base = compositeScore === null ? null : GRADE.find(([minimum]) => compositeScore >= minimum);
-  const composite = { score: compositeScore, axesUsed: parts.length, blockers, grade: base ? { code: blockers && (base[1] === 'L4' || base[1] === 'L5') ? 'L3*' : base[1], name: blockers && (base[1] === 'L4' || base[1] === 'L5') ? '게이트 미충족' : base[2] } : null };
+  const composite = { score: compositeScore, axesUsed: parts.length, blockers, unratedGates: mobile.gates.unrated + web.gates.unrated, grade: base ? { code: blockers && (base[1] === 'L4' || base[1] === 'L5') ? 'L3*' : base[1], name: blockers && (base[1] === 'L4' || base[1] === 'L5') ? '게이트 미충족' : base[2] } : null };
   const result = { schema: 'crh-analysis-result/v1', engineVersion: ENGINE_VERSION, generatedAt: new Date().toISOString(), assessedAt, project: input.project || {}, lens: { name: lens.name, version: lens.version, itemCount: items.size, gateCount: [...items.values()].filter(entry => entry.g).length }, scope: { id: scope, selectedItems: selected.size }, direction: { ...direction, selected: config.selected, target: config.target, platformMix: { mobile: config.mix[0], web: config.mix[1] } }, mobile, web, axes: { general: a1, benchmark: bench.score, direction: direction.score, weights: axisWeights }, benchmark: bench, composite, gaps: [...gapAnalysis(lens, evidence, selected, weights, 'mobile'), ...gapAnalysis(lens, evidence, selected, weights, 'web')].sort((a, b) => b.impact - a.impact), warnings };
   return { ...result, reportMarkdown: reportMarkdown(result) };
 }
