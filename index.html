@@ -202,6 +202,7 @@ td.nowrap{white-space:nowrap}
 .signt{margin-top:10px}
 .signt input{font-size:12px;padding:3px 6px}
 .whatif{color:var(--good-text);font-weight:650;white-space:nowrap}
+.gap-action{display:grid;grid-template-columns:minmax(88px,1fr) minmax(88px,1fr);gap:4px;margin-top:7px}.gap-action input,.gap-action select{width:100%;min-width:0;font:11px inherit;padding:4px 5px;border:1px solid var(--border);border-radius:5px;background:var(--panel);color:var(--ink)}.gap-action input[type="date"]{grid-column:1/-1}
 
 /* ---------- v5: 단계별 범위 · 잠정 결과 ---------- */
 .scopebar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--panel);border:1px solid var(--border);
@@ -232,7 +233,7 @@ td.nowrap{white-space:nowrap}
   <div class="top-in">
     <div class="brand">
       <h1>상업화 준비도 허브 <span style="color:var(--s-mobile)">β</span> <span class="hint" style="font-weight:400">Continuous Readiness Index · PC Web Beta</span></h1>
-      <div class="sub">3축 진단 × 업계 기준선 20개 실측 × <b>증거 신선도·목표 대비 점수(v4)</b> · 렌즈 v1.1 (107개 기준) · 자동 저장 안 됨 — JSON 저장 필수</div>
+      <div class="sub">3축 진단 × 업계 기준선 20개 실측 × <b>증거 신선도·목표 대비 점수(v4)</b> · 렌즈 v2.1 (15영역 197개 기준 · 필수 게이트 40개) · 자동 저장 안 됨 — JSON 저장 필수</div>
     </div>
     <div class="meta">
       <input id="svcName" placeholder="서비스명" aria-label="서비스명">
@@ -2300,7 +2301,7 @@ const GRADES = [
 let S = null;
 function blank() {
   return { svc: '', assessor: '', date: new Date().toISOString().slice(0, 10),
-           weights: { ...DEFAULT_W }, scores: { mobile: {}, web: {} }, notes: { mobile: {}, web: {} },
+           weights: { ...DEFAULT_W }, scores: { mobile: {}, web: {} }, notes: { mobile: {}, web: {} }, actions: { mobile: {}, web: {} },
            ev: { mobile: {}, web: {} }, when: { mobile: {}, web: {} },
            gateSign: { mobile: {}, web: {} }, quick: {},
            scope: 'min', hideNa: true,
@@ -2711,6 +2712,16 @@ function gapRows() {
   return out.sort((a, b) => b.impact - a.impact || (+S.weights[b.dom.id]) - (+S.weights[a.dom.id]));
 }
 
+function gapActionHtml(pf, id) {
+  const a = S.actions[pf][id] || {};
+  const states = [['todo', '미시작'], ['doing', '진행'], ['review', '검토'], ['blocked', '차단'], ['done', '재검증 완료']];
+  return `<div class="gap-action" data-gap-pf="${pf}" data-gap-id="${id}">
+    <select data-gap-action="status" aria-label="개선 상태">${states.map(([v, t]) => `<option value="${v}" ${a.status === v ? 'selected' : ''}>${t}</option>`).join('')}</select>
+    <input data-gap-action="owner" value="${esc(a.owner || '')}" placeholder="담당자" aria-label="개선 담당자">
+    <input type="date" data-gap-action="due" value="${esc(a.due || '')}" aria-label="개선 기한">
+  </div>`;
+}
+
 function renderGap() {
   const fPf = document.getElementById('gapPf').value;
   const fDom = document.getElementById('gapDom').value;
@@ -2733,7 +2744,7 @@ function renderGap() {
     return o - baseO[pf];
   }
   document.getElementById('gapTable').innerHTML = `<table>
-    <thead><tr><th style="width:38px">#</th><th>플랫폼</th><th>영역</th><th>항목</th><th>현재</th><th class="num">임팩트</th><th class="num">완료 시</th><th>메모</th></tr></thead>
+    <thead><tr><th style="width:38px">#</th><th>플랫폼</th><th>영역</th><th>항목</th><th>현재</th><th class="num">임팩트</th><th class="num">완료 시</th><th>메모·실행</th></tr></thead>
     <tbody>${rows.slice(0, 200).map((r, i) => {
       const lv = r.rated ? `${r.v} ${LEVELS[r.v].k}` : (r.v === 'unk' ? '확인 실패' : '미평가');
       const col = !r.rated ? 'var(--muted)' : r.v <= 1 ? 'var(--crit)' : r.v === 2 ? 'var(--warn)' : 'var(--good)';
@@ -2746,7 +2757,7 @@ function renderGap() {
         <td class="num">${r.impact.toFixed(1)}
           <div class="mini-bar" style="width:70px;margin-left:auto"><i style="width:${(r.impact / max * 100).toFixed(0)}%;background:${PF[r.pf].color}"></i></div></td>
         <td class="num whatif">${(() => { const d = whatIf(r.pf, r.it.id); return d === null ? '—' : '+' + d.toFixed(1) + '점'; })()}</td>
-        <td class="hint">${r.note ? r.note.replace(/</g, '&lt;') : '—'}</td></tr>`;
+        <td class="hint">${r.note ? r.note.replace(/</g, '&lt;') : '—'}${gapActionHtml(r.pf, r.it.id)}</td></tr>`;
     }).join('')}</tbody></table>`;
 }
 
@@ -2783,7 +2794,7 @@ function renderMethod() {
     const extN = DOMAINS.reduce((a, d) => a + d.items.filter(i => i.obs === 'ext').length, 0);
     const gateExt = DOMAINS.reduce((a, d) => a + d.items.filter(i => i.g && i.obs === 'ext').length, 0);
     eb.innerHTML = `<table><thead><tr><th style="width:150px">변경</th><th>이유와 내용</th></tr></thead><tbody>
-    <tr><td><b>관찰 가능성 태그</b></td><td>전 항목을 <b>외부 검증 가능 ${extN}개</b> / 자가진단 ${107 - extN}개로 구분했습니다. 필수 게이트 20개 중 외부에서 확인 가능한 건 ${gateExt}개뿐입니다 — 즉 출시 가부를 가르는 항목의 대부분이 자기 신고에 의존합니다. 대시보드의 "자가 신고 비중"이 이 사실을 상시 노출합니다.</td></tr>
+    <tr><td><b>관찰 가능성 태그</b></td><td>전 항목을 <b>외부 검증 가능 ${extN}개</b> / 자가진단 ${DOMAINS.reduce((a,d) => a + d.items.length, 0) - extN}개로 구분했습니다. 필수 게이트 ${DOMAINS.reduce((a,d) => a + d.items.filter(i => i.g).length, 0)}개 중 외부에서 확인 가능한 건 ${gateExt}개뿐입니다 — 즉 출시 가부를 가르는 항목의 대부분이 자기 신고에 의존합니다. 대시보드의 "자가 신고 비중"이 이 사실을 상시 노출합니다.</td></tr>
     <tr><td><b>확인 실패 상태 추가</b></td><td>"아직 안 봤음(미평가)"과 "봤는데 근거가 없음(확인 실패)"은 전혀 다른 정보입니다. 실제 채점에서 한 서비스는 20개 항목 중 12개가 확인 불가였는데, 이를 0점으로 처리하면 최하위, 분모에서 빼면 평균 — 어느 쪽도 진실이 아니었습니다. 이제 별도 상태로 기록되고 게이트 판정에서 "통과"로 세지 않습니다.</td></tr>
     <tr><td><b>근거 등급</b></td><td>항목별로 1차(공식 문서)·2차(언론)·3차(블로그·집계)·없음을 기록합니다. 3차 근거만으로 3점 이상을 주면 경고가 뜹니다. 실제 리서치에서 제3자 집계 사이트의 수치가 서로 어긋나는 사례가 반복됐습니다.</td></tr>
     <tr><td><b>업계 기준선 내장</b></td><td>23개 항목에 세계 상위 서비스 20개의 실측 평균을 넣었습니다. "우리 2점인데 큰일인가"에 답할 수 있습니다 — 접근성은 업계 평균이 2.19라 2점이면 평균, 상태 페이지는 1.85라 3점만 받아도 상위권입니다.</td></tr>
@@ -2811,6 +2822,10 @@ function renderMethod() {
 function renderAll() {
   renderSummary(); renderQuick(); renderDir(); renderAssess(); renderBench(); renderRadar(); renderBars();
   renderGates(); renderTable(); renderGap(); renderMethod(); renderAxisW();
+}
+function renderInitialView() {
+  renderSummary();
+  renderAssess();
 }
 function renderLight() { renderSummary(); renderRadar(); renderBars(); renderGates(); renderTable(); renderGap(); }
 
@@ -3140,6 +3155,7 @@ function loadFromString(j) {
   S.weights = { ...DEFAULT_W, ...(o.weights || {}) };
   S.scores = { mobile: {}, web: {}, ...(o.scores || {}) };
   S.notes = { mobile: {}, web: {}, ...(o.notes || {}) };
+  S.actions = { mobile: {}, web: {}, ...(o.actions || {}) };
   S.ev = { mobile: {}, web: {}, ...(o.ev || {}) };
   S.when = { mobile: {}, web: {}, ...(o.when || {}) };
   S.gateSign = { mobile: {}, web: {}, ...(o.gateSign || {}) };
@@ -3417,6 +3433,15 @@ document.getElementById('btnCollapse').onclick = () => { openDoms = new Set(); r
 
 ['gapPf', 'gapDom', 'gapGate', 'gapUn'].forEach(id => document.getElementById(id).addEventListener('change', renderGap));
 document.getElementById('gapDom').innerHTML = '<option value="all">전체 영역</option>' + DOMAINS.map(d => `<option value="${d.id}">${d.name}</option>`).join('');
+function updateGapAction(e) {
+  const field = e.target.dataset.gapAction; if (!field) return;
+  const row = e.target.closest('[data-gap-pf][data-gap-id]'); if (!row) return;
+  const pf = row.dataset.gapPf, id = row.dataset.gapId;
+  const a = S.actions[pf][id] || (S.actions[pf][id] = { status: 'todo', owner: '', due: '' });
+  a[field] = e.target.value;
+}
+document.getElementById('gapTable').addEventListener('input', updateGapAction);
+document.getElementById('gapTable').addEventListener('change', updateGapAction);
 
 document.getElementById('wTable').addEventListener('input', e => {
   const i = e.target.closest('[data-w]'); if (!i) return;
@@ -3460,14 +3485,14 @@ document.getElementById('fileIn').onchange = e => {
 };
 document.getElementById('btnCsv').onclick = () => {
   const q = s => '"' + String(s ?? '').replace(/"/g, '""') + '"';
-  const lines = [['플랫폼', '영역', '가중치', '항목', '게이트', '관찰가능성', '업계기준선', '점수', '수준', '근거등급', '확인일', '메모'].map(q).join(',')];
+  const lines = [['플랫폼', '영역', '가중치', '항목', '게이트', '관찰가능성', '업계기준선', '점수', '수준', '근거등급', '확인일', '메모', '개선상태', '담당자', '기한'].map(q).join(',')];
   ['mobile', 'web'].forEach(pf => DOMAINS.forEach(d => d.items.forEach(it => {
     if (!inScope(it, pf)) return;
     const v = S.scores[pf][it.id];
     const lab = v === 'na' ? 'N/A' : v === 'unk' ? '확인 실패' : (typeof v !== 'number' ? '미평가' : LEVELS[v].k);
     lines.push([PF[pf].name, d.name, S.weights[d.id], it.t, it.g ? 'Y' : '',
       it.obs === 'ext' ? '외부 검증 가능' : '자가진단', it.bench ?? '',
-      (typeof v === 'number' ? v : ''), lab, EVT[S.ev[pf][it.id]] || '', S.when[pf][it.id] || '', S.notes[pf][it.id] || ''].map(q).join(','));
+      (typeof v === 'number' ? v : ''), lab, EVT[S.ev[pf][it.id]] || '', S.when[pf][it.id] || '', S.notes[pf][it.id] || '', (S.actions[pf][it.id] || {}).status || '', (S.actions[pf][it.id] || {}).owner || '', (S.actions[pf][it.id] || {}).due || ''].map(q).join(','));
   })));
   dl(new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' }), (S.svc || 'readiness') + '-' + S.date + '.csv');
 };
@@ -3487,16 +3512,20 @@ function loadMeta() {
 }
 
 window.addEventListener('beforeunload', e => {
-  const dirty = ['mobile', 'web'].some(pf => Object.keys(S.scores[pf]).length || Object.keys(S.notes[pf]).length);
+  const dirty = ['mobile', 'web'].some(pf => Object.keys(S.scores[pf]).length || Object.keys(S.notes[pf]).length || Object.keys(S.actions[pf]).length);
   if (dirty) { e.preventDefault(); e.returnValue = ''; }
 });
 
 /* =========================== boot =========================== */
 S = blank();
 bootLoad().then(msg => {
-  loadMeta(); renderAll(); bindV2(); bindBeta();
+  loadMeta(); bindV2(); bindBeta();
   const empty = !Object.keys(S.scores.mobile).length && !Object.keys(S.scores.web).length && !Object.keys(S.dir).length;
-  if (empty) { const qt = document.querySelector('.tab[data-t="quick"]'); if (qt) qt.click(); }
+  if (empty) {
+    const qt = document.querySelector('.tab[data-t="quick"]'); if (qt) qt.click();
+  } else {
+    renderInitialView();
+  }
   if (msg) console.info(msg);
 });
 </script>
