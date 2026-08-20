@@ -2,7 +2,7 @@
   "schema": "crh-progress",
   "updated": "2026-08-20",
   "product": "상업화 준비도 허브 β (Continuous Readiness Index)",
-  "version": "beta 0.6.4 + Spec v1.1",
+  "version": "beta 0.6.4 + Spec v1.2",
   "lens": "core v2.1.0 + EU/EEA v1.0.0 + US v1.0.0 · 각 15영역 197개 · 관할별 26개 적용조건·공식출처 연결",
   "repo": {
     "public": true,
@@ -49,7 +49,7 @@
     {
       "n": "전면 기획서",
       "pct": 100,
-      "note": "34개 장. 33장 99% 계획과 34장 자동 증거·갭 실행·도메인 분석 개선안 반영"
+      "note": "35개 장. 33장 99% 계획, 34장 실행 개선안, 35장 엔진 자체 분석 채택안 반영"
     },
     {
       "n": "렌즈 v2.1 (루브릭 완비)",
@@ -105,7 +105,7 @@
     "extObservable": 109,
     "benchItems": 23,
     "personas": 1000,
-    "specChapters": 34,
+    "specChapters": 35,
     "entities": 18,
     "connectors": 14,
     "shortcuts": 34,
