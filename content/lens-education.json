@@ -1,0 +1,14 @@
+{
+  "schema": "crh-domain-lens/v1",
+  "id": "education",
+  "name": "교육·학습 서비스",
+  "version": "1.0.0",
+  "baseLens": "lens-core-v2.1",
+  "baseItemCount": 197,
+  "changesBaseDenominator": false,
+  "priorityItems": ["f01","f07","f17","l01","l06","l07","q04","q07","a101","a102","g103","g107"],
+  "overrides": [
+    {"itemId":"l06","reason":"아동·학생 데이터와 보호자 동의를 실제 대상 연령에 맞춰 확인","approvedAt":"2026-08-31"},
+    {"itemId":"q04","reason":"학습 완료율과 중도 이탈 사유를 실제 학습 과업으로 확인","approvedAt":"2026-08-31"}
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "schema": "crh-sample-cases/v1",
+  "version": "1.0.0",
+  "count": 12,
+  "cases": [
+    {
+      "id": "case-01",
+      "name": "혼자 만드는 일정 관리 앱",
+      "archetype": "consumer-mobile",
+      "fictional": true,
+      "focusItems": [
+        "f01",
+        "f08",
+        "f10",
+        "u03"
+      ],
+      "startState": "일부 기능은 있으나 증거 날짜와 운영 책임이 정리되지 않은 예시",
+      "recommendedFlow": [
+        "퀵체크",
+        "필수 조건 확인",
+        "상위 갭 3개 실행",
+        "증거 기록",
+        "재검증",
+        "출시 여권 확인"
+      ]
+    },
+    {
+      "id": "case-02",
+      "name": "소규모 온라인 강의",
+      "archetype": "education",
+      "fictional": true,
+      "focusItems": [
+        "f01",
+        "l01",
+        "q04",
+        "c03"
+      ],
+      "startState": "일부 기능은 있으나 증거 날짜와 운영 책임이 정리되지 않은 예시",
+      "recommendedFlow": [
+        "퀵체크",
+        "필수 조건 확인",
+        "상위 갭 3개 실행",
+        "증거 기록",
+        "재검증",
+        "출시 여권 확인"
+      ]
+    },
+    {
+      "id": "case-03",
+      "name": "지역 상품 쇼핑몰",
+      "archetype": "commerce",
+      "fictional": true,
+      "focusItems": [
+        "m02",
+        "l01",
+        "f03",
+        "o02"
+      ],
+      "startState": "일부 기능은 있으나 증거 날짜와 운영 책임이 정리되지 않은 예시",
+      "recommendedFlow": [
+        "퀵체크",
+        "필수 조건 확인",
+        "상위 갭 3개 실행",
+        "증거 기록",
+        "재검증",
+        "출시 여권 확인"
+      ]
+    },
+    {
+      "id": "case-04",
+      "name": "기업용 문서 SaaS",
+      "archetype": "b2b-saas",
+      "fictional": true,
+      "focusItems": [
+        "s03",
+        "r02",
+        "o03",
+        "b02"
+      ],
+      "startState": "일부 기능은 있으나 증거 날짜와 운영 책임이 정리되지 않은 예시",
+      "recommendedFlow": [
+        "퀵체크",
+        "필수 조건 확인",
+        "상위 갭 3개 실행",
+        "증거 기록",
+        "재검증",
+        "출시 여권 확인"
+      ]
+    },
+    {
+      "id": "case-05",
+      "name": "커뮤니티 서비스",
+      "archetype": "ugc-community",
+      "fictional": true,
+      "focusItems": [
+        "c01",
+        "c02",
+        "l08",
+        "o12"
+      ],
+      "startState": "일부 기능은 있으나 증거 날짜와 운영 책임이 정리되지 않은 예시",
+      "recommendedFlow": [
+        "퀵체크",
+        "필수 조건 확인",
+        "상위 갭 3개 실행",
+        "증거 기록",
+        "재검증",
+        "출시 여권 확인"
+      ]
+    },
+    {
+      "id": "case-06",
+      "name": "예약 서비스",
+      "archetype": "marketplace",
+      "fictional": true,
+      "focusItems": [
+        "f01",
+        "r06",
+        "m03",
+        "o02"
+      ],
+      "startState": "일부 기능은 있으나 증거 날짜와 운영 책임이 정리되지 않은 예시",
+      "recommendedFlow": [
+        "퀵체크",
+        "필수 조건 확인",
+        "상위 갭 3개 실행",
+        "증거 기록",
+        "재검증",
+        "출시 여권 확인"
+      ]
+    },
+    {
+      "id": "case-07",
+      "name": "콘텐츠 뉴스레터",
+      "archetype": "creator",
+      "fictional": true,
+      "focusItems": [
+        "c03",
+        "b06",
+        "l12",
+        "q03"
+      ],
+      "startState": "일부 기능은 있으나 증거 날짜와 운영 책임이 정리되지 않은 예시",
+      "recommendedFlow": [
+        "퀵체크",
+        "필수 조건 확인",
+        "상위 갭 3개 실행",
+        "증거 기록",
+        "재검증",
+        "출시 여권 확인"
+      ]
+    },
+    {
+      "id": "case-08",
+      "name": "개인 재무 도구",
+      "archetype": "fintech-lite",
+      "fictional": true,
+      "focusItems": [
+        "s03",
+        "s05",
+        "f03",
+        "q06"
+      ],
+      "startState": "일부 기능은 있으나 증거 날짜와 운영 책임이 정리되지 않은 예시",
+      "recommendedFlow": [
+        "퀵체크",
+        "필수 조건 확인",
+        "상위 갭 3개 실행",
+        "증거 기록",
+        "재검증",
+        "출시 여권 확인"
+      ]
+    },
+    {
+      "id": "case-09",
+      "name": "운동 기록 PWA",
+      "archetype": "health-lite",
+      "fictional": true,
+      "focusItems": [
+        "f08",
+        "p07",
+        "u03",
+        "s08"
+      ],
+      "startState": "일부 기능은 있으나 증거 날짜와 운영 책임이 정리되지 않은 예시",
+      "recommendedFlow": [
+        "퀵체크",
+        "필수 조건 확인",
+        "상위 갭 3개 실행",
+        "증거 기록",
+        "재검증",
+        "출시 여권 확인"
+      ]
+    },
+    {
+      "id": "case-10",
+      "name": "AI 작성 도우미",
+      "archetype": "ai-saas",
+      "fictional": true,
+      "focusItems": [
+        "f01",
+        "s01",
+        "l09",
+        "q02"
+      ],
+      "startState": "일부 기능은 있으나 증거 날짜와 운영 책임이 정리되지 않은 예시",
+      "recommendedFlow": [
+        "퀵체크",
+        "필수 조건 확인",
+        "상위 갭 3개 실행",
+        "증거 기록",
+        "재검증",
+        "출시 여권 확인"
+      ]
+    },
+    {
+      "id": "case-11",
+      "name": "B2B 분석 대시보드",
+      "archetype": "analytics",
+      "fictional": true,
+      "focusItems": [
+        "r01",
+        "r02",
+        "o03",
+        "f10"
+      ],
+      "startState": "일부 기능은 있으나 증거 날짜와 운영 책임이 정리되지 않은 예시",
+      "recommendedFlow": [
+        "퀵체크",
+        "필수 조건 확인",
+        "상위 갭 3개 실행",
+        "증거 기록",
+        "재검증",
+        "출시 여권 확인"
+      ]
+    },
+    {
+      "id": "case-12",
+      "name": "비영리 정보 포털",
+      "archetype": "public-information",
+      "fictional": true,
+      "focusItems": [
+        "a01",
+        "u03",
+        "l01",
+        "c03"
+      ],
+      "startState": "일부 기능은 있으나 증거 날짜와 운영 책임이 정리되지 않은 예시",
+      "recommendedFlow": [
+        "퀵체크",
+        "필수 조건 확인",
+        "상위 갭 3개 실행",
+        "증거 기록",
+        "재검증",
+        "출시 여권 확인"
+      ]
+    }
+  ]
+}

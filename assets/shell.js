@@ -30,8 +30,9 @@
 
   /* 상단 이동줄 */
   function navBar(active) {
-    var items = [['pc', 'PC 웹', URLS.pc], ['mobile', '모바일', URLS.mobile], ['dash', '진척 대시보드', URLS.dash], ['spec', '기획서', URLS.spec]];
+    var items = [['pc', 'PC 웹', URLS.pc], ['mobile', '모바일', URLS.mobile], ['workbench', '고급 작업대', URLS.base + 'workbench/'], ['dash', '진척 대시보드', URLS.dash], ['spec', '기획서', URLS.spec]];
     var rel = { pc: (active === 'mobile' ? '../' : './'), mobile: (active === 'mobile' ? './' : 'm/'),
+                workbench: (active === 'mobile' ? '../workbench/' : 'workbench/'),
                 dash: (active === 'mobile' ? '../dashboard.html' : 'dashboard.html'),
                 spec: (active === 'mobile' ? '../spec.html' : 'spec.html') };
     return '<nav class="crh-nav"><span class="crh-brand">상업화 준비도 허브 <b>β</b></span>'
@@ -61,8 +62,9 @@
       + '.crh-legal-footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}';
     var s = document.createElement('style'); s.textContent = css; document.head.appendChild(s);
     var f = document.createElement('footer'); f.className = 'crh-legal-footer';
-    f.innerHTML = '<span>beta 0.6.4</span><a href="' + URLS.base + 'learn/">학습 자료실</a><a href="' + URLS.base + 'advertising/">광고 운영 원칙</a><a href="' + URLS.base + 'terms/">이용약관</a>'
+    f.innerHTML = '<span>beta 0.9.0 1·2단계 공개 후보</span><a href="' + URLS.base + 'workbench/">고급 작업대</a><a href="' + URLS.base + 'learn/">학습 자료실</a><a href="' + URLS.base + 'feedback/">사용성 의견</a><a href="' + URLS.base + 'status/">운영 상태</a><a href="' + URLS.base + 'support/">지원</a><a href="' + URLS.base + 'advertising/">광고 운영 원칙</a><a href="' + URLS.base + 'help/">도움말</a><a href="' + URLS.base + 'terms/">이용약관</a>'
       + '<a href="' + URLS.base + 'privacy/">개인정보 처리방침</a>'
+      + '<a href="' + URLS.base + 'help/account/">계정 도움말</a>'
       + '<a href="' + URLS.base + 'account/delete/">계정·데이터 삭제</a>';
     document.body.appendChild(f);
   }
@@ -75,4 +77,24 @@
     try { return W.QRLite.svg(text, opt || { scale: 3, ecl: 'M' }); }
     catch (e) { return '<span style="font-size:11px;color:#c00">QR 실패: ' + e.message + '</span>'; }
   };
+
+  /* 새 서비스 작업자 판은 사용자가 눌렀을 때만 전환한다. */
+  function showUpdate(registration) {
+    if (!registration || !registration.waiting || document.getElementById('crhUpdateReady')) return;
+    var box = document.createElement('div'); box.id = 'crhUpdateReady'; box.setAttribute('role', 'status');
+    box.style.cssText = 'position:fixed;left:12px;right:12px;bottom:12px;z-index:120;max-width:680px;margin:auto;padding:12px 14px;border:1px solid rgba(127,127,127,.4);border-radius:10px;background:var(--panel,#fff);color:var(--ink,#111);box-shadow:0 8px 30px rgba(0,0,0,.22);font:13px/1.45 system-ui';
+    box.innerHTML = '<b>업데이트가 준비되었습니다.</b> 현재 입력을 JSON으로 저장한 뒤 새 판을 열 수 있습니다. <button type="button" style="margin-left:8px;padding:6px 10px">새 판 열기</button>';
+    box.querySelector('button').addEventListener('click', function () { registration.waiting.postMessage({ type: 'CRH_SKIP_WAITING' }); });
+    document.body.appendChild(box);
+  }
+  if ('serviceWorker' in navigator && D.live) {
+    navigator.serviceWorker.addEventListener('controllerchange', function () { location.reload(); });
+    navigator.serviceWorker.ready.then(function (registration) {
+      showUpdate(registration);
+      registration.addEventListener('updatefound', function () {
+        var worker = registration.installing; if (!worker) return;
+        worker.addEventListener('statechange', function () { if (worker.state === 'installed') showUpdate(registration); });
+      });
+    }).catch(function () {});
+  }
 })();

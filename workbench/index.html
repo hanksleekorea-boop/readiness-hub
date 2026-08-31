@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="Readiness Hub의 프로젝트·증거·갭·도메인·출시 판단을 한 곳에서 관리하는 무료 고급 작업대.">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="icon" href="../assets/icon-192.png">
+  <link rel="stylesheet" href="../assets/workbench.css?v=1.0.0">
+  <title>고급 작업대 — Readiness Hub</title>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 건너뛰기</a>
+  <header class="wb-head">
+    <div><a href="../" class="brand">Readiness Hub</a><span class="free">모든 기능 무료 공개</span></div>
+    <div class="head-actions"><button id="themeBtn" type="button" aria-label="밝기 전환">◐</button><button id="exportBtn" type="button">전체 백업</button><label class="file-btn">백업 복원<input id="importFile" type="file" accept="application/json" hidden></label></div>
+  </header>
+  <nav class="wb-tabs" aria-label="고급 작업대">
+    <button data-view="overview" aria-current="page">출시 여권</button>
+    <button data-view="projects">프로젝트</button>
+    <button data-view="evidence">증거 보관함</button>
+    <button data-view="gaps">실행 보드</button>
+    <button data-view="domains">도메인 분석</button>
+    <button data-view="benchmark">비교 작업대</button>
+    <button data-view="advisor">개선 도우미</button>
+    <button data-view="content">197개 가이드</button>
+  </nav>
+  <main id="main" class="wb-main" tabindex="-1">
+    <div id="notice" class="notice" role="status">자료를 불러오는 중입니다.</div>
+    <section id="view-overview" class="view on" aria-labelledby="overviewTitle">
+      <div class="hero"><div><p class="eyebrow">출시 판단은 점수와 다릅니다</p><h1 id="overviewTitle">출시 여권</h1><p>PC·모바일·기술·운영 조건을 서로 다른 증거로 확인합니다. 미확인 하나라도 있으면 ‘출시 준비 완료’로 표시하지 않습니다.</p></div><div id="releaseDecision" class="decision">판정 준비 중</div></div>
+      <div id="passportGrid" class="passport-grid"></div>
+      <div class="panel"><h2>가장 먼저 할 일</h2><div id="topActions"></div></div>
+      <div class="panel truth"><h2>이 판정의 한계</h2><p>Readiness Hub는 법률 자문·인증·앱마켓 승인·시장 성과를 보장하지 않습니다. 자동 검사, 브라우저 확인, 실제 기기, 운영자 확인을 서로 바꾸어 쓰지 않습니다.</p></div>
+    </section>
+    <section id="view-projects" class="view" aria-labelledby="projectsTitle">
+      <div class="section-head"><div><p class="eyebrow">기기 안에서만 보관</p><h1 id="projectsTitle">프로젝트 작업공간</h1></div><button id="newProjectBtn" class="primary" type="button">현재 진단을 새 프로젝트로 저장</button></div>
+      <p class="lead">여러 서비스의 진단을 이 브라우저에서 나누어 관리합니다. 서버 동기화나 자동 업로드는 하지 않습니다.</p>
+      <div id="projectList" class="project-grid"></div>
+      <div class="panel"><h2>작업 기록</h2><ol id="activityList" class="activity"></ol></div>
+    </section>
+    <section id="view-evidence" class="view" aria-labelledby="evidenceTitle">
+      <div class="section-head"><div><p class="eyebrow">비밀값은 넣지 마세요</p><h1 id="evidenceTitle">증거 보관함</h1></div><button id="addEvidenceBtn" class="primary" type="button">증거 추가</button></div>
+      <div class="filters"><input id="evidenceSearch" type="search" placeholder="항목·주소·메모 검색"><select id="evidenceState"><option value="all">전체 상태</option><option value="valid">유효</option><option value="soon">만료 임박</option><option value="expired">만료</option></select></div>
+      <div id="evidenceList" class="table-wrap"></div>
+    </section>
+    <section id="view-gaps" class="view" aria-labelledby="gapsTitle">
+      <div class="section-head"><div><p class="eyebrow">재검증 없이는 완료할 수 없음</p><h1 id="gapsTitle">갭 실행 보드</h1></div><button id="addGapBtn" class="primary" type="button">할 일 추가</button></div>
+      <div id="gapBoard" class="board"></div>
+    </section>
+    <section id="view-domains" class="view" aria-labelledby="domainsTitle">
+      <p class="eyebrow">500개 탐색 카탈로그</p><h1 id="domainsTitle">서비스 도메인 분석</h1>
+      <p class="lead">서비스 설명을 입력하면 주 도메인 1개와 보조 후보를 찾습니다. 결과는 시장 점수나 경쟁사 증명이 아니라 조사 출발점입니다.</p>
+      <label class="field"><span>서비스 설명</span><textarea id="serviceDescription" rows="4" placeholder="예: 온라인 강의와 짧은 AI 실습을 제공하며 학습 진도를 저장하는 모바일·웹 서비스"></textarea></label>
+      <button id="classifyBtn" class="primary" type="button">도메인 후보 찾기</button>
+      <div id="domainResults" class="domain-results"></div>
+      <div class="panel"><h2>전용 기준</h2><div id="lensCards" class="lens-grid"></div></div>
+    </section>
+    <section id="view-benchmark" class="view" aria-labelledby="benchmarkTitle">
+      <div class="section-head"><div><p class="eyebrow">같은 축·공개 근거·최소 3개</p><h1 id="benchmarkTitle">근거 기반 비교 작업대</h1></div><button id="addComparatorBtn" class="primary" type="button">비교 서비스 추가</button></div>
+      <p class="lead">카탈로그 후보를 바로 점수로 만들지 않습니다. 실제로 관찰한 주소·날짜와 같은 0~5 평가 축이 있는 서비스 3개 이상에서만 상대 위치를 계산합니다.</p>
+      <label class="field"><span>우리 서비스 8축 점수 JSON</span><textarea id="ourBenchmarkScores" rows="3">{"features":3,"ux":3,"performance":3,"trust":3,"reach":2,"price":5,"monetization":2,"localization":4}</textarea></label>
+      <div class="card-actions"><button id="calculateBenchmarkBtn" class="primary" type="button">근거 확인 후 계산</button></div>
+      <div id="benchmarkStatus" class="notice" role="status">비교 서비스가 3개 미만이면 계산 불가입니다.</div>
+      <div id="benchmarkList" class="table-wrap"></div>
+      <div id="benchmarkResult" class="panel"></div>
+    </section>
+    <section id="view-advisor" class="view" aria-labelledby="advisorTitle">
+      <p class="eyebrow">외부 AI 호출 없음</p><h1 id="advisorTitle">근거 기반 개선 도우미</h1>
+      <p class="lead">현재 진단과 실행 보드를 이용해 우선순위를 만듭니다. 자료를 외부 AI 서비스로 보내지 않습니다.</p>
+      <div class="filters"><select id="advisorFocus"><option value="all">전체</option><option value="gates">필수 조건 우선</option><option value="mobile">모바일 우선</option><option value="web">PC 웹 우선</option></select><button id="advisorBtn" class="primary" type="button">개선안 다시 만들기</button></div>
+      <div id="advisorOutput"></div>
+    </section>
+    <section id="view-content" class="view" aria-labelledby="contentTitle">
+      <p class="eyebrow">197개 항목 · 11개 설명 필드</p><h1 id="contentTitle">진단 가이드 검색</h1>
+      <div class="filters"><input id="contentSearch" type="search" placeholder="기능, 개인정보, 성능, 운영 등 검색"><select id="contentDomain"><option value="all">전체 영역</option></select><label><input id="gateOnly" type="checkbox"> 필수 조건만</label></div>
+      <div id="contentResults" class="content-list"></div>
+    </section>
+  </main>
+  <dialog id="editDialog"><form method="dialog" id="editForm"><div class="dialog-head"><h2 id="dialogTitle">입력</h2><button value="cancel" aria-label="닫기">×</button></div><div id="dialogFields"></div><div class="dialog-actions"><button value="cancel">취소</button><button value="default" id="dialogSave" class="primary">저장</button></div></form></dialog>
+  <footer><a href="../">PC 진단</a><a href="../m/">모바일</a><a href="../dashboard.html">진척 대시보드</a><a href="../help/">도움말</a><a href="../terms/">이용약관</a><a href="../privacy/">개인정보</a><a href="../status/">운영 상태</a></footer>
+  <script src="../assets/gap-lifecycle.js?v=1.0.0"></script>
+  <script src="../assets/release-passport.js?v=1.0.0"></script>
+  <script src="../assets/workbench.js?v=1.1.0"></script>
+</body>
+</html>

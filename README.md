@@ -28,6 +28,7 @@ dashboard.html          개발 진척 대시보드
 terms/index.html        무료 베타 이용약관
 privacy/index.html      실제 데이터 흐름 기준 개인정보 처리방침
 account/delete/index.html  계정 없음 안내 + 브라우저 로컬 데이터 삭제
+help/account/index.html Google 로그인·내 계정·백업 도움말
 lens/lens-core-v2.1.json  한국 기준 포함 기본 렌즈 197개
 lens/lens-eu-v1.0.json    EU/EEA 관할 호환 렌즈 197개
 lens/lens-us-v1.0.json    미국 연방+캘리포니아 조건부 호환 렌즈 197개
@@ -35,6 +36,7 @@ profiles/*.json         서비스별 진단 상태 (자동 러너가 갱신)
 progress.json           대시보드가 읽는 진척 데이터
 persona-report.json     가상 사용자 1000명 시험 결과
 assets/qr.js            QR 부호기 (자체 구현, 외부 의존 없음)
+assets/auth.js          공급자 중립 인증 경계 + Google 로그인·내 계정 UI
 assets/shell.js         공개 주소 자동 인식 + 정책·삭제 링크
 assets/legal.css        정책 페이지 공통 스타일
 engine/readiness-engine.mjs  대상 프로젝트 증거 JSON을 실제 점수·갭·벤치마크 보고서로 계산하는 Node 엔진
@@ -45,6 +47,12 @@ robots.txt, sitemap.xml 검색 로봇·정본 URL 안내
 .github/workflows/readiness.yml   자동 측정 러너
 sw.js, manifest.webmanifest       오프라인·설치 지원
 ```
+
+## Google 로그인·내 계정 후보판
+
+beta 0.7.0 준비판은 6개 인증 상태, Google 로그인·무료 가입 버튼, 가린 이메일, 표시 이름·언어·하루 목표, 로그아웃, 백업·복원 진입점을 제공합니다. 로그인하지 않아도 기존 진단 기능은 그대로 동작합니다. 현재 저장소에는 실제 인증 공급자 설정이 없으므로 버튼은 `AUTH_BACKEND_MISSING`을 안전하게 안내하며, 계정이나 서버 프로필을 만들지 않습니다.
+
+실제 연결은 `window.CRH_AUTH_PROVIDER`가 제공하는 초기화·구독·Google 로그인·상태 갱신·이름 변경·로그아웃 계약을 구현한 뒤 별도 검증해야 합니다. 토큰은 앱 코드나 브라우저 저장소에 직접 보관하지 않고 공급자 공식 SDK가 관리해야 하며, 실제 연결 전에는 약관·개인정보 처리방침·삭제 절차와 허용 출처를 함께 확정해야 합니다.
 
 ## 인터넷에 공개하기 (약 3분)
 

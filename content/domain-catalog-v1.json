@@ -1,0 +1,2507 @@
+{
+  "schema": "crh-domain-catalog/v1",
+  "version": "embedded-500-v1",
+  "count": 500,
+  "entries": [
+    {
+      "rank": 1,
+      "domain": "전자상거래 종합몰",
+      "searchTerm": "online marketplace"
+    },
+    {
+      "rank": 2,
+      "domain": "식료품 배달",
+      "searchTerm": "grocery delivery"
+    },
+    {
+      "rank": 3,
+      "domain": "음식 배달",
+      "searchTerm": "food delivery"
+    },
+    {
+      "rank": 4,
+      "domain": "패션 쇼핑",
+      "searchTerm": "fashion commerce"
+    },
+    {
+      "rank": 5,
+      "domain": "뷰티 쇼핑",
+      "searchTerm": "beauty commerce"
+    },
+    {
+      "rank": 6,
+      "domain": "생활용품 쇼핑",
+      "searchTerm": "home goods commerce"
+    },
+    {
+      "rank": 7,
+      "domain": "중고 거래",
+      "searchTerm": "peer-to-peer resale"
+    },
+    {
+      "rank": 8,
+      "domain": "리셀·한정판",
+      "searchTerm": "resale marketplace"
+    },
+    {
+      "rank": 9,
+      "domain": "가격 비교",
+      "searchTerm": "price comparison"
+    },
+    {
+      "rank": 10,
+      "domain": "구독 상거래",
+      "searchTerm": "subscription commerce"
+    },
+    {
+      "rank": 11,
+      "domain": "온라인 결제",
+      "searchTerm": "payment gateway"
+    },
+    {
+      "rank": 12,
+      "domain": "디지털 지갑",
+      "searchTerm": "digital wallet"
+    },
+    {
+      "rank": 13,
+      "domain": "개인 송금",
+      "searchTerm": "P2P transfer"
+    },
+    {
+      "rank": 14,
+      "domain": "해외 송금",
+      "searchTerm": "remittance"
+    },
+    {
+      "rank": 15,
+      "domain": "개인 자산관리",
+      "searchTerm": "personal finance"
+    },
+    {
+      "rank": 16,
+      "domain": "예산 관리",
+      "searchTerm": "budgeting app"
+    },
+    {
+      "rank": 17,
+      "domain": "신용 관리",
+      "searchTerm": "credit monitoring"
+    },
+    {
+      "rank": 18,
+      "domain": "대출 비교",
+      "searchTerm": "loan marketplace"
+    },
+    {
+      "rank": 19,
+      "domain": "보험 비교",
+      "searchTerm": "insurance marketplace"
+    },
+    {
+      "rank": 20,
+      "domain": "세금 신고",
+      "searchTerm": "tax filing"
+    },
+    {
+      "rank": 21,
+      "domain": "주식 투자",
+      "searchTerm": "stock investing"
+    },
+    {
+      "rank": 22,
+      "domain": "암호자산 거래",
+      "searchTerm": "crypto exchange"
+    },
+    {
+      "rank": 23,
+      "domain": "로보어드바이저",
+      "searchTerm": "robo advisor"
+    },
+    {
+      "rank": 24,
+      "domain": "부동산 투자",
+      "searchTerm": "real estate investing"
+    },
+    {
+      "rank": 25,
+      "domain": "기업 자금관리",
+      "searchTerm": "treasury management"
+    },
+    {
+      "rank": 26,
+      "domain": "회계 SaaS",
+      "searchTerm": "accounting software"
+    },
+    {
+      "rank": 27,
+      "domain": "청구·인보이스",
+      "searchTerm": "invoicing"
+    },
+    {
+      "rank": 28,
+      "domain": "급여 관리",
+      "searchTerm": "payroll"
+    },
+    {
+      "rank": 29,
+      "domain": "경비 관리",
+      "searchTerm": "expense management"
+    },
+    {
+      "rank": 30,
+      "domain": "매장 결제",
+      "searchTerm": "POS"
+    },
+    {
+      "rank": 31,
+      "domain": "소셜 네트워크",
+      "searchTerm": "social network"
+    },
+    {
+      "rank": 32,
+      "domain": "메신저",
+      "searchTerm": "messaging"
+    },
+    {
+      "rank": 33,
+      "domain": "커뮤니티 포럼",
+      "searchTerm": "online community"
+    },
+    {
+      "rank": 34,
+      "domain": "크리에이터 플랫폼",
+      "searchTerm": "creator platform"
+    },
+    {
+      "rank": 35,
+      "domain": "라이브 스트리밍",
+      "searchTerm": "live streaming"
+    },
+    {
+      "rank": 36,
+      "domain": "짧은 영상",
+      "searchTerm": "short video"
+    },
+    {
+      "rank": 37,
+      "domain": "사진 공유",
+      "searchTerm": "photo sharing"
+    },
+    {
+      "rank": 38,
+      "domain": "블로그·뉴스레터",
+      "searchTerm": "blog newsletter"
+    },
+    {
+      "rank": 39,
+      "domain": "팬 커뮤니티",
+      "searchTerm": "fan community"
+    },
+    {
+      "rank": 40,
+      "domain": "데이팅",
+      "searchTerm": "dating"
+    },
+    {
+      "rank": 41,
+      "domain": "동영상 스트리밍",
+      "searchTerm": "video streaming"
+    },
+    {
+      "rank": 42,
+      "domain": "음악 스트리밍",
+      "searchTerm": "music streaming"
+    },
+    {
+      "rank": 43,
+      "domain": "팟캐스트",
+      "searchTerm": "podcast"
+    },
+    {
+      "rank": 44,
+      "domain": "오디오북",
+      "searchTerm": "audiobook"
+    },
+    {
+      "rank": 45,
+      "domain": "디지털 만화",
+      "searchTerm": "webtoon comics"
+    },
+    {
+      "rank": 46,
+      "domain": "전자책",
+      "searchTerm": "e-book"
+    },
+    {
+      "rank": 47,
+      "domain": "게임 스트리밍",
+      "searchTerm": "game streaming"
+    },
+    {
+      "rank": 48,
+      "domain": "티켓 예매",
+      "searchTerm": "ticketing"
+    },
+    {
+      "rank": 49,
+      "domain": "이벤트 발견",
+      "searchTerm": "event discovery"
+    },
+    {
+      "rank": 50,
+      "domain": "팬덤 멤버십",
+      "searchTerm": "fan membership"
+    },
+    {
+      "rank": 51,
+      "domain": "온라인 강의",
+      "searchTerm": "online learning"
+    },
+    {
+      "rank": 52,
+      "domain": "언어 학습",
+      "searchTerm": "language learning"
+    },
+    {
+      "rank": 53,
+      "domain": "시험 대비",
+      "searchTerm": "test prep"
+    },
+    {
+      "rank": 54,
+      "domain": "직무 교육",
+      "searchTerm": "career learning"
+    },
+    {
+      "rank": 55,
+      "domain": "코딩 교육",
+      "searchTerm": "coding education"
+    },
+    {
+      "rank": 56,
+      "domain": "어린이 교육",
+      "searchTerm": "kids learning"
+    },
+    {
+      "rank": 57,
+      "domain": "대학 학습관리",
+      "searchTerm": "LMS"
+    },
+    {
+      "rank": 58,
+      "domain": "튜터 매칭",
+      "searchTerm": "tutoring marketplace"
+    },
+    {
+      "rank": 59,
+      "domain": "학습 노트",
+      "searchTerm": "note learning"
+    },
+    {
+      "rank": 60,
+      "domain": "자격증 교육",
+      "searchTerm": "certification learning"
+    },
+    {
+      "rank": 61,
+      "domain": "생성형 AI 도우미",
+      "searchTerm": "generative AI assistant"
+    },
+    {
+      "rank": 62,
+      "domain": "AI 글쓰기",
+      "searchTerm": "AI writing"
+    },
+    {
+      "rank": 63,
+      "domain": "AI 이미지",
+      "searchTerm": "AI image creation"
+    },
+    {
+      "rank": 64,
+      "domain": "AI 영상",
+      "searchTerm": "AI video creation"
+    },
+    {
+      "rank": 65,
+      "domain": "AI 음성",
+      "searchTerm": "AI voice"
+    },
+    {
+      "rank": 66,
+      "domain": "AI 코드",
+      "searchTerm": "AI coding"
+    },
+    {
+      "rank": 67,
+      "domain": "AI 고객지원",
+      "searchTerm": "AI support"
+    },
+    {
+      "rank": 68,
+      "domain": "AI 검색",
+      "searchTerm": "AI search"
+    },
+    {
+      "rank": 69,
+      "domain": "AI 자동화",
+      "searchTerm": "AI automation"
+    },
+    {
+      "rank": 70,
+      "domain": "프롬프트 학습",
+      "searchTerm": "prompt learning"
+    },
+    {
+      "rank": 71,
+      "domain": "생산성 통합 작업공간",
+      "searchTerm": "productivity workspace"
+    },
+    {
+      "rank": 72,
+      "domain": "할 일 관리",
+      "searchTerm": "task management"
+    },
+    {
+      "rank": 73,
+      "domain": "프로젝트 관리",
+      "searchTerm": "project management"
+    },
+    {
+      "rank": 74,
+      "domain": "문서 협업",
+      "searchTerm": "document collaboration"
+    },
+    {
+      "rank": 75,
+      "domain": "지식관리",
+      "searchTerm": "knowledge management"
+    },
+    {
+      "rank": 76,
+      "domain": "일정·캘린더",
+      "searchTerm": "calendar"
+    },
+    {
+      "rank": 77,
+      "domain": "이메일 생산성",
+      "searchTerm": "email productivity"
+    },
+    {
+      "rank": 78,
+      "domain": "전자서명",
+      "searchTerm": "e-signature"
+    },
+    {
+      "rank": 79,
+      "domain": "양식·설문",
+      "searchTerm": "form builder"
+    },
+    {
+      "rank": 80,
+      "domain": "회의 기록",
+      "searchTerm": "meeting notes"
+    },
+    {
+      "rank": 81,
+      "domain": "팀 메신저",
+      "searchTerm": "team chat"
+    },
+    {
+      "rank": 82,
+      "domain": "화상회의",
+      "searchTerm": "video conferencing"
+    },
+    {
+      "rank": 83,
+      "domain": "원격 협업",
+      "searchTerm": "remote collaboration"
+    },
+    {
+      "rank": 84,
+      "domain": "화이트보드",
+      "searchTerm": "online whiteboard"
+    },
+    {
+      "rank": 85,
+      "domain": "디자인 협업",
+      "searchTerm": "design collaboration"
+    },
+    {
+      "rank": 86,
+      "domain": "개발자 협업",
+      "searchTerm": "developer collaboration"
+    },
+    {
+      "rank": 87,
+      "domain": "워크플로 자동화",
+      "searchTerm": "workflow automation"
+    },
+    {
+      "rank": 88,
+      "domain": "업무 통합",
+      "searchTerm": "iPaaS integration"
+    },
+    {
+      "rank": 89,
+      "domain": "사내 포털",
+      "searchTerm": "employee portal"
+    },
+    {
+      "rank": 90,
+      "domain": "전자결재",
+      "searchTerm": "approval workflow"
+    },
+    {
+      "rank": 91,
+      "domain": "CRM",
+      "searchTerm": "customer relationship management"
+    },
+    {
+      "rank": 92,
+      "domain": "영업 자동화",
+      "searchTerm": "sales automation"
+    },
+    {
+      "rank": 93,
+      "domain": "마케팅 자동화",
+      "searchTerm": "marketing automation"
+    },
+    {
+      "rank": 94,
+      "domain": "이메일 마케팅",
+      "searchTerm": "email marketing"
+    },
+    {
+      "rank": 95,
+      "domain": "고객 데이터 플랫폼",
+      "searchTerm": "CDP"
+    },
+    {
+      "rank": 96,
+      "domain": "광고 관리",
+      "searchTerm": "ad management"
+    },
+    {
+      "rank": 97,
+      "domain": "검색엔진 최적화",
+      "searchTerm": "SEO"
+    },
+    {
+      "rank": 98,
+      "domain": "웹 분석",
+      "searchTerm": "web analytics"
+    },
+    {
+      "rank": 99,
+      "domain": "전환율 최적화",
+      "searchTerm": "CRO"
+    },
+    {
+      "rank": 100,
+      "domain": "제휴 마케팅",
+      "searchTerm": "affiliate marketing"
+    },
+    {
+      "rank": 101,
+      "domain": "고객지원 헬프데스크",
+      "searchTerm": "help desk"
+    },
+    {
+      "rank": 102,
+      "domain": "라이브 채팅",
+      "searchTerm": "live chat"
+    },
+    {
+      "rank": 103,
+      "domain": "고객 피드백",
+      "searchTerm": "customer feedback"
+    },
+    {
+      "rank": 104,
+      "domain": "리뷰 관리",
+      "searchTerm": "review management"
+    },
+    {
+      "rank": 105,
+      "domain": "고객 성공",
+      "searchTerm": "customer success"
+    },
+    {
+      "rank": 106,
+      "domain": "콜센터",
+      "searchTerm": "contact center"
+    },
+    {
+      "rank": 107,
+      "domain": "예약 관리",
+      "searchTerm": "appointment scheduling"
+    },
+    {
+      "rank": 108,
+      "domain": "대기열 관리",
+      "searchTerm": "queue management"
+    },
+    {
+      "rank": 109,
+      "domain": "현장 서비스",
+      "searchTerm": "field service"
+    },
+    {
+      "rank": 110,
+      "domain": "멤버십·로열티",
+      "searchTerm": "loyalty"
+    },
+    {
+      "rank": 111,
+      "domain": "병원 예약",
+      "searchTerm": "healthcare booking"
+    },
+    {
+      "rank": 112,
+      "domain": "원격 진료",
+      "searchTerm": "telehealth"
+    },
+    {
+      "rank": 113,
+      "domain": "건강 기록",
+      "searchTerm": "personal health record"
+    },
+    {
+      "rank": 114,
+      "domain": "정신건강",
+      "searchTerm": "mental wellness"
+    },
+    {
+      "rank": 115,
+      "domain": "명상·수면",
+      "searchTerm": "meditation sleep"
+    },
+    {
+      "rank": 116,
+      "domain": "운동 추적",
+      "searchTerm": "fitness tracking"
+    },
+    {
+      "rank": 117,
+      "domain": "식단 관리",
+      "searchTerm": "nutrition tracking"
+    },
+    {
+      "rank": 118,
+      "domain": "여성 건강",
+      "searchTerm": "women's health"
+    },
+    {
+      "rank": 119,
+      "domain": "노인 돌봄",
+      "searchTerm": "elder care"
+    },
+    {
+      "rank": 120,
+      "domain": "약국·처방",
+      "searchTerm": "pharmacy"
+    },
+    {
+      "rank": 121,
+      "domain": "부동산 검색",
+      "searchTerm": "property search"
+    },
+    {
+      "rank": 122,
+      "domain": "임대 관리",
+      "searchTerm": "property management"
+    },
+    {
+      "rank": 123,
+      "domain": "단기 숙박",
+      "searchTerm": "vacation rental"
+    },
+    {
+      "rank": 124,
+      "domain": "호텔 예약",
+      "searchTerm": "hotel booking"
+    },
+    {
+      "rank": 125,
+      "domain": "항공 예약",
+      "searchTerm": "flight booking"
+    },
+    {
+      "rank": 126,
+      "domain": "여행 일정",
+      "searchTerm": "trip planning"
+    },
+    {
+      "rank": 127,
+      "domain": "렌터카",
+      "searchTerm": "car rental"
+    },
+    {
+      "rank": 128,
+      "domain": "지역 체험",
+      "searchTerm": "local experiences"
+    },
+    {
+      "rank": 129,
+      "domain": "비자·이민 지원",
+      "searchTerm": "visa support"
+    },
+    {
+      "rank": 130,
+      "domain": "출장 관리",
+      "searchTerm": "business travel"
+    },
+    {
+      "rank": 131,
+      "domain": "차량 호출",
+      "searchTerm": "ride hailing"
+    },
+    {
+      "rank": 132,
+      "domain": "택시 호출",
+      "searchTerm": "taxi booking"
+    },
+    {
+      "rank": 133,
+      "domain": "대중교통 안내",
+      "searchTerm": "transit navigation"
+    },
+    {
+      "rank": 134,
+      "domain": "지도·내비게이션",
+      "searchTerm": "maps navigation"
+    },
+    {
+      "rank": 135,
+      "domain": "주차",
+      "searchTerm": "parking"
+    },
+    {
+      "rank": 136,
+      "domain": "전기차 충전",
+      "searchTerm": "EV charging"
+    },
+    {
+      "rank": 137,
+      "domain": "차량 공유",
+      "searchTerm": "car sharing"
+    },
+    {
+      "rank": 138,
+      "domain": "자전거·킥보드",
+      "searchTerm": "micromobility"
+    },
+    {
+      "rank": 139,
+      "domain": "물류 추적",
+      "searchTerm": "parcel tracking"
+    },
+    {
+      "rank": 140,
+      "domain": "화물 운송",
+      "searchTerm": "freight logistics"
+    },
+    {
+      "rank": 141,
+      "domain": "구직",
+      "searchTerm": "job search"
+    },
+    {
+      "rank": 142,
+      "domain": "채용 관리",
+      "searchTerm": "ATS"
+    },
+    {
+      "rank": 143,
+      "domain": "프리랜서 마켓",
+      "searchTerm": "freelance marketplace"
+    },
+    {
+      "rank": 144,
+      "domain": "전문 서비스 마켓",
+      "searchTerm": "professional services"
+    },
+    {
+      "rank": 145,
+      "domain": "직원 교육",
+      "searchTerm": "employee training"
+    },
+    {
+      "rank": 146,
+      "domain": "인사 관리",
+      "searchTerm": "HRMS"
+    },
+    {
+      "rank": 147,
+      "domain": "근태 관리",
+      "searchTerm": "time attendance"
+    },
+    {
+      "rank": 148,
+      "domain": "복지 관리",
+      "searchTerm": "employee benefits"
+    },
+    {
+      "rank": 149,
+      "domain": "조직문화",
+      "searchTerm": "employee engagement"
+    },
+    {
+      "rank": 150,
+      "domain": "인력 분석",
+      "searchTerm": "people analytics"
+    },
+    {
+      "rank": 151,
+      "domain": "식당 예약",
+      "searchTerm": "restaurant reservation"
+    },
+    {
+      "rank": 152,
+      "domain": "레시피·요리",
+      "searchTerm": "recipe cooking"
+    },
+    {
+      "rank": 153,
+      "domain": "식단 배달",
+      "searchTerm": "meal kit"
+    },
+    {
+      "rank": 154,
+      "domain": "농산물 직거래",
+      "searchTerm": "farm-to-table"
+    },
+    {
+      "rank": 155,
+      "domain": "카페 주문",
+      "searchTerm": "coffee ordering"
+    },
+    {
+      "rank": 156,
+      "domain": "주류 배달",
+      "searchTerm": "alcohol delivery"
+    },
+    {
+      "rank": 157,
+      "domain": "반려동물 쇼핑",
+      "searchTerm": "pet commerce"
+    },
+    {
+      "rank": 158,
+      "domain": "반려동물 돌봄",
+      "searchTerm": "pet care"
+    },
+    {
+      "rank": 159,
+      "domain": "반려동물 건강",
+      "searchTerm": "pet health"
+    },
+    {
+      "rank": 160,
+      "domain": "반려동물 커뮤니티",
+      "searchTerm": "pet community"
+    },
+    {
+      "rank": 161,
+      "domain": "게임 유통",
+      "searchTerm": "game distribution"
+    },
+    {
+      "rank": 162,
+      "domain": "모바일 게임",
+      "searchTerm": "mobile gaming"
+    },
+    {
+      "rank": 163,
+      "domain": "e스포츠",
+      "searchTerm": "esports"
+    },
+    {
+      "rank": 164,
+      "domain": "게임 길드",
+      "searchTerm": "gaming community"
+    },
+    {
+      "rank": 165,
+      "domain": "게임 제작 도구",
+      "searchTerm": "game creation"
+    },
+    {
+      "rank": 166,
+      "domain": "AR 경험",
+      "searchTerm": "augmented reality"
+    },
+    {
+      "rank": 167,
+      "domain": "VR 경험",
+      "searchTerm": "virtual reality"
+    },
+    {
+      "rank": 168,
+      "domain": "교육 게임",
+      "searchTerm": "educational games"
+    },
+    {
+      "rank": 169,
+      "domain": "퍼즐·두뇌훈련",
+      "searchTerm": "brain training"
+    },
+    {
+      "rank": 170,
+      "domain": "보드게임 디지털",
+      "searchTerm": "board games"
+    },
+    {
+      "rank": 171,
+      "domain": "뉴스",
+      "searchTerm": "news"
+    },
+    {
+      "rank": 172,
+      "domain": "금융 뉴스",
+      "searchTerm": "financial news"
+    },
+    {
+      "rank": 173,
+      "domain": "지역 뉴스",
+      "searchTerm": "local news"
+    },
+    {
+      "rank": 174,
+      "domain": "날씨",
+      "searchTerm": "weather"
+    },
+    {
+      "rank": 175,
+      "domain": "스포츠 뉴스",
+      "searchTerm": "sports news"
+    },
+    {
+      "rank": 176,
+      "domain": "스포츠 점수",
+      "searchTerm": "sports scores"
+    },
+    {
+      "rank": 177,
+      "domain": "판타지 스포츠",
+      "searchTerm": "fantasy sports"
+    },
+    {
+      "rank": 178,
+      "domain": "스포츠 티켓",
+      "searchTerm": "sports ticketing"
+    },
+    {
+      "rank": 179,
+      "domain": "스포츠 코칭",
+      "searchTerm": "sports coaching"
+    },
+    {
+      "rank": 180,
+      "domain": "팬 예측",
+      "searchTerm": "sports prediction"
+    },
+    {
+      "rank": 181,
+      "domain": "정부 민원",
+      "searchTerm": "digital government"
+    },
+    {
+      "rank": 182,
+      "domain": "세무 행정",
+      "searchTerm": "public tax service"
+    },
+    {
+      "rank": 183,
+      "domain": "법률 정보",
+      "searchTerm": "legal information"
+    },
+    {
+      "rank": 184,
+      "domain": "계약 관리",
+      "searchTerm": "contract management"
+    },
+    {
+      "rank": 185,
+      "domain": "법률 상담",
+      "searchTerm": "legal services"
+    },
+    {
+      "rank": 186,
+      "domain": "컴플라이언스",
+      "searchTerm": "compliance"
+    },
+    {
+      "rank": 187,
+      "domain": "신원 확인",
+      "searchTerm": "identity verification"
+    },
+    {
+      "rank": 188,
+      "domain": "사기 탐지",
+      "searchTerm": "fraud detection"
+    },
+    {
+      "rank": 189,
+      "domain": "보안 교육",
+      "searchTerm": "security awareness"
+    },
+    {
+      "rank": 190,
+      "domain": "비상 알림",
+      "searchTerm": "emergency alert"
+    },
+    {
+      "rank": 191,
+      "domain": "기부",
+      "searchTerm": "donations"
+    },
+    {
+      "rank": 192,
+      "domain": "자원봉사",
+      "searchTerm": "volunteering"
+    },
+    {
+      "rank": 193,
+      "domain": "비영리 관리",
+      "searchTerm": "nonprofit management"
+    },
+    {
+      "rank": 194,
+      "domain": "크라우드펀딩",
+      "searchTerm": "crowdfunding"
+    },
+    {
+      "rank": 195,
+      "domain": "지역 모금",
+      "searchTerm": "community fundraising"
+    },
+    {
+      "rank": 196,
+      "domain": "사회 캠페인",
+      "searchTerm": "civic campaigning"
+    },
+    {
+      "rank": 197,
+      "domain": "재난 지원",
+      "searchTerm": "disaster relief"
+    },
+    {
+      "rank": 198,
+      "domain": "접근성 지원",
+      "searchTerm": "accessibility tools"
+    },
+    {
+      "rank": 199,
+      "domain": "번역·통역",
+      "searchTerm": "translation"
+    },
+    {
+      "rank": 200,
+      "domain": "이민자 지원",
+      "searchTerm": "immigrant services"
+    },
+    {
+      "rank": 201,
+      "domain": "클라우드 호스팅",
+      "searchTerm": "cloud hosting"
+    },
+    {
+      "rank": 202,
+      "domain": "앱 배포",
+      "searchTerm": "app deployment"
+    },
+    {
+      "rank": 203,
+      "domain": "개발자 플랫폼",
+      "searchTerm": "developer platform"
+    },
+    {
+      "rank": 204,
+      "domain": "코드 저장소",
+      "searchTerm": "code repository"
+    },
+    {
+      "rank": 205,
+      "domain": "지속적 통합",
+      "searchTerm": "CI"
+    },
+    {
+      "rank": 206,
+      "domain": "오류 추적",
+      "searchTerm": "error monitoring"
+    },
+    {
+      "rank": 207,
+      "domain": "성능 관찰",
+      "searchTerm": "observability"
+    },
+    {
+      "rank": 208,
+      "domain": "API 관리",
+      "searchTerm": "API management"
+    },
+    {
+      "rank": 209,
+      "domain": "데이터베이스 관리",
+      "searchTerm": "database management"
+    },
+    {
+      "rank": 210,
+      "domain": "보안 운영",
+      "searchTerm": "SecOps"
+    },
+    {
+      "rank": 211,
+      "domain": "데이터 분석",
+      "searchTerm": "BI analytics"
+    },
+    {
+      "rank": 212,
+      "domain": "데이터 시각화",
+      "searchTerm": "data visualization"
+    },
+    {
+      "rank": 213,
+      "domain": "데이터 통합",
+      "searchTerm": "ETL"
+    },
+    {
+      "rank": 214,
+      "domain": "데이터 품질",
+      "searchTerm": "data quality"
+    },
+    {
+      "rank": 215,
+      "domain": "데이터 카탈로그",
+      "searchTerm": "data catalog"
+    },
+    {
+      "rank": 216,
+      "domain": "고객 조사",
+      "searchTerm": "survey research"
+    },
+    {
+      "rank": 217,
+      "domain": "제품 분석",
+      "searchTerm": "product analytics"
+    },
+    {
+      "rank": 218,
+      "domain": "A/B 시험",
+      "searchTerm": "experimentation"
+    },
+    {
+      "rank": 219,
+      "domain": "사용자 행동 분석",
+      "searchTerm": "session replay"
+    },
+    {
+      "rank": 220,
+      "domain": "데이터 개인정보",
+      "searchTerm": "data privacy"
+    },
+    {
+      "rank": 221,
+      "domain": "제조 실행",
+      "searchTerm": "MES"
+    },
+    {
+      "rank": 222,
+      "domain": "공장 자동화",
+      "searchTerm": "factory automation"
+    },
+    {
+      "rank": 223,
+      "domain": "공급망 관리",
+      "searchTerm": "supply chain"
+    },
+    {
+      "rank": 224,
+      "domain": "조달 관리",
+      "searchTerm": "procurement"
+    },
+    {
+      "rank": 225,
+      "domain": "재고 관리",
+      "searchTerm": "inventory"
+    },
+    {
+      "rank": 226,
+      "domain": "창고 관리",
+      "searchTerm": "WMS"
+    },
+    {
+      "rank": 227,
+      "domain": "품질 관리",
+      "searchTerm": "QMS"
+    },
+    {
+      "rank": 228,
+      "domain": "설비 유지보수",
+      "searchTerm": "CMMS"
+    },
+    {
+      "rank": 229,
+      "domain": "산업 IoT",
+      "searchTerm": "industrial IoT"
+    },
+    {
+      "rank": 230,
+      "domain": "제품 수명관리",
+      "searchTerm": "PLM"
+    },
+    {
+      "rank": 231,
+      "domain": "농장 관리",
+      "searchTerm": "farm management"
+    },
+    {
+      "rank": 232,
+      "domain": "정밀 농업",
+      "searchTerm": "precision agriculture"
+    },
+    {
+      "rank": 233,
+      "domain": "농산물 물류",
+      "searchTerm": "agri logistics"
+    },
+    {
+      "rank": 234,
+      "domain": "수산 관리",
+      "searchTerm": "aquaculture"
+    },
+    {
+      "rank": 235,
+      "domain": "기상 농업",
+      "searchTerm": "agri weather"
+    },
+    {
+      "rank": 236,
+      "domain": "탄소 농업",
+      "searchTerm": "carbon farming"
+    },
+    {
+      "rank": 237,
+      "domain": "건설 관리",
+      "searchTerm": "construction management"
+    },
+    {
+      "rank": 238,
+      "domain": "건축 설계",
+      "searchTerm": "BIM"
+    },
+    {
+      "rank": 239,
+      "domain": "현장 안전",
+      "searchTerm": "construction safety"
+    },
+    {
+      "rank": 240,
+      "domain": "부동산 시공",
+      "searchTerm": "proptech construction"
+    },
+    {
+      "rank": 241,
+      "domain": "에너지 관리",
+      "searchTerm": "energy management"
+    },
+    {
+      "rank": 242,
+      "domain": "태양광 관리",
+      "searchTerm": "solar management"
+    },
+    {
+      "rank": 243,
+      "domain": "전력 거래",
+      "searchTerm": "energy trading"
+    },
+    {
+      "rank": 244,
+      "domain": "탄소 회계",
+      "searchTerm": "carbon accounting"
+    },
+    {
+      "rank": 245,
+      "domain": "ESG 관리",
+      "searchTerm": "ESG reporting"
+    },
+    {
+      "rank": 246,
+      "domain": "폐기물 관리",
+      "searchTerm": "waste management"
+    },
+    {
+      "rank": 247,
+      "domain": "물 관리",
+      "searchTerm": "water management"
+    },
+    {
+      "rank": 248,
+      "domain": "기후 위험",
+      "searchTerm": "climate risk"
+    },
+    {
+      "rank": 249,
+      "domain": "재생에너지 인증",
+      "searchTerm": "renewable certificates"
+    },
+    {
+      "rank": 250,
+      "domain": "지속가능성 공급망",
+      "searchTerm": "sustainable supply chain"
+    },
+    {
+      "rank": 251,
+      "domain": "은행 코어 시스템",
+      "searchTerm": "core banking"
+    },
+    {
+      "rank": 252,
+      "domain": "오픈뱅킹",
+      "searchTerm": "open banking"
+    },
+    {
+      "rank": 253,
+      "domain": "기업 대출",
+      "searchTerm": "B2B lending"
+    },
+    {
+      "rank": 254,
+      "domain": "가맹점 금융",
+      "searchTerm": "merchant finance"
+    },
+    {
+      "rank": 255,
+      "domain": "보험 운영",
+      "searchTerm": "insurance operations"
+    },
+    {
+      "rank": 256,
+      "domain": "보험 청구",
+      "searchTerm": "insurance claims"
+    },
+    {
+      "rank": 257,
+      "domain": "보험 기술",
+      "searchTerm": "insurtech"
+    },
+    {
+      "rank": 258,
+      "domain": "부채 관리",
+      "searchTerm": "debt management"
+    },
+    {
+      "rank": 259,
+      "domain": "자산운용",
+      "searchTerm": "asset management"
+    },
+    {
+      "rank": 260,
+      "domain": "금융 컴플라이언스",
+      "searchTerm": "financial compliance"
+    },
+    {
+      "rank": 261,
+      "domain": "학교 행정",
+      "searchTerm": "school administration"
+    },
+    {
+      "rank": 262,
+      "domain": "학부모 소통",
+      "searchTerm": "parent communication"
+    },
+    {
+      "rank": 263,
+      "domain": "학습 평가",
+      "searchTerm": "assessment"
+    },
+    {
+      "rank": 264,
+      "domain": "교육 콘텐츠",
+      "searchTerm": "education content"
+    },
+    {
+      "rank": 265,
+      "domain": "교사 도구",
+      "searchTerm": "teacher tools"
+    },
+    {
+      "rank": 266,
+      "domain": "도서관 서비스",
+      "searchTerm": "library systems"
+    },
+    {
+      "rank": 267,
+      "domain": "연구 관리",
+      "searchTerm": "research management"
+    },
+    {
+      "rank": 268,
+      "domain": "학술 출판",
+      "searchTerm": "scholarly publishing"
+    },
+    {
+      "rank": 269,
+      "domain": "논문 발견",
+      "searchTerm": "research discovery"
+    },
+    {
+      "rank": 270,
+      "domain": "동문 관리",
+      "searchTerm": "alumni management"
+    },
+    {
+      "rank": 271,
+      "domain": "진료 운영",
+      "searchTerm": "clinic operations"
+    },
+    {
+      "rank": 272,
+      "domain": "전자의무기록",
+      "searchTerm": "EHR"
+    },
+    {
+      "rank": 273,
+      "domain": "의료 청구",
+      "searchTerm": "medical billing"
+    },
+    {
+      "rank": 274,
+      "domain": "의료 영상",
+      "searchTerm": "medical imaging"
+    },
+    {
+      "rank": 275,
+      "domain": "임상시험",
+      "searchTerm": "clinical trials"
+    },
+    {
+      "rank": 276,
+      "domain": "환자 참여",
+      "searchTerm": "patient engagement"
+    },
+    {
+      "rank": 277,
+      "domain": "건강보험 관리",
+      "searchTerm": "health insurance"
+    },
+    {
+      "rank": 278,
+      "domain": "디지털 치료",
+      "searchTerm": "digital therapeutics"
+    },
+    {
+      "rank": 279,
+      "domain": "재활 관리",
+      "searchTerm": "rehabilitation"
+    },
+    {
+      "rank": 280,
+      "domain": "의료 인력",
+      "searchTerm": "healthcare staffing"
+    },
+    {
+      "rank": 281,
+      "domain": "호텔 운영",
+      "searchTerm": "hotel operations"
+    },
+    {
+      "rank": 282,
+      "domain": "여행사 운영",
+      "searchTerm": "travel agency"
+    },
+    {
+      "rank": 283,
+      "domain": "관광 CRM",
+      "searchTerm": "travel CRM"
+    },
+    {
+      "rank": 284,
+      "domain": "항공 운영",
+      "searchTerm": "airline operations"
+    },
+    {
+      "rank": 285,
+      "domain": "해운 운영",
+      "searchTerm": "maritime operations"
+    },
+    {
+      "rank": 286,
+      "domain": "차량 관리",
+      "searchTerm": "fleet management"
+    },
+    {
+      "rank": 287,
+      "domain": "라스트마일 배송",
+      "searchTerm": "last-mile delivery"
+    },
+    {
+      "rank": 288,
+      "domain": "통관 관리",
+      "searchTerm": "customs management"
+    },
+    {
+      "rank": 289,
+      "domain": "여행 안전",
+      "searchTerm": "travel safety"
+    },
+    {
+      "rank": 290,
+      "domain": "관광 콘텐츠",
+      "searchTerm": "tourism content"
+    },
+    {
+      "rank": 291,
+      "domain": "광고 소재 제작",
+      "searchTerm": "ad creative"
+    },
+    {
+      "rank": 292,
+      "domain": "브랜드 관리",
+      "searchTerm": "brand management"
+    },
+    {
+      "rank": 293,
+      "domain": "소셜 미디어 관리",
+      "searchTerm": "social media management"
+    },
+    {
+      "rank": 294,
+      "domain": "인플루언서 마케팅",
+      "searchTerm": "influencer marketing"
+    },
+    {
+      "rank": 295,
+      "domain": "홍보 관리",
+      "searchTerm": "PR management"
+    },
+    {
+      "rank": 296,
+      "domain": "콘텐츠 관리",
+      "searchTerm": "CMS"
+    },
+    {
+      "rank": 297,
+      "domain": "디지털 자산관리",
+      "searchTerm": "DAM"
+    },
+    {
+      "rank": 298,
+      "domain": "전자상거래 운영",
+      "searchTerm": "e-commerce operations"
+    },
+    {
+      "rank": 299,
+      "domain": "리테일 분석",
+      "searchTerm": "retail analytics"
+    },
+    {
+      "rank": 300,
+      "domain": "매장 운영",
+      "searchTerm": "store operations"
+    },
+    {
+      "rank": 301,
+      "domain": "디자인 도구",
+      "searchTerm": "design tools"
+    },
+    {
+      "rank": 302,
+      "domain": "사진 편집",
+      "searchTerm": "photo editing"
+    },
+    {
+      "rank": 303,
+      "domain": "영상 편집",
+      "searchTerm": "video editing"
+    },
+    {
+      "rank": 304,
+      "domain": "3D 제작",
+      "searchTerm": "3D creation"
+    },
+    {
+      "rank": 305,
+      "domain": "웹사이트 제작",
+      "searchTerm": "website builder"
+    },
+    {
+      "rank": 306,
+      "domain": "노코드 앱 제작",
+      "searchTerm": "no-code app builder"
+    },
+    {
+      "rank": 307,
+      "domain": "프레젠테이션",
+      "searchTerm": "presentation tools"
+    },
+    {
+      "rank": 308,
+      "domain": "다이어그램",
+      "searchTerm": "diagramming"
+    },
+    {
+      "rank": 309,
+      "domain": "설문 디자인",
+      "searchTerm": "survey design"
+    },
+    {
+      "rank": 310,
+      "domain": "템플릿 마켓",
+      "searchTerm": "template marketplace"
+    },
+    {
+      "rank": 311,
+      "domain": "사이버보안",
+      "searchTerm": "cybersecurity"
+    },
+    {
+      "rank": 312,
+      "domain": "비밀번호 관리",
+      "searchTerm": "password manager"
+    },
+    {
+      "rank": 313,
+      "domain": "엔드포인트 보안",
+      "searchTerm": "endpoint security"
+    },
+    {
+      "rank": 314,
+      "domain": "클라우드 보안",
+      "searchTerm": "cloud security"
+    },
+    {
+      "rank": 315,
+      "domain": "애플리케이션 보안",
+      "searchTerm": "AppSec"
+    },
+    {
+      "rank": 316,
+      "domain": "개인정보 보호",
+      "searchTerm": "privacy management"
+    },
+    {
+      "rank": 317,
+      "domain": "권한 관리",
+      "searchTerm": "IAM"
+    },
+    {
+      "rank": 318,
+      "domain": "백업·복구",
+      "searchTerm": "backup recovery"
+    },
+    {
+      "rank": 319,
+      "domain": "재해복구",
+      "searchTerm": "disaster recovery"
+    },
+    {
+      "rank": 320,
+      "domain": "디지털 포렌식",
+      "searchTerm": "digital forensics"
+    },
+    {
+      "rank": 321,
+      "domain": "부동산 중개",
+      "searchTerm": "realty brokerage"
+    },
+    {
+      "rank": 322,
+      "domain": "주택담보대출",
+      "searchTerm": "mortgage"
+    },
+    {
+      "rank": 323,
+      "domain": "주택 리모델링",
+      "searchTerm": "home improvement"
+    },
+    {
+      "rank": 324,
+      "domain": "인테리어 디자인",
+      "searchTerm": "interior design"
+    },
+    {
+      "rank": 325,
+      "domain": "가정 수리",
+      "searchTerm": "home services"
+    },
+    {
+      "rank": 326,
+      "domain": "청소 서비스",
+      "searchTerm": "cleaning services"
+    },
+    {
+      "rank": 327,
+      "domain": "이사 서비스",
+      "searchTerm": "moving services"
+    },
+    {
+      "rank": 328,
+      "domain": "보안·스마트홈",
+      "searchTerm": "smart home security"
+    },
+    {
+      "rank": 329,
+      "domain": "임차인 서비스",
+      "searchTerm": "renter services"
+    },
+    {
+      "rank": 330,
+      "domain": "부동산 데이터",
+      "searchTerm": "real estate data"
+    },
+    {
+      "rank": 331,
+      "domain": "육아 지원",
+      "searchTerm": "parenting"
+    },
+    {
+      "rank": 332,
+      "domain": "베이비시팅",
+      "searchTerm": "childcare"
+    },
+    {
+      "rank": 333,
+      "domain": "가족 일정",
+      "searchTerm": "family calendar"
+    },
+    {
+      "rank": 334,
+      "domain": "결혼 준비",
+      "searchTerm": "wedding planning"
+    },
+    {
+      "rank": 335,
+      "domain": "선물 추천",
+      "searchTerm": "gift discovery"
+    },
+    {
+      "rank": 336,
+      "domain": "장례 지원",
+      "searchTerm": "funeral services"
+    },
+    {
+      "rank": 337,
+      "domain": "종교 커뮤니티",
+      "searchTerm": "faith community"
+    },
+    {
+      "rank": 338,
+      "domain": "취미 모임",
+      "searchTerm": "hobby community"
+    },
+    {
+      "rank": 339,
+      "domain": "지역 이웃",
+      "searchTerm": "neighborhood network"
+    },
+    {
+      "rank": 340,
+      "domain": "생활 기록",
+      "searchTerm": "life logging"
+    },
+    {
+      "rank": 341,
+      "domain": "뉴스레터 제작",
+      "searchTerm": "newsletter platform"
+    },
+    {
+      "rank": 342,
+      "domain": "팟캐스트 제작",
+      "searchTerm": "podcast creation"
+    },
+    {
+      "rank": 343,
+      "domain": "크리에이터 수익화",
+      "searchTerm": "creator monetization"
+    },
+    {
+      "rank": 344,
+      "domain": "온라인 강연",
+      "searchTerm": "webinar"
+    },
+    {
+      "rank": 345,
+      "domain": "온라인 코스 제작",
+      "searchTerm": "course creator"
+    },
+    {
+      "rank": 346,
+      "domain": "멤버십 커뮤니티",
+      "searchTerm": "membership community"
+    },
+    {
+      "rank": 347,
+      "domain": "디지털 상품 판매",
+      "searchTerm": "digital goods"
+    },
+    {
+      "rank": 348,
+      "domain": "굿즈 판매",
+      "searchTerm": "merchandise"
+    },
+    {
+      "rank": 349,
+      "domain": "팬 후원",
+      "searchTerm": "creator tipping"
+    },
+    {
+      "rank": 350,
+      "domain": "라이브 커머스",
+      "searchTerm": "live commerce"
+    },
+    {
+      "rank": 351,
+      "domain": "자동차 판매",
+      "searchTerm": "auto marketplace"
+    },
+    {
+      "rank": 352,
+      "domain": "차량 정비",
+      "searchTerm": "auto repair"
+    },
+    {
+      "rank": 353,
+      "domain": "자동차 보험",
+      "searchTerm": "auto insurance"
+    },
+    {
+      "rank": 354,
+      "domain": "운전 교육",
+      "searchTerm": "driver education"
+    },
+    {
+      "rank": 355,
+      "domain": "차량 진단",
+      "searchTerm": "vehicle diagnostics"
+    },
+    {
+      "rank": 356,
+      "domain": "중고차 이력",
+      "searchTerm": "vehicle history"
+    },
+    {
+      "rank": 357,
+      "domain": "모터사이클",
+      "searchTerm": "motorcycle services"
+    },
+    {
+      "rank": 358,
+      "domain": "캠핑카·레저차",
+      "searchTerm": "RV services"
+    },
+    {
+      "rank": 359,
+      "domain": "항공 개인 이동",
+      "searchTerm": "aviation services"
+    },
+    {
+      "rank": 360,
+      "domain": "드론 서비스",
+      "searchTerm": "drone services"
+    },
+    {
+      "rank": 361,
+      "domain": "화장품 예약",
+      "searchTerm": "beauty booking"
+    },
+    {
+      "rank": 362,
+      "domain": "미용실 예약",
+      "searchTerm": "salon booking"
+    },
+    {
+      "rank": 363,
+      "domain": "웰니스 예약",
+      "searchTerm": "wellness booking"
+    },
+    {
+      "rank": 364,
+      "domain": "개인 트레이닝",
+      "searchTerm": "personal training"
+    },
+    {
+      "rank": 365,
+      "domain": "스포츠 시설 예약",
+      "searchTerm": "sports booking"
+    },
+    {
+      "rank": 366,
+      "domain": "요가·필라테스",
+      "searchTerm": "yoga pilates"
+    },
+    {
+      "rank": 367,
+      "domain": "아웃도어 활동",
+      "searchTerm": "outdoor recreation"
+    },
+    {
+      "rank": 368,
+      "domain": "여행 사진",
+      "searchTerm": "travel photography"
+    },
+    {
+      "rank": 369,
+      "domain": "취미 교육",
+      "searchTerm": "hobby learning"
+    },
+    {
+      "rank": 370,
+      "domain": "취미 장비 대여",
+      "searchTerm": "equipment rental"
+    },
+    {
+      "rank": 371,
+      "domain": "통신 요금제",
+      "searchTerm": "telecom plans"
+    },
+    {
+      "rank": 372,
+      "domain": "인터넷 서비스",
+      "searchTerm": "ISP"
+    },
+    {
+      "rank": 373,
+      "domain": "모바일 기기 관리",
+      "searchTerm": "MDM"
+    },
+    {
+      "rank": 374,
+      "domain": "기기 수리",
+      "searchTerm": "device repair"
+    },
+    {
+      "rank": 375,
+      "domain": "디지털 신분증",
+      "searchTerm": "digital identity"
+    },
+    {
+      "rank": 376,
+      "domain": "전자 문서 보관",
+      "searchTerm": "digital archive"
+    },
+    {
+      "rank": 377,
+      "domain": "파일 저장",
+      "searchTerm": "file storage"
+    },
+    {
+      "rank": 378,
+      "domain": "파일 전송",
+      "searchTerm": "file transfer"
+    },
+    {
+      "rank": 379,
+      "domain": "개인 백업",
+      "searchTerm": "personal backup"
+    },
+    {
+      "rank": 380,
+      "domain": "인터넷 안전",
+      "searchTerm": "parental control"
+    },
+    {
+      "rank": 381,
+      "domain": "블록체인 지갑",
+      "searchTerm": "blockchain wallet"
+    },
+    {
+      "rank": 382,
+      "domain": "NFT·디지털 수집품",
+      "searchTerm": "digital collectibles"
+    },
+    {
+      "rank": 383,
+      "domain": "DAO 커뮤니티",
+      "searchTerm": "DAO tools"
+    },
+    {
+      "rank": 384,
+      "domain": "Web3 개발",
+      "searchTerm": "Web3 developer tools"
+    },
+    {
+      "rank": 385,
+      "domain": "게임 경제",
+      "searchTerm": "game economy"
+    },
+    {
+      "rank": 386,
+      "domain": "크라우드 대출",
+      "searchTerm": "peer lending"
+    },
+    {
+      "rank": 387,
+      "domain": "대안 신용",
+      "searchTerm": "alternative credit"
+    },
+    {
+      "rank": 388,
+      "domain": "급여 선지급",
+      "searchTerm": "earned wage access"
+    },
+    {
+      "rank": 389,
+      "domain": "기부 결제",
+      "searchTerm": "giving payments"
+    },
+    {
+      "rank": 390,
+      "domain": "금융 교육",
+      "searchTerm": "financial education"
+    },
+    {
+      "rank": 391,
+      "domain": "공공 안전",
+      "searchTerm": "public safety"
+    },
+    {
+      "rank": 392,
+      "domain": "경찰·소방 운영",
+      "searchTerm": "emergency operations"
+    },
+    {
+      "rank": 393,
+      "domain": "도시 운영",
+      "searchTerm": "smart city"
+    },
+    {
+      "rank": 394,
+      "domain": "선거 정보",
+      "searchTerm": "election information"
+    },
+    {
+      "rank": 395,
+      "domain": "공공 참여",
+      "searchTerm": "civic engagement"
+    },
+    {
+      "rank": 396,
+      "domain": "공공 기록",
+      "searchTerm": "public records"
+    },
+    {
+      "rank": 397,
+      "domain": "공공 조달",
+      "searchTerm": "public procurement"
+    },
+    {
+      "rank": 398,
+      "domain": "학교 안전",
+      "searchTerm": "school safety"
+    },
+    {
+      "rank": 399,
+      "domain": "재난 경보",
+      "searchTerm": "disaster alerts"
+    },
+    {
+      "rank": 400,
+      "domain": "국제 개발",
+      "searchTerm": "aid management"
+    },
+    {
+      "rank": 401,
+      "domain": "번역 관리",
+      "searchTerm": "localization management"
+    },
+    {
+      "rank": 402,
+      "domain": "국제 전자상거래",
+      "searchTerm": "cross-border commerce"
+    },
+    {
+      "rank": 403,
+      "domain": "다국가 급여",
+      "searchTerm": "global payroll"
+    },
+    {
+      "rank": 404,
+      "domain": "해외 채용",
+      "searchTerm": "global hiring"
+    },
+    {
+      "rank": 405,
+      "domain": "해외 법인 관리",
+      "searchTerm": "entity management"
+    },
+    {
+      "rank": 406,
+      "domain": "수출입 무역",
+      "searchTerm": "trade management"
+    },
+    {
+      "rank": 407,
+      "domain": "관세 계산",
+      "searchTerm": "duty calculation"
+    },
+    {
+      "rank": 408,
+      "domain": "국제 배송",
+      "searchTerm": "cross-border shipping"
+    },
+    {
+      "rank": 409,
+      "domain": "환율·외환",
+      "searchTerm": "FX management"
+    },
+    {
+      "rank": 410,
+      "domain": "글로벌 컴플라이언스",
+      "searchTerm": "global compliance"
+    },
+    {
+      "rank": 411,
+      "domain": "웹 접근성",
+      "searchTerm": "web accessibility"
+    },
+    {
+      "rank": 412,
+      "domain": "보조기술",
+      "searchTerm": "assistive technology"
+    },
+    {
+      "rank": 413,
+      "domain": "난독 지원",
+      "searchTerm": "dyslexia support"
+    },
+    {
+      "rank": 414,
+      "domain": "청각 지원",
+      "searchTerm": "hearing accessibility"
+    },
+    {
+      "rank": 415,
+      "domain": "시각 지원",
+      "searchTerm": "vision accessibility"
+    },
+    {
+      "rank": 416,
+      "domain": "고령자 디지털 지원",
+      "searchTerm": "senior tech"
+    },
+    {
+      "rank": 417,
+      "domain": "디지털 웰빙",
+      "searchTerm": "digital wellbeing"
+    },
+    {
+      "rank": 418,
+      "domain": "화면 시간",
+      "searchTerm": "screen time"
+    },
+    {
+      "rank": 419,
+      "domain": "온라인 안전",
+      "searchTerm": "online safety"
+    },
+    {
+      "rank": 420,
+      "domain": "가족 안전",
+      "searchTerm": "family safety"
+    },
+    {
+      "rank": 421,
+      "domain": "식당 운영",
+      "searchTerm": "restaurant operations"
+    },
+    {
+      "rank": 422,
+      "domain": "배달 매장 운영",
+      "searchTerm": "delivery operations"
+    },
+    {
+      "rank": 423,
+      "domain": "식품 안전",
+      "searchTerm": "food safety"
+    },
+    {
+      "rank": 424,
+      "domain": "메뉴 관리",
+      "searchTerm": "menu management"
+    },
+    {
+      "rank": 425,
+      "domain": "예약 판매",
+      "searchTerm": "pre-ordering"
+    },
+    {
+      "rank": 426,
+      "domain": "식자재 조달",
+      "searchTerm": "food procurement"
+    },
+    {
+      "rank": 427,
+      "domain": "주방 관리",
+      "searchTerm": "kitchen management"
+    },
+    {
+      "rank": 428,
+      "domain": "프랜차이즈 운영",
+      "searchTerm": "franchise management"
+    },
+    {
+      "rank": 429,
+      "domain": "호텔 식음료",
+      "searchTerm": "hospitality F&B"
+    },
+    {
+      "rank": 430,
+      "domain": "케이터링",
+      "searchTerm": "catering"
+    },
+    {
+      "rank": 431,
+      "domain": "세일즈 교육",
+      "searchTerm": "sales training"
+    },
+    {
+      "rank": 432,
+      "domain": "리더십 교육",
+      "searchTerm": "leadership training"
+    },
+    {
+      "rank": 433,
+      "domain": "규정 교육",
+      "searchTerm": "compliance training"
+    },
+    {
+      "rank": 434,
+      "domain": "안전 교육",
+      "searchTerm": "safety training"
+    },
+    {
+      "rank": 435,
+      "domain": "온보딩",
+      "searchTerm": "employee onboarding"
+    },
+    {
+      "rank": 436,
+      "domain": "내부 이동",
+      "searchTerm": "internal mobility"
+    },
+    {
+      "rank": 437,
+      "domain": "성과 관리",
+      "searchTerm": "performance management"
+    },
+    {
+      "rank": 438,
+      "domain": "보상 관리",
+      "searchTerm": "compensation management"
+    },
+    {
+      "rank": 439,
+      "domain": "인력 계획",
+      "searchTerm": "workforce planning"
+    },
+    {
+      "rank": 440,
+      "domain": "채용 브랜딩",
+      "searchTerm": "employer branding"
+    },
+    {
+      "rank": 441,
+      "domain": "과학 실험실 관리",
+      "searchTerm": "lab management"
+    },
+    {
+      "rank": 442,
+      "domain": "생명과학 데이터",
+      "searchTerm": "bioinformatics"
+    },
+    {
+      "rank": 443,
+      "domain": "의료 연구",
+      "searchTerm": "health research"
+    },
+    {
+      "rank": 444,
+      "domain": "특허 관리",
+      "searchTerm": "IP management"
+    },
+    {
+      "rank": 445,
+      "domain": "지식재산 검색",
+      "searchTerm": "patent search"
+    },
+    {
+      "rank": 446,
+      "domain": "규제 정보",
+      "searchTerm": "regulatory intelligence"
+    },
+    {
+      "rank": 447,
+      "domain": "임상 데이터",
+      "searchTerm": "clinical data"
+    },
+    {
+      "rank": 448,
+      "domain": "연구 협업",
+      "searchTerm": "research collaboration"
+    },
+    {
+      "rank": 449,
+      "domain": "학술 네트워크",
+      "searchTerm": "academic network"
+    },
+    {
+      "rank": 450,
+      "domain": "과학 교육",
+      "searchTerm": "science education"
+    },
+    {
+      "rank": 451,
+      "domain": "반도체 설계",
+      "searchTerm": "semiconductor design"
+    },
+    {
+      "rank": 452,
+      "domain": "전자 설계",
+      "searchTerm": "EDA"
+    },
+    {
+      "rank": 453,
+      "domain": "로봇 운영",
+      "searchTerm": "robotics"
+    },
+    {
+      "rank": 454,
+      "domain": "자율주행",
+      "searchTerm": "autonomous driving"
+    },
+    {
+      "rank": 455,
+      "domain": "우주 데이터",
+      "searchTerm": "space data"
+    },
+    {
+      "rank": 456,
+      "domain": "위성 분석",
+      "searchTerm": "satellite analytics"
+    },
+    {
+      "rank": 457,
+      "domain": "디지털 트윈",
+      "searchTerm": "digital twin"
+    },
+    {
+      "rank": 458,
+      "domain": "IoT 플랫폼",
+      "searchTerm": "IoT platform"
+    },
+    {
+      "rank": 459,
+      "domain": "엣지 컴퓨팅",
+      "searchTerm": "edge computing"
+    },
+    {
+      "rank": 460,
+      "domain": "양자 컴퓨팅",
+      "searchTerm": "quantum computing"
+    },
+    {
+      "rank": 461,
+      "domain": "법률 사무 운영",
+      "searchTerm": "law firm management"
+    },
+    {
+      "rank": 462,
+      "domain": "계약 전자서명",
+      "searchTerm": "contract e-signing"
+    },
+    {
+      "rank": 463,
+      "domain": "소송 지원",
+      "searchTerm": "litigation support"
+    },
+    {
+      "rank": 464,
+      "domain": "법률 문서 자동화",
+      "searchTerm": "legal document automation"
+    },
+    {
+      "rank": 465,
+      "domain": "지식재산 운영",
+      "searchTerm": "IP operations"
+    },
+    {
+      "rank": 466,
+      "domain": "규제 신고",
+      "searchTerm": "regulatory filing"
+    },
+    {
+      "rank": 467,
+      "domain": "기업 거버넌스",
+      "searchTerm": "corporate governance"
+    },
+    {
+      "rank": 468,
+      "domain": "내부감사",
+      "searchTerm": "internal audit"
+    },
+    {
+      "rank": 469,
+      "domain": "위험 관리",
+      "searchTerm": "enterprise risk"
+    },
+    {
+      "rank": 470,
+      "domain": "윤리 신고",
+      "searchTerm": "ethics hotline"
+    },
+    {
+      "rank": 471,
+      "domain": "청소년 커뮤니티",
+      "searchTerm": "youth community"
+    },
+    {
+      "rank": 472,
+      "domain": "대학 진학",
+      "searchTerm": "college admissions"
+    },
+    {
+      "rank": 473,
+      "domain": "장학금",
+      "searchTerm": "scholarships"
+    },
+    {
+      "rank": 474,
+      "domain": "직업 전환",
+      "searchTerm": "career transition"
+    },
+    {
+      "rank": 475,
+      "domain": "은퇴 계획",
+      "searchTerm": "retirement planning"
+    },
+    {
+      "rank": 476,
+      "domain": "생활 습관",
+      "searchTerm": "habit building"
+    },
+    {
+      "rank": 477,
+      "domain": "목표 관리",
+      "searchTerm": "goal tracking"
+    },
+    {
+      "rank": 478,
+      "domain": "개인 일기",
+      "searchTerm": "journaling"
+    },
+    {
+      "rank": 479,
+      "domain": "디지털 유산",
+      "searchTerm": "digital legacy"
+    },
+    {
+      "rank": 480,
+      "domain": "가족 역사",
+      "searchTerm": "family history"
+    },
+    {
+      "rank": 481,
+      "domain": "카운터·집계",
+      "searchTerm": "counter tally"
+    },
+    {
+      "rank": 482,
+      "domain": "알람·기상",
+      "searchTerm": "alarm clock"
+    },
+    {
+      "rank": 483,
+      "domain": "시간 추적",
+      "searchTerm": "time tracking"
+    },
+    {
+      "rank": 484,
+      "domain": "습관·루틴",
+      "searchTerm": "habit tracker"
+    },
+    {
+      "rank": 485,
+      "domain": "체크리스트",
+      "searchTerm": "checklist"
+    },
+    {
+      "rank": 486,
+      "domain": "스캔·문서화",
+      "searchTerm": "document scanning"
+    },
+    {
+      "rank": 487,
+      "domain": "QR·바코드",
+      "searchTerm": "QR barcode"
+    },
+    {
+      "rank": 488,
+      "domain": "비밀번호 생성",
+      "searchTerm": "password generator"
+    },
+    {
+      "rank": 489,
+      "domain": "파일 변환",
+      "searchTerm": "file conversion"
+    },
+    {
+      "rank": 490,
+      "domain": "단위·환율 계산",
+      "searchTerm": "converter calculator"
+    },
+    {
+      "rank": 491,
+      "domain": "날씨 위험",
+      "searchTerm": "weather alerts"
+    },
+    {
+      "rank": 492,
+      "domain": "식물 관리",
+      "searchTerm": "plant care"
+    },
+    {
+      "rank": 493,
+      "domain": "반려식물 커뮤니티",
+      "searchTerm": "plant community"
+    },
+    {
+      "rank": 494,
+      "domain": "폐기물 분리배출",
+      "searchTerm": "recycling guide"
+    },
+    {
+      "rank": 495,
+      "domain": "지역 상점 발견",
+      "searchTerm": "local discovery"
+    },
+    {
+      "rank": 496,
+      "domain": "쿠폰·절약",
+      "searchTerm": "coupons savings"
+    },
+    {
+      "rank": 497,
+      "domain": "기부 물품",
+      "searchTerm": "giving marketplace"
+    },
+    {
+      "rank": 498,
+      "domain": "소규모 모임",
+      "searchTerm": "micro-events"
+    },
+    {
+      "rank": 499,
+      "domain": "생활 문제 해결",
+      "searchTerm": "local problem solving"
+    },
+    {
+      "rank": 500,
+      "domain": "범용 유틸리티",
+      "searchTerm": "multi-purpose utility"
+    }
+  ]
+}

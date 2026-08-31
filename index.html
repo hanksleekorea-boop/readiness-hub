@@ -2518,7 +2518,7 @@ function renderAssess() {
       }
       const evWarn = (typeof v === 'number' && v >= 3 && String(ev) === '3')
         ? '<div class="warn-ev">3차 근거(블로그·집계 사이트)만으로 완료 판정은 신뢰하기 어렵습니다. 1차 문서를 확보하세요.</div>' : '';
-      return `<div class="item ${it.g ? 'gate' : ''}">
+      return `<div class="item ${it.g ? 'gate' : ''}" data-item-id="${it.id}">
         <div>
           <div class="it-t">${it.g ? '<span class="tag gate">필수 게이트</span>' : ''}${it.p === 'M' ? '<span class="tag m">모바일 고유</span>' : ''}${it.p === 'W' ? '<span class="tag w">웹 고유</span>' : ''}${it.obs === 'ext' ? '<span class="tag ext">외부 검증 가능</span>' : '<span class="tag obs">자가진단</span>'}<span>${it.t}</span></div>
           <div class="it-h">${it.h}</div>
@@ -3469,16 +3469,23 @@ document.getElementById('btnTheme').onclick = () => {
 };
 
 document.getElementById('btnExport').onclick = () => {
-  const blob = new Blob([JSON.stringify({ v: 1, ...S }, null, 2)], { type: 'application/json' });
+  const backup = { schema: 'crh-local-backup/v1', appVersion: 'beta 0.7.0', createdAt: new Date().toISOString(), state: { v: 1, ...S } };
+  const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
   dl(blob, (S.svc || 'readiness') + '-' + S.date + '.json');
 };
 document.getElementById('btnImport').onclick = () => document.getElementById('fileIn').click();
 document.getElementById('fileIn').onchange = e => {
   const f = e.target.files[0]; if (!f) return;
+  if (f.size > 5 * 1024 * 1024) { alert('불러오기 실패: 백업 파일은 5MB 이하여야 합니다.'); e.target.value = ''; return; }
   const r = new FileReader();
   r.onload = () => {
     try {
-      loadFromString(r.result);
+      const parsed = JSON.parse(r.result);
+      const candidate = parsed && parsed.schema === 'crh-local-backup/v1' ? parsed.state : parsed;
+      if (!candidate || typeof candidate !== 'object' || !candidate.scores) throw new Error('지원하지 않는 백업 형식');
+      const count = ['mobile', 'web'].reduce((n, pf) => n + Object.keys(candidate.scores[pf] || {}).length, 0);
+      if (!confirm('백업 검사 완료: 평가값 ' + count + '개를 불러옵니다. 현재 화면의 입력은 바뀝니다. 계속할까요?')) return;
+      loadFromString(JSON.stringify(candidate));
       loadMeta(); renderAll();
     } catch (err) { alert('불러오기 실패: ' + err.message); }
   };
@@ -3530,6 +3537,9 @@ bootLoad().then(msg => {
   if (msg) console.info(msg);
 });
 </script>
-<script src="assets/shell.js?v=0.6.4"></script>
+<link rel="stylesheet" href="assets/content-guide.css?v=1.0.0">
+<script src="assets/content-guide.js?v=1.0.0"></script>
+<script src="assets/auth.js?v=0.7.0"></script>
+<script src="assets/shell.js?v=0.8.0"></script>
 </body>
 </html>

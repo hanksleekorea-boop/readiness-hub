@@ -13,6 +13,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ENGINE_VERSION = '1.1.0';
 const PLATFORM = { mobile: new Set(['C', 'M']), web: new Set(['C', 'W']) };
 const FRESH_DAYS = { 1: 180, 2: 120, 3: 60, auto: 180, self: 365 };
+const ALLOWED_TIERS = new Set(['auto', 'browser', 'device', 'operator', 'self', '1', '2', '3']);
 const GRADE = [[90, 'L5', '출시·확장 가능'], [75, 'L4', '정식 출시 준비'], [60, 'L3', '오픈 베타 준비'], [40, 'L2', '기능 구축 중'], [0, 'L1', '기획·초기 구축']];
 const DIMENSIONS = [
   ['feat', '기능 폭·깊이'], ['ux', 'UX 완성도'], ['perf', '성능·안정성'], ['trust', '평점·신뢰'],
@@ -50,13 +51,20 @@ function statusValue(raw) {
 }
 function freshness(raw, assessedAt, warnings, itemId, platform) {
   if (typeof raw !== 'object' || !raw) return { factor: 1, observedAt: null, tier: 'self', stale: false };
-  const observedAt = isoDay(raw.observedAt || raw.date);
   const tier = String(raw.tier || raw.evidenceTier || 'self');
+  if (!ALLOWED_TIERS.has(tier)) fail(`${platform}.${itemId}: 허용되지 않은 증거 등급(tier)입니다: ${tier}`);
+  const suppliedDate = raw.observedAt || raw.date;
+  const observedAt = isoDay(suppliedDate);
+  if (suppliedDate && !observedAt) fail(`${platform}.${itemId}: observedAt은 YYYY-MM-DD여야 합니다.`);
   if (!observedAt) { warnings.push(`${platform}.${itemId}: 확인일이 없어 자가신고 365일 기준으로 처리했습니다.`); return { factor: 1, observedAt: null, tier, stale: false }; }
+  if (observedAt > assessedAt) fail(`${platform}.${itemId}: 확인일이 분석일보다 미래입니다.`);
   const expiry = FRESH_DAYS[tier] ?? FRESH_DAYS.self;
   const days = Math.floor((Date.parse(`${assessedAt}T00:00:00Z`) - Date.parse(`${observedAt}T00:00:00Z`)) / 86400000);
-  const stale = days > expiry;
-  return { factor: stale ? 0.5 : 1, observedAt, tier, stale, days, expiry };
+  const expiresAt = raw.expiresAt ? isoDay(raw.expiresAt) : null;
+  if (raw.expiresAt && !expiresAt) fail(`${platform}.${itemId}: expiresAt은 YYYY-MM-DD여야 합니다.`);
+  if (expiresAt && expiresAt < observedAt) fail(`${platform}.${itemId}: expiresAt이 observedAt보다 빠릅니다.`);
+  const stale = expiresAt ? expiresAt < assessedAt : days > expiry;
+  return { factor: stale ? 0.5 : 1, observedAt, expiresAt, tier, stale, days, expiry };
 }
 function loadLens(lensPath) {
   const lens = readJson(lensPath);
@@ -78,7 +86,7 @@ function normalizeEvidence(input, items, warnings) {
       if (!inPlatform(entry, platform)) fail(`${platform}.${id}: 이 플랫폼에 적용되지 않는 항목입니다.`);
       const value = statusValue(raw);
       const naReason = typeof raw === 'object' && raw ? plain(raw.naReason || raw.reason || raw.note) : '';
-      if (value === 'na' && !naReason) warnings.push(`${platform}.${id}: 적용 제외(na) 사유가 없습니다.`);
+      if (value === 'na' && !naReason) fail(`${platform}.${id}: 적용 제외(na)에는 naReason이 필요합니다.`);
       out[platform][id] = { value, raw, naReason: value === 'na' ? naReason || null : null, fresh: freshness(raw, input.assessedAt, warnings, id, platform) };
     }
   }
@@ -252,6 +260,18 @@ export function analyze(input, options = {}) {
   const base = compositeScore === null ? null : GRADE.find(([minimum]) => compositeScore >= minimum);
   const composite = { score: compositeScore, axesUsed: parts.length, blockers, unratedGates: mobile.gates.unrated + web.gates.unrated, grade: base ? { code: blockers && (base[1] === 'L4' || base[1] === 'L5') ? 'L3*' : base[1], name: blockers && (base[1] === 'L4' || base[1] === 'L5') ? '게이트 미충족' : base[2] } : null };
   const result = { schema: 'crh-analysis-result/v1', engineVersion: ENGINE_VERSION, generatedAt: new Date().toISOString(), assessedAt, project: input.project || {}, lens: { name: lens.name, version: lens.version, itemCount: items.size, gateCount: [...items.values()].filter(entry => entry.g).length }, scope: { id: scope, selectedItems: selected.size }, direction: { ...direction, selected: config.selected, target: config.target, platformMix: { mobile: config.mix[0], web: config.mix[1] } }, mobile, web, axes: { general: a1, benchmark: bench.score, direction: direction.score, weights: axisWeights }, benchmark: bench, composite, gaps: [...gapAnalysis(lens, evidence, selected, weights, 'mobile'), ...gapAnalysis(lens, evidence, selected, weights, 'web')].sort((a, b) => b.impact - a.impact), warnings };
+  result.evidenceLedger = Object.fromEntries(Object.entries(evidence).map(([platform, entries]) => [platform, Object.fromEntries(Object.entries(entries).map(([id, entry]) => [id, {
+    score: entry.value,
+    tier: entry.fresh.tier,
+    observedAt: entry.fresh.observedAt,
+    expiresAt: entry.fresh.expiresAt || null,
+    stale: Boolean(entry.fresh.stale),
+    sourceType: plain(entry.raw?.sourceType) || null,
+    sourceUrl: plain(entry.raw?.sourceUrl || entry.raw?.source) || null,
+    runId: plain(entry.raw?.runId) || null,
+    note: plain(entry.raw?.note) || null,
+    naReason: entry.naReason,
+  }]))]));
   return { ...result, reportMarkdown: reportMarkdown(result) };
 }
 function parseArgs(argv) {

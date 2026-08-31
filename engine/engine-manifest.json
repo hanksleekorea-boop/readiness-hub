@@ -2,12 +2,12 @@
   "schema": "crh-engine-manifest/v1",
   "engineVersion": "1.1.0",
   "lensVersion": "2.1.0",
-  "publishedAt": "2026-08-20T05:58:06Z",
+  "publishedAt": "2026-08-31T00:00:00Z",
   "algorithm": "SHA-256",
   "files": {
     "readiness-engine.mjs": {
-      "bytes": 26597,
-      "sha256": "e85e942016e6ae3bdd746c23a7158219425d8916fe9b8b2f6a374ea3eff275e2"
+      "bytes": 28026,
+      "sha256": "81fbaa177173542a674dc0da412e958c1c82f87e2acd7fc30c163c40ed6c2819"
     },
     "profile-to-evidence.mjs": {
       "bytes": 6331,
@@ -20,6 +20,14 @@
     "project-evidence.example.json": {
       "bytes": 2210,
       "sha256": "6d9fe1f50022f540dea2edf5ac81bd8c09c31c67be8d4e0f1d869b56ef826359"
+    },
+    "domain-classifier.mjs": {
+      "bytes": 2861,
+      "sha256": "0374137d73593eb8086d349f69f6ead8432fef369f299125b3349f32989b6428"
+    },
+    "benchmark-evidence.mjs": {
+      "bytes": 3090,
+      "sha256": "5855af2b59aab652f4d5b3ee7cc4e061016e768cc753f77d4faa479bf1e91558"
     }
   }
 }

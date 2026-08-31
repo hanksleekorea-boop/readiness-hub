@@ -419,7 +419,7 @@ function renderAssess(){
     if(typeof v==='number'){var f=fresh(curPf,it.id);
       if(f)fl='<div class="bench"><span class="fresh '+f.st+'">'+(f.st==='bad'?'갱신 필요 · 점수 ×0.5':f.st==='soon'?'만료 임박 D-'+f.left:'유효 D-'+f.left)+'</span>'+
         '<span>확인일 '+f.when+'</span></div>';}
-    return '<div class="item"><div class="it-t">'+(it.g?'<span class="tag gate">게이트</span>':'')+
+    return '<div class="item" data-item-id="'+it.id+'"><div class="it-t">'+(it.g?'<span class="tag gate">게이트</span>':'')+
       (it.obs==='ext'?'<span class="tag ext">외부검증</span>':'')+'<span>'+esc(it.t)+'</span></div>'+
       '<div class="it-h">'+esc(it.h)+'</div>'+
       (it.rub?'<details class="rubw"><summary>채점 기준 0~4 보기</summary><div class="rub">'+esc(it.rub)+'</div></details>':'')+
@@ -523,6 +523,7 @@ function renderMore(){
 }
 
 function renderAll(){renderQuick();renderAssess();renderDash();renderGap();renderMore();}
+function renderInitialView(){renderQuick();}
 
 /* ===== 이벤트 ===== */
 document.getElementById('nav').addEventListener('click',function(e){
@@ -580,12 +581,17 @@ document.getElementById('bTheme').onclick=function(){
   document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';
   renderDash();};
 document.getElementById('bSave').onclick=function(){
-  var b=new Blob([JSON.stringify(Object.assign({v:4},S),null,2)],{type:'application/json'});
+  var backup={schema:'crh-local-backup/v1',appVersion:'beta 0.7.0',createdAt:new Date().toISOString(),state:Object.assign({v:4},S)};
+  var b=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});
   var a=document.createElement('a');a.href=URL.createObjectURL(b);
   a.download=(S.svc||'readiness')+'-'+S.date+'.json';document.body.appendChild(a);a.click();a.remove();};
 document.getElementById('bLoad').onclick=function(){document.getElementById('fIn').click();};
 document.getElementById('fIn').onchange=function(e){var f=e.target.files[0];if(!f)return;
-  var r=new FileReader();r.onload=function(){try{var o=JSON.parse(r.result);
+  if(f.size>5*1024*1024){alert('불러오기 실패: 백업 파일은 5MB 이하여야 합니다.');e.target.value='';return;}
+  var r=new FileReader();r.onload=function(){try{var parsed=JSON.parse(r.result);var o=parsed&&parsed.schema==='crh-local-backup/v1'?parsed.state:parsed;
+    if(!o||typeof o!=='object'||!o.scores)throw new Error('지원하지 않는 백업 형식');
+    var count=['mobile','web'].reduce(function(n,pf){return n+Object.keys(o.scores[pf]||{}).length;},0);
+    if(!confirm('백업 검사 완료: 평가값 '+count+'개를 불러옵니다. 현재 화면의 입력은 바뀝니다. 계속할까요?'))return;
     S=Object.assign(blank(),o);
     S.weights=Object.assign({},DEFW,o.weights||{});
     ['scores','notes','ev','when','gateSign'].forEach(function(k){S[k]=Object.assign({mobile:{},web:{}},o[k]||{});});
@@ -608,8 +614,11 @@ document.getElementById('bInstall').onclick=function(){if(!deferred)return;defer
 if('serviceWorker' in navigator && location.protocol!=='file:'){
   navigator.serviceWorker.register('../sw.js').catch(function(){});}
 
-renderAll();
+renderInitialView();
 </script>
-<script src="../assets/shell.js"></script>
+<link rel="stylesheet" href="../assets/content-guide.css?v=1.0.0">
+<script src="../assets/content-guide.js?v=1.0.0"></script>
+<script src="../assets/auth.js?v=0.7.0"></script>
+<script src="../assets/shell.js?v=0.8.0"></script>
 </body>
 </html>

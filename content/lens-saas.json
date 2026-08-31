@@ -1,0 +1,14 @@
+{
+  "schema": "crh-domain-lens/v1",
+  "id": "saas",
+  "name": "SaaS·업무 도구",
+  "version": "1.0.0",
+  "baseLens": "lens-core-v2.1",
+  "baseItemCount": 197,
+  "changesBaseDenominator": false,
+  "priorityItems": ["f01","f03","f14","s03","s05","s08","r02","r03","o03","o05","o09","b02"],
+  "overrides": [
+    {"itemId":"s03","reason":"조직별 자료 격리와 최소 권한을 서버에서 검증","approvedAt":"2026-08-31"},
+    {"itemId":"r02","reason":"장애 감지·알림·복구 목표와 공개 상태를 연결","approvedAt":"2026-08-31"}
+  ]
+}
