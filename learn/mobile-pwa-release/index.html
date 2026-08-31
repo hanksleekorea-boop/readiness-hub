@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="google-adsense-account" content="ca-pub-2476023536699107">
+  <meta name="description" content="모바일 웹과 PWA의 좁은 화면, 터치, 설치, 오프라인, Android 실제 기기 검증 방법">
+  <link rel="canonical" href="https://hanksleekorea-boop.github.io/readiness-hub/learn/mobile-pwa-release/">
+  <link rel="stylesheet" href="../../assets/learn.css?v=1.0.0"><link rel="stylesheet" href="../../assets/adsense.css?v=1.0.0"><title>모바일·PWA 출시 검증 안내서 — Readiness Hub</title>
+</head><body data-crh-ad-page="content"><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="learn-top"><nav class="learn-nav" aria-label="주요 메뉴"><strong>Readiness Hub 학습 자료실</strong><a href="../">자료실</a><a href="../../m/">모바일 진단</a><a href="../../advertising/">광고 운영 원칙</a></nav></header>
+<main id="main" class="learn"><p class="eyebrow">안내서 2 · 모바일/PWA</p><h1>화면을 줄여 본 것과 실제 휴대폰에서 써 본 것은 다릅니다.</h1>
+<p class="lead">개발자 도구에서 360px 화면을 확인하면 레이아웃 문제를 빨리 찾을 수 있습니다. 하지만 홈 화면 설치, 손가락 터치, 노치, 뒤로가기, 공유, 비행기 모드는 실제 기기에서만 드러나는 문제가 있습니다.</p><p class="meta">갱신일 2026-08-31 · 실제 기기 결과와 자동 검사를 분리</p>
+<h2>1. 먼저 브라우저에서 폭을 검사합니다</h2><p>320·360·390·412·768px처럼 대표 폭에서 문서 너비와 화면 너비를 비교합니다. 표, 긴 주소, 코드, 버튼 묶음이 가로로 밀리지 않는지 확인합니다. 확대 200%와 큰 글자 설정에서도 중요한 버튼과 안내가 잘리지 않아야 합니다.</p>
+<h2>2. 손가락이 누를 공간을 확보합니다</h2><p>터치 대상은 보통 최소 44px 수준의 높이와 충분한 간격을 갖도록 설계합니다. 광고는 특히 탭, 저장, 공유, 다음 버튼 가까이에 두지 않습니다. 사용자가 진단 선택지를 누르려다 광고를 건드리면 사용자 경험과 광고 정책이 동시에 나빠집니다.</p>
+<aside class="crh-ad-shell" data-ad-size="inline" data-crh-ad-slot-key="guideInline" aria-label="안내서 중간 광고"><span class="crh-ad-label">광고</span><p class="crh-ad-status">광고 준비 상태를 확인하는 중입니다.</p></aside>
+<h2>3. 설치형 웹앱의 네 가지 상태를 확인합니다</h2><table class="compare"><thead><tr><th>상태</th><th>확인할 것</th></tr></thead><tbody><tr><td>첫 방문</td><td>설치하지 않아도 핵심 기능을 쓸 수 있는지 확인합니다.</td></tr><tr><td>설치</td><td>이름·아이콘·시작 주소·화면 방향이 올바른지 봅니다.</td></tr><tr><td>오프라인</td><td>네트워크가 끊겼을 때 저장된 화면과 오류 안내가 정직한지 봅니다.</td></tr><tr><td>업데이트</td><td>작업 중인 입력을 잃지 않고 사용자가 새 판 적용 시점을 선택하는지 봅니다.</td></tr></tbody></table>
+<h2>4. 실제 Android 한 대에서 재현 가능한 시험을 합니다</h2><ol class="checklist"><li>연결된 기기 중 유휴 상태인 한 대만 선택합니다.</li><li>모델명·운영체제·브라우저·시험 날짜를 기록합니다.</li><li>공개 주소 접속, 5개 탭, 입력, 저장·복원, 공유를 확인합니다.</li><li>홈 화면 설치 뒤 아이콘과 시작 주소를 확인합니다.</li><li>비행기 모드에서 다시 열고 임시 저장 안내를 확인합니다.</li><li>실패하면 화면·재현 순서·수정 뒤 재시험 결과를 남깁니다.</li></ol>
+<div class="note"><b>광고가 있는 콘텐츠 화면을 시험할 때:</b> 광고를 누르지 않습니다. 자리 높이가 미리 확보돼 레이아웃이 움직이지 않는지, 닫기나 이동 버튼과 충분히 떨어져 있는지만 확인합니다.</div>
+<h2>5. 완료 판정</h2><p>브라우저 검사와 실제 기기 표가 모두 있어야 모바일 출시 증거가 완성됩니다. 브라우저 자동검사가 통과해도 실기기 표가 없으면 “실기기 미실시”를 유지합니다. 반대로 한 기기에서 성공했다고 모든 Android 기기에서 성공한다고 확대 해석하지 않습니다.</p>
+<aside class="crh-ad-shell" data-ad-size="wide" data-crh-ad-slot-key="guideWide" aria-label="안내서 하단 광고"><span class="crh-ad-label">광고</span><p class="crh-ad-status">광고 준비 상태를 확인하는 중입니다.</p></aside>
+<div class="privacy-row"><button class="crh-privacy-choice" type="button" data-crh-privacy-choices>개인정보 및 쿠키 설정</button><span id="crhPrivacyChoiceStatus" role="status">광고를 거부해도 안내서와 진단 기능은 그대로 사용할 수 있습니다.</span></div>
+</main><footer class="learn-footer"><a href="../">학습 자료실</a><a href="../../privacy/">개인정보</a><a href="../../advertising/">광고 운영 원칙</a></footer><script src="../../assets/adsense-config.js?v=1.0.0"></script><script src="../../assets/adsense.js?v=1.0.0"></script></body></html>

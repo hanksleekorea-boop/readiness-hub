@@ -61,7 +61,7 @@
       + '.crh-legal-footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}';
     var s = document.createElement('style'); s.textContent = css; document.head.appendChild(s);
     var f = document.createElement('footer'); f.className = 'crh-legal-footer';
-    f.innerHTML = '<span>beta 0.6.4</span><a href="' + URLS.base + 'terms/">이용약관</a>'
+    f.innerHTML = '<span>beta 0.6.4</span><a href="' + URLS.base + 'learn/">학습 자료실</a><a href="' + URLS.base + 'advertising/">광고 운영 원칙</a><a href="' + URLS.base + 'terms/">이용약관</a>'
       + '<a href="' + URLS.base + 'privacy/">개인정보 처리방침</a>'
       + '<a href="' + URLS.base + 'account/delete/">계정·데이터 삭제</a>';
     document.body.appendChild(f);

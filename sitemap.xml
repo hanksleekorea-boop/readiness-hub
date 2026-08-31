@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/</loc><lastmod>2026-08-15</lastmod></url>
+  <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/</loc><lastmod>2026-08-31</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/m/</loc><lastmod>2026-08-15</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/dashboard.html</loc><lastmod>2026-08-15</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/spec.html</loc><lastmod>2026-08-15</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/terms/</loc><lastmod>2026-08-15</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/privacy/</loc><lastmod>2026-08-15</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/account/delete/</loc><lastmod>2026-08-15</lastmod></url>
+  <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/learn/</loc><lastmod>2026-08-31</lastmod></url>
+  <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/learn/evidence-first-launch/</loc><lastmod>2026-08-31</lastmod></url>
+  <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/learn/mobile-pwa-release/</loc><lastmod>2026-08-31</lastmod></url>
+  <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/learn/honest-benchmarking/</loc><lastmod>2026-08-31</lastmod></url>
+  <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/advertising/</loc><lastmod>2026-08-31</lastmod></url>
 </urlset>

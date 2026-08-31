@@ -1,0 +1,11 @@
+.crh-ad-shell{width:100%;margin:34px auto;padding:16px;border:1px solid rgba(94,91,82,.28);border-radius:12px;background:rgba(127,127,127,.045);overflow:hidden;contain:layout paint}
+.crh-ad-shell[data-ad-size="inline"]{min-height:170px;max-width:760px}
+.crh-ad-shell[data-ad-size="wide"]{min-height:250px;max-width:980px}
+.crh-ad-label{display:block;margin:0 0 10px;color:#686762;font:700 11px/1.2 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.crh-ad-status{margin:0;color:#686762;font:13px/1.55 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.crh-ad-shell .adsbygoogle{min-width:0;width:100%}
+.crh-ad-policy{max-width:980px;margin:16px auto;padding:14px 16px;border-left:4px solid #2f7d58;background:#eef8f2;color:#274438;font:14px/1.6 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.crh-privacy-choice{min-height:44px;padding:9px 13px;border:1px solid currentColor;border-radius:8px;background:transparent;color:inherit;font:700 13px/1 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;cursor:pointer}
+.crh-privacy-choice:focus-visible{outline:3px solid #4d90fe;outline-offset:3px}
+@media(max-width:600px){.crh-ad-shell{margin:24px auto;padding:12px}.crh-ad-shell[data-ad-size="inline"],.crh-ad-shell[data-ad-size="wide"]{min-height:140px}}
+@media(prefers-reduced-motion:reduce){.crh-ad-shell *{animation:none!important;transition:none!important}}
