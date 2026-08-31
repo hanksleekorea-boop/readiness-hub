@@ -38,9 +38,24 @@
     accountState: Object.freeze({
       publisherAndSlotVerified: true,
       rootAdsTxtVerified: true,
-      siteApproval: 'requires-google-confirmation',
-      europeanMessage: 'requires-google-confirmation',
-      usStatesMessage: 'requires-google-confirmation'
+      siteApproval: 'google-review-in-progress',
+      adsTxtStatus: 'approved',
+      policyCenter: 'no-current-violations',
+      europeanMessage: 'published',
+      usStatesMessage: 'published',
+      autoAds: Object.freeze({
+        enabled: true,
+        autoOptimization: false,
+        intentBasedFormats: false,
+        overlayFormats: false,
+        inPageBanner: true,
+        multiplex: false,
+        exactPageExclusions: Object.freeze([
+          'hanksleekorea-boop.github.io/subscrap/global/',
+          'hanksleekorea-boop.github.io/readiness-hub/advertising/'
+        ])
+      }),
+      consoleObservedAt: '2026-08-31'
     })
   });
 })();
