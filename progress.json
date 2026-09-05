@@ -1,100 +1,109 @@
 {
   "schema": "crh-progress",
-  "updated": "2026-08-31",
+  "updated": "2026-09-04",
   "product": "상업화 준비도 허브 β (Continuous Readiness Index)",
-  "version": "beta 0.9.0 · 1·2단계 공개 후보 + Spec vNEXT",
+  "version": "beta 1.1.0 · 콘텐츠·UX/UI 1·2단계 + 3단계 로컬 후보 + Spec vNEXT",
   "lens": "core v2.1.0 + EU/EEA v1.0.0 + US v1.0.0 · 각 15영역 197개 · 관할별 26개 적용조건·공식출처 연결",
   "repo": {
     "public": true,
     "note": "결과 저장소·Pages는 공개, 전체 소스 저장소는 비공개"
   },
   "signal": "yellow",
-  "signalWhy": "1·2단계의 구현 가능한 기능과 PC·모바일 브라우저 검증은 완료했습니다. Android 기기 0대, 운영 주체·비공개 문의 미확정, Drive 복원 실패, 실제 동의 사용자 표본 부족은 별도 출시 게이트로 남아 있습니다.",
+  "signalWhy": "부분 완료. 197개 가이드·40개 필수 조건·영문 핵심 진단·업종별 보충 18개·증거/갭/비교/추세를 보완했습니다. 검증하지 않은 단계는 100%로 표시하지 않습니다.",
   "phases": [
     {
       "n": "설계",
       "pct": 100,
-      "note": "초기 107개/게이트20에서 v2.1 197개/게이트40으로 확장·정합성 기준 확정"
+      "note": "과거 작업 기록(현재 전체 출시율 아님): 초기 107개/게이트20에서 v2.1 197개/게이트40으로 확장·정합성 기준 확정"
     },
     {
       "n": "v1~v3",
       "pct": 100,
-      "note": "진단·벤치마크·방향 정의·관찰가능성·근거등급"
+      "note": "과거 작업 기록(현재 전체 출시율 아님): 진단·벤치마크·방향 정의·관찰가능성·근거등급"
     },
     {
       "n": "실측 검증",
       "pct": 100,
-      "note": "앱10·웹10 채점, 결함 6종 도출·반영"
+      "note": "과거 작업 기록(현재 전체 출시율 아님): 앱10·웹10 채점, 결함 6종 도출·반영"
     },
     {
       "n": "경쟁 분석",
       "pct": 100,
-      "note": "메이저 10종 비교, v4 기획 확정"
+      "note": "과거 작업 기록(현재 전체 출시율 아님): 메이저 10종 비교, v4 기획 확정"
     },
     {
       "n": "β 코어",
       "pct": 100,
-      "note": "신선도·목표대비·퀵체크·왓이프·서명·렌즈분리 + 단계별 범위"
+      "note": "과거 작업 기록(현재 전체 출시율 아님): 신선도·목표대비·퀵체크·왓이프·서명·렌즈분리 + 단계별 범위"
     },
     {
       "n": "β 모바일",
       "pct": 100,
-      "note": "PWA 5탭, 44px 터치 영역, 오프라인 캐시"
+      "note": "과거 작업 기록(현재 전체 출시율 아님): PWA 5탭, 44px 터치 영역, 오프라인 캐시"
     },
     {
       "n": "페르소나 검증",
       "pct": 100,
-      "note": "1000명 시험 → 결과 획득률 20.3%→72.9%"
+      "note": "과거 작업 기록(현재 전체 출시율 아님): 1000명 시험 → 결과 획득률 20.3%→72.9%"
     },
     {
       "n": "전면 기획서",
       "pct": 100,
-      "note": "35개 장. 33장 99% 계획, 34장 실행 개선안, 35장 엔진 자체 분석 채택안 반영"
+      "note": "과거 작업 기록(현재 전체 출시율 아님): 35개 장. 33장 99% 계획, 34장 실행 개선안, 35장 엔진 자체 분석 채택안 반영"
     },
     {
       "n": "렌즈 v2.1 (루브릭 완비)",
       "pct": 100,
-      "note": "상용 표면 5개 영역 신설 + 기존 5개 보강 = +90항목. 국내 법정 12항목 게이트화. 전 197항목에 0~4 채점 기준 부여(+178)"
+      "note": "과거 작업 기록(현재 전체 출시율 아님): 상용 표면 5개 영역 신설 + 기존 5개 보강 = +90항목. 국내 법정 12항목 게이트화. 전 197항목에 0~4 채점 기준 부여(+178)"
     },
     {
       "n": "공개 배포",
       "pct": 100,
-      "note": "GitHub Pages 배포 완료 · PC/모바일/대시보드/기획서 HTTP 200"
+      "note": "과거 작업 기록(현재 전체 출시율 아님): GitHub Pages 배포 완료 · PC/모바일/대시보드/기획서 HTTP 200"
     },
     {
       "n": "자동 러너",
       "pct": 100,
-      "note": "자동 측정 11항목 최고 점수 재검증 · TBT 1342ms→0ms · 법적 표면/삭제 경로 게이트 통과"
+      "note": "과거 작업 기록(현재 전체 출시율 아님): 자동 측정 11항목 최고 점수 재검증 · TBT 1342ms→0ms · 법적 표면/삭제 경로 게이트 통과"
     },
     {
       "n": "법적 표면·삭제 경로",
       "pct": 100,
-      "note": "/terms·/privacy·/account/delete 구현 · robots/sitemap 추가 · 실제 데이터 흐름 기준 고지"
+      "note": "과거 작업 기록(현재 전체 출시율 아님): /terms·/privacy·/account/delete 구현 · robots/sitemap 추가 · 실제 데이터 흐름 기준 고지"
     },
     {
       "n": "Google 로그인·내 계정 후보판",
       "pct": 70,
-      "note": "6상태 인증 경계·계정 UI·가림 이메일·명시적 프로필 저장·안전한 백업 가져오기·서비스 작업자 갱신을 구현하고 모의 공급자 시험을 통과. 실제 인증 공급자 연결은 미실시"
+      "note": "과거 작업 기록(현재 전체 출시율 아님): 6상태 인증 경계·계정 UI·가림 이메일·명시적 프로필 저장·안전한 백업 가져오기·서비스 작업자 갱신을 구현하고 모의 공급자 시험을 통과. 실제 인증 공급자 연결은 미실시"
     },
     {
       "n": "1·2단계 구현 후보",
-      "pct": 100,
-      "note": "증거 수명주기·6상태 갭·출시 여권·500개 도메인 분류·최소 3개 비교·교육/커머스/SaaS 렌즈·실제 연구 동의/기록 도구 구현"
+      "pct": null,
+      "note": "2026-09-04 재감사: 이전 완료 수치에 근거 부족. 단계별 콘텐츠·사용성·브라우저·성능·실기기·운영 조건 검증 전 전체 완료율 미산정.",
+      "previousClaimPct": 100
+    },
+    {
+      "n": "콘텐츠·UX/UI 1단계",
+      "pct": null,
+      "note": "2026-09-04 재감사: 이전 완료 수치에 근거 부족. 단계별 콘텐츠·사용성·브라우저·성능·실기기·운영 조건 검증 전 전체 완료율 미산정.",
+      "previousClaimPct": 100
     },
     {
       "n": "1·2단계 외부 승인 게이트",
-      "pct": 60,
-      "note": "PC·모바일 브라우저·엔진·신뢰 페이지 통과. Android, 운영자 비공개 문의, Drive 복원, 실제 사용자 5명은 미통과"
+      "pct": null,
+      "note": "2026-09-04 재감사: 이전 완료 수치에 근거 부족. 단계별 콘텐츠·사용성·브라우저·성능·실기기·운영 조건 검증 전 전체 완료율 미산정.",
+      "previousClaimPct": 60
     },
     {
       "n": "실기기 검증",
-      "pct": 0,
-      "note": "2026-08-31 ADB 서버 재시작 후 USB 0대·무선 디버깅 0개·Windows Android 장치 0개. 실기기 미실시"
+      "pct": null,
+      "note": "2026-09-04 SM-A5660 한 대에서 로컬 PWA 360 CSS px·가로 넘침 없음·manifest·서비스워커·오프라인 재로드·진단 시작을 부분 확인. 터치 보강 후 재시험·홈 설치·복원은 ADB 연결 끊김으로 대기."
     },
     {
       "n": "기획 구현(1~5단계)",
-      "pct": 45,
-      "note": "1·2단계 구현 가능한 범위 완료. 외부 게이트와 3~5단계는 별도"
+      "pct": null,
+      "note": "2026-09-04 재감사: 이전 완료 수치에 근거 부족. 단계별 콘텐츠·사용성·브라우저·성능·실기기·운영 조건 검증 전 전체 완료율 미산정.",
+      "previousClaimPct": 45
     }
   ],
   "eta": {
@@ -104,13 +113,13 @@
     "target": "미확인",
     "original": "8/12",
     "previous": "8/12",
-    "developmentValidation": "beta 0.9.0 1·2단계 후보의 단위·정적·PC/모바일 브라우저 회귀검사를 완료. 실제 Android·Drive 복원·운영자 사실·실제 연구 표본 필요",
-    "commercialOperation": "미확인 — 실제 Google 인증 연결, 운영 주체 신원·비공개 문의 채널, 실제 기기·법 적용성·결제·운영 검증 일정 필요",
+    "developmentValidation": "1·2단계 보완 후보. 현재 검사별 결과와 미검증 조건을 분리하며 전체 완료일은 재산정 필요",
+    "commercialOperation": "운영 주체·비공개 문의·실제 Android·복원·브라우저/성능/사용성 목표 확인 후 산정. 계정 없는 무료판에서 실제 Google 로그인은 필수 아님",
     "note": "기존 8/12는 현재 날짜보다 과거이고 전체 범위·외부 검증 근거가 없어 무효. 공개일과 실제 기기 제공일을 받은 뒤 재산정"
   },
   "bottleneck": {
-    "what": "Android 기기 0대, 운영 주체·비공개 문의 미확정, Drive 복원 실패, 실제 동의 사용자 5명 미확보",
-    "unblock": "유휴 Android 한 대를 USB 디버깅 승인 상태로 연결하고 운영자 공시·비공개 문의를 확정하며 Drive 인증을 복구하고 동의 사용자 5명 이상을 모집"
+    "what": "실제 Android 연결 0대, 운영 주체·비공개 문의 미확인, Drive restore-test BLOCKED, 4브라우저·공개 성능·사용성 목표 검증 부족",
+    "unblock": "소유가 확인된 유휴 Android 한 대 연결, 실제 운영 정보·복원 접근 확인, 브라우저/성능/사용성 검증 완료"
   },
   "counts": {
     "files": 40,
@@ -132,132 +141,171 @@
     {
       "t": "렌즈 v2.1 무결성",
       "r": "197항목 ID 중복 0 · 가중치합 100 · 15영역 · 루브릭 197/197",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "EU/EEA·미국 관할 렌즈",
       "r": "각 197항목·15영역·가중치합100·게이트40 · 관할별 26개 적용조건·공식출처 연결",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "렌즈 검증기 음성 대조",
       "r": "중복 ID·깨진 출처·0~4 단계 누락 3종을 일부러 주입해 3/3 검출",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "루브릭 형식 검사",
       "r": "0~4 5단계 표기 178/178 통과 · 140자 초과 0건",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "루브릭 렌더 검사(PC)",
       "r": "전 범위 178개 항목 전부 표시 · 누락 0",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "루브릭 음성 대조",
       "r": "2개 제거 → 178→176 검출됨 (PC) · 1개 제거 → 16→15 검출됨 (모바일)",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "모바일 루브릭 접기 UI",
       "r": "5탭 정상 · 오류 0 · 채점기준 펼침 동작",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
-      "t": "v2.1 페르소나 재시험",
-      "r": "결과 획득 73.1% 유지 · 6.1분 (루브릭 추가로 인한 저하 없음)",
-      "ok": true
+      "t": "콘텐츠·UX/UI 1단계 페르소나 재시험",
+      "r": "2026-09-04 가상 1,000명 · 퀵체크 89.9% · 결과 획득 75.6% · 전체 197개 완주 0%. 1단계 목표85 충족, 2단계 목표90 미달. 실제 참가자0명. 시간 가정은 기존과 동일",
+      "ok": false,
+      "evidencePeriod": "2026-09-04"
     },
     {
       "t": "영역 일괄 해당없음",
       "r": "PC·모바일 양방향 전환 확인",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "기획서 렌더·목차 검증",
       "r": "31개 장·337행·오류 0",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "QR 부호기 실제 해독 시험",
       "r": "12/12 성공 (OpenCV)",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "QR 데이터·ECC 파이썬 대조",
       "r": "10/10 일치",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "QR 음성 대조(훼손 검출)",
       "r": "검출됨",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "PC판 기능 검사",
       "r": "범위 4단계·잠정결과·N/A접기 통과, 오류 0",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "모바일판 기능 검사",
       "r": "5탭·범위·잠정결과 통과, 오류 0 · 공개 URL 390×844·360×800 가로 넘침 0",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "신선도 감쇠 검사",
       "r": "200일 경과 → ×0.5 확인",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "게이트 서명 만료",
       "r": "129일 → 만료 판정",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "공유 링크 왕복",
       "r": "상태 100% 복원",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "인증 상태기계·공급자 경계",
       "r": "6개 상태·인증 공급자 없음 차단·모의 로그인/이름변경/로그아웃·팝업 취소 복구 시험 통과",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "계정 UI 로컬 브라우저",
       "r": "PC 계정 대화상자·가림 이메일 구조·AUTH_BACKEND_MISSING 안내·로그인 없는 기존 이용 경로 확인",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "백업·PWA 안전성",
       "r": "버전 포함 백업 포장·5MB 제한·가져오기 사전 확인·앱 전용 캐시 격리·사용자 승인 갱신 검사 통과",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "1·2단계 계약·브라우저 회귀",
       "r": "증거·갭·출시 여권·도메인·비교·3렌즈 시험 통과, 360·390·768·1440px × 9경로 넘침 0·페이지 오류 0",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "공개 신뢰 표면",
       "r": "약관·개인정보·삭제·지원·상태·보안·접근성·피드백 정적 검사 통과. 운영자 비공개 문의는 대기",
-      "ok": true
+      "ok": true,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "실제 Google 로그인",
       "r": "Readiness Hub에 연결된 인증 공급자가 없어 미실시 (AUTH_BACKEND_MISSING)",
-      "ok": false
+      "ok": false,
+      "evidencePeriod": "historical-unless-dated"
     },
     {
       "t": "안드로이드 실기기",
-      "r": "ADB USB 0대·무선 디버깅 0개·Windows Android 장치 0개. 실기기 미실시",
-      "ok": false
+      "r": "2026-09-04 SM-A5660 한 대에서 로컬 PWA 360 CSS px·가로 넘침 없음·manifest·서비스워커 제어·오프라인 재로드·진단 시작을 확인. 가시적 상호작용 요소 84개 중 44px 미만 0개. 홈 설치·복원은 대기.",
+      "ok": false,
+      "evidencePeriod": "2026-09-04"
     },
     {
       "t": "Drive 복원",
-      "r": "2026-08-31 비파괴 restore-test 실패(VERIFY_FAILED). 차단 상태 유지",
-      "ok": false
+      "r": "2026-09-04 비파괴 restore-test 재시도: DEGRADED / BLOCKED. 성공으로 간주하지 않음",
+      "ok": false,
+      "evidencePeriod": "2026-09-04"
+    },
+    {
+      "t": "1·2단계 콘텐츠·도메인·판정 보완",
+      "r": "2026-09-04 정적/단위 검사: 197개 11필드, 필수 조건40, 용어120, FAQ30, 가상 사례12, 영어197제목, 3렌즈·보충18질문·분모197 보존. 빈 출시 판정/날짜/미입력 게이트/비교 중복·빈 점수 방어",
+      "ok": true,
+      "evidencePeriod": "2026-09-04"
+    },
+    {
+      "t": "3단계 로컬 상용화 후보",
+      "r": "2026-09-04 Stage 3 탭·로컬 역할/댓글/감사·197개 가이드 제안 미리보기/승인·제안 승인 시 진단 불변·유료/계정/외부 AI/초대 기본 차단",
+      "ok": true,
+      "evidencePeriod": "2026-09-04"
     }
-  ]
+  ],
+  "verifiedOverallPct": null
 }

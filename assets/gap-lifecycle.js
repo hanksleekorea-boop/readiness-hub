@@ -16,7 +16,10 @@
   };
   function text(value) { return String(value == null ? '' : value).trim(); }
   function requiredReverification(value) {
-    return value && text(value.runId) && text(value.observedAt) && Number.isFinite(Number(value.beforeScore)) && Number.isFinite(Number(value.afterScore)) && text(value.residualRisk);
+    if (!value) return false;
+    var date = text(value.observedAt), parsed = new Date(date+'T00:00:00Z');
+    var validDate = /^\d{4}-\d{2}-\d{2}$/.test(date) && Number.isFinite(parsed.getTime()) && parsed.toISOString().slice(0,10)===date && date<=new Date().toISOString().slice(0,10);
+    return Boolean(text(value.runId) && validDate && [value.beforeScore,value.afterScore].every(function(n){return typeof n==='number' && Number.isInteger(n) && n>=0 && n<=4;}) && text(value.residualRisk));
   }
   function validate(gap) {
     var errors = [];
@@ -32,7 +35,7 @@
     input = input || {};
     var now = input.at || new Date().toISOString();
     var gap = {
-      id: text(input.id), itemId: text(input.itemId), title: text(input.title),
+      id: text(input.id), itemId: text(input.itemId), title: text(input.title), why: text(input.why),
       status: input.status || 'new', impact: input.impact || 'medium', effort: input.effort || 'medium',
       blocker: Boolean(input.blocker), blockerReason: text(input.blockerReason) || null,
       assignee: text(input.assignee) || null, dueDate: text(input.dueDate) || null,
@@ -48,6 +51,7 @@
     if (!STATUSES.includes(next)) throw new Error('허용되지 않은 상태입니다.');
     if (!(PATHS[gap.status] || []).includes(next)) throw new Error(gap.status + '에서 ' + next + '로 바로 이동할 수 없습니다.');
     var changed = Object.assign({}, gap, { status: next, history: (gap.history || []).slice() });
+    if (gap.status === 'done') { changed.previousReverification=gap.reverification; changed.reverification=null; }
     if (next === 'blocked') { changed.blocker = true; changed.blockerReason = text(details.blockerReason); }
     if (next !== 'blocked') { changed.blocker = false; changed.blockerReason = null; }
     if (details.reverification) changed.reverification = Object.assign({}, details.reverification);

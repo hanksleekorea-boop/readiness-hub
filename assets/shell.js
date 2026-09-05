@@ -58,11 +58,11 @@
   /* 모든 화면에서 정책·삭제 경로를 같은 위치에 노출한다. */
   function injectLegalFooter() {
     if (document.querySelector('.crh-legal-footer')) return;
-    var css = '.crh-legal-footer{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;padding:18px 16px 22px;border-top:1px solid rgba(127,127,127,.24);font:12px/1.5 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#777;background:rgba(127,127,127,.04)}'
+    var css = '.crh-legal-footer{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;padding:18px 16px 22px;border-top:1px solid rgba(127,127,127,.24);font:12px/1.5 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink-2,var(--ink2,#555));background:rgba(127,127,127,.04)}'
       + '.crh-legal-footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}';
     var s = document.createElement('style'); s.textContent = css; document.head.appendChild(s);
     var f = document.createElement('footer'); f.className = 'crh-legal-footer';
-    f.innerHTML = '<span>beta 0.9.0 1·2단계 공개 후보</span><a href="' + URLS.base + 'workbench/">고급 작업대</a><a href="' + URLS.base + 'learn/">학습 자료실</a><a href="' + URLS.base + 'feedback/">사용성 의견</a><a href="' + URLS.base + 'status/">운영 상태</a><a href="' + URLS.base + 'support/">지원</a><a href="' + URLS.base + 'advertising/">광고 운영 원칙</a><a href="' + URLS.base + 'help/">도움말</a><a href="' + URLS.base + 'terms/">이용약관</a>'
+    f.innerHTML = '<span>beta 1.0.0 콘텐츠·UX/UI 1단계 후보</span><a href="' + URLS.base + 'workbench/">고급 작업대</a><a href="' + URLS.base + 'samples/">완성 샘플</a><a href="' + URLS.base + 'glossary/">용어집</a><a href="' + URLS.base + 'learn/">학습 자료실</a><a href="' + URLS.base + 'feedback/">사용성 의견</a><a href="' + URLS.base + 'status/">운영 상태</a><a href="' + URLS.base + 'support/">지원</a><a href="' + URLS.base + 'advertising/">광고 운영 원칙</a><a href="' + URLS.base + 'help/">도움말</a><a href="' + URLS.base + 'terms/">이용약관</a>'
       + '<a href="' + URLS.base + 'privacy/">개인정보 처리방침</a>'
       + '<a href="' + URLS.base + 'help/account/">계정 도움말</a>'
       + '<a href="' + URLS.base + 'account/delete/">계정·데이터 삭제</a>';

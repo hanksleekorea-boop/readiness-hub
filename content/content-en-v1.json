@@ -1,0 +1,1583 @@
+{
+  "schema": "crh-content-en/v1",
+  "reviewedAt": "2026-09-04",
+  "scope": "Core titles and assessment workflow; detailed Korean rubric remains authoritative, not legal advice.",
+  "items": [
+    {
+      "id": "f01",
+      "title": "End-to-end core user journey",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified end-to-end core user journey with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f01"
+    },
+    {
+      "id": "f02",
+      "title": "Sign-up, sign-in, social login and password reset",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified sign-up, sign-in, social login and password reset with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f02"
+    },
+    {
+      "id": "f03",
+      "title": "Account closure and data deletion",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified account closure and data deletion with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f03"
+    },
+    {
+      "id": "f04",
+      "title": "Profile, settings and notification consent",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified profile, settings and notification consent with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f04"
+    },
+    {
+      "id": "f05",
+      "title": "Search, filters, sorting and pagination",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified search, filters, sorting and pagination with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f05"
+    },
+    {
+      "id": "f06",
+      "title": "Empty, error and loading states",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified empty, error and loading states with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f06"
+    },
+    {
+      "id": "f07",
+      "title": "Languages, currencies, time zones and units",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified languages, currencies, time zones and units with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f07"
+    },
+    {
+      "id": "f08",
+      "title": "Offline and unreliable network behavior",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified offline and unreliable network behavior with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f08"
+    },
+    {
+      "id": "f09",
+      "title": "Push delivery, receipt and deep links",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified push delivery, receipt and deep links with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f09"
+    },
+    {
+      "id": "f10",
+      "title": "Responsive layout and browser compatibility",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified responsive layout and browser compatibility with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f10"
+    },
+    {
+      "id": "f11",
+      "title": "State preservation on back, reload and shared URLs",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified state preservation on back, reload and shared urls with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f11"
+    },
+    {
+      "id": "f12",
+      "title": "Sharing",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified sharing with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f12"
+    },
+    {
+      "id": "f13",
+      "title": "Deep links and universal links",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified deep links and universal links with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f13"
+    },
+    {
+      "id": "f14",
+      "title": "Account lifecycle management",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified account lifecycle management with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f14"
+    },
+    {
+      "id": "f15",
+      "title": "In-app notification center",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified in-app notification center with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f15"
+    },
+    {
+      "id": "f16",
+      "title": "Granular notification preferences",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified granular notification preferences with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f16"
+    },
+    {
+      "id": "f17",
+      "title": "Contextual permission requests",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified contextual permission requests with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f17"
+    },
+    {
+      "id": "f18",
+      "title": "Complete settings screen",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified complete settings screen with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#f18"
+    },
+    {
+      "id": "q01",
+      "title": "Automated regression test suite",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified automated regression test suite with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#q01"
+    },
+    {
+      "id": "q02",
+      "title": "Crash and error monitoring",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified crash and error monitoring with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#q02"
+    },
+    {
+      "id": "q03",
+      "title": "Reliability targets and incident response quality",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified reliability targets and incident response quality with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#q03"
+    },
+    {
+      "id": "q04",
+      "title": "QA cycle with no unresolved critical or major defects",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified qa cycle with no unresolved critical or major defects with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#q04"
+    },
+    {
+      "id": "q05",
+      "title": "Load and stress testing against concurrency targets",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified load and stress testing against concurrency targets with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#q05"
+    },
+    {
+      "id": "q06",
+      "title": "Actual backup restoration drills",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified actual backup restoration drills with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#q06"
+    },
+    {
+      "id": "q07",
+      "title": "Staging and production parity",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified staging and production parity with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#q07"
+    },
+    {
+      "id": "q08",
+      "title": "Physical device test matrix",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified physical device test matrix with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#q08"
+    },
+    {
+      "id": "q09",
+      "title": "App upgrades and data migration",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified app upgrades and data migration with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#q09"
+    },
+    {
+      "id": "q10",
+      "title": "Automated cross-browser tests",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified automated cross-browser tests with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#q10"
+    },
+    {
+      "id": "q11",
+      "title": "Console errors, broken links and mixed content",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified console errors, broken links and mixed content with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#q11"
+    },
+    {
+      "id": "p01",
+      "title": "Documented performance objectives and monitoring",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified documented performance objectives and monitoring with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#p01"
+    },
+    {
+      "id": "p02",
+      "title": "Core API p95 response targets",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified core api p95 response targets with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#p02"
+    },
+    {
+      "id": "p03",
+      "title": "Optimized media assets and CDN delivery",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified optimized media assets and cdn delivery with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#p03"
+    },
+    {
+      "id": "p04",
+      "title": "Cold-start time targets",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified cold-start time targets with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#p04"
+    },
+    {
+      "id": "p05",
+      "title": "App size, memory, battery and data efficiency",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified app size, memory, battery and data efficiency with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#p05"
+    },
+    {
+      "id": "p06",
+      "title": "Unresponsive app and dropped-frame rates",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified unresponsive app and dropped-frame rates with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#p06"
+    },
+    {
+      "id": "p07",
+      "title": "Largest Contentful Paint at most 2.5 seconds",
+      "platform": "W",
+      "gate": true,
+      "question": "Have you verified largest contentful paint at most 2.5 seconds with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#p07"
+    },
+    {
+      "id": "p08",
+      "title": "Interaction to Next Paint at most 200 milliseconds",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified interaction to next paint at most 200 milliseconds with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#p08"
+    },
+    {
+      "id": "p09",
+      "title": "Cumulative Layout Shift at most 0.1",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified cumulative layout shift at most 0.1 with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#p09"
+    },
+    {
+      "id": "p10",
+      "title": "Caching, compression and bundle budgets",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified caching, compression and bundle budgets with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#p10"
+    },
+    {
+      "id": "s01",
+      "title": "HTTPS, TLS 1.2 or later and certificate renewal",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified https, tls 1.2 or later and certificate renewal with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s01"
+    },
+    {
+      "id": "s02",
+      "title": "Authentication and authorization",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified authentication and authorization with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s02"
+    },
+    {
+      "id": "s03",
+      "title": "Sensitive data encryption in storage and transit",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified sensitive data encryption in storage and transit with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s03"
+    },
+    {
+      "id": "s04",
+      "title": "OWASP Top 10 and MASVS review",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified owasp top 10 and masvs review with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s04"
+    },
+    {
+      "id": "s05",
+      "title": "Independent penetration testing and remediation",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified independent penetration testing and remediation with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s05"
+    },
+    {
+      "id": "s06",
+      "title": "Secrets and API key management",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified secrets and api key management with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s06"
+    },
+    {
+      "id": "s07",
+      "title": "Dependency vulnerability scanning and patching",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified dependency vulnerability scanning and patching with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s07"
+    },
+    {
+      "id": "s08",
+      "title": "Access control and audit logs",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified access control and audit logs with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s08"
+    },
+    {
+      "id": "s09",
+      "title": "Abuse, bot and payment fraud defenses",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified abuse, bot and payment fraud defenses with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s09"
+    },
+    {
+      "id": "s10",
+      "title": "App tampering defenses",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified app tampering defenses with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s10"
+    },
+    {
+      "id": "s11",
+      "title": "Security headers and cookie attributes",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified security headers and cookie attributes with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s11"
+    },
+    {
+      "id": "s12",
+      "title": "Payment-page script integrity",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified payment-page script integrity with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s12"
+    },
+    {
+      "id": "m01",
+      "title": "Published pricing and implemented plans",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified published pricing and implemented plans with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m01"
+    },
+    {
+      "id": "m02",
+      "title": "Live payment gateway transaction testing",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified live payment gateway transaction testing with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m02"
+    },
+    {
+      "id": "m03",
+      "title": "Refund and withdrawal policies and processing",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified refund and withdrawal policies and processing with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m03"
+    },
+    {
+      "id": "m04",
+      "title": "Receipts and tax invoices",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified receipts and tax invoices with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m04"
+    },
+    {
+      "id": "m05",
+      "title": "Tax handling and accounting integration",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified tax handling and accounting integration with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m05"
+    },
+    {
+      "id": "m06",
+      "title": "Settlement and reconciliation",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified settlement and reconciliation with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m06"
+    },
+    {
+      "id": "m07",
+      "title": "Failed, duplicate and incomplete payment recovery",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified failed, duplicate and incomplete payment recovery with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m07"
+    },
+    {
+      "id": "m08",
+      "title": "Subscription renewal, cancellation and grace periods",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified subscription renewal, cancellation and grace periods with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m08"
+    },
+    {
+      "id": "m09",
+      "title": "Defined PCI DSS scope and compliance review",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified defined pci dss scope and compliance review with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m09"
+    },
+    {
+      "id": "m10",
+      "title": "In-app purchases and server-side receipt validation",
+      "platform": "M",
+      "gate": true,
+      "question": "Have you verified in-app purchases and server-side receipt validation with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m10"
+    },
+    {
+      "id": "m11",
+      "title": "App store payment policies",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified app store payment policies with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m11"
+    },
+    {
+      "id": "m12",
+      "title": "Payment usability and failure monitoring",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified payment usability and failure monitoring with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m12"
+    },
+    {
+      "id": "m13",
+      "title": "Prior consent for recurring payments",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified prior consent for recurring payments with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m13"
+    },
+    {
+      "id": "m14",
+      "title": "Total price disclosure",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified total price disclosure with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m14"
+    },
+    {
+      "id": "m15",
+      "title": "Protection against deceptive design",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified protection against deceptive design with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m15"
+    },
+    {
+      "id": "m16",
+      "title": "Points, coupons and store credit",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified points, coupons and store credit with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m16"
+    },
+    {
+      "id": "m17",
+      "title": "Payment protection for minors",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified payment protection for minors with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m17"
+    },
+    {
+      "id": "m18",
+      "title": "Payment method coverage",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified payment method coverage with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m18"
+    },
+    {
+      "id": "m19",
+      "title": "International payments and multiple currencies",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified international payments and multiple currencies with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#m19"
+    },
+    {
+      "id": "l01",
+      "title": "Legal review of terms and privacy notice",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified legal review of terms and privacy notice with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l01"
+    },
+    {
+      "id": "l02",
+      "title": "Personal data consent and consent history",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified personal data consent and consent history with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l02"
+    },
+    {
+      "id": "l03",
+      "title": "Processor and international transfer disclosures",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified processor and international transfer disclosures with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l03"
+    },
+    {
+      "id": "l04",
+      "title": "Retention, deletion and automatic erasure",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified retention, deletion and automatic erasure with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l04"
+    },
+    {
+      "id": "l05",
+      "title": "Data subject rights procedures",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified data subject rights procedures with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l05"
+    },
+    {
+      "id": "l06",
+      "title": "Consent for cookies, tracking and advertising identifiers",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified consent for cookies, tracking and advertising identifiers with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l06"
+    },
+    {
+      "id": "l07",
+      "title": "Business identity disclosures",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified business identity disclosures with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l07"
+    },
+    {
+      "id": "l08",
+      "title": "Commerce, advertising and withdrawal notices",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified commerce, advertising and withdrawal notices with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l08"
+    },
+    {
+      "id": "l09",
+      "title": "Age ratings and protections for minors",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified age ratings and protections for minors with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l09"
+    },
+    {
+      "id": "l10",
+      "title": "Intellectual property rights",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified intellectual property rights with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l10"
+    },
+    {
+      "id": "l11",
+      "title": "Accurate ATT and Play Data Safety disclosures",
+      "platform": "M",
+      "gate": true,
+      "question": "Have you verified accurate att and play data safety disclosures with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l11"
+    },
+    {
+      "id": "l12",
+      "title": "Web legal notices and accessibility duties",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified web legal notices and accessibility duties with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l12"
+    },
+    {
+      "id": "l13",
+      "title": "Location-based service registration and terms",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified location-based service registration and terms with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l13"
+    },
+    {
+      "id": "l14",
+      "title": "Youth protection policy",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified youth protection policy with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l14"
+    },
+    {
+      "id": "l15",
+      "title": "Complete terms structure",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified complete terms structure with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l15"
+    },
+    {
+      "id": "l16",
+      "title": "Rules for promotional messages",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified rules for promotional messages with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l16"
+    },
+    {
+      "id": "l17",
+      "title": "Restrictions on nighttime promotional messages",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified restrictions on nighttime promotional messages with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l17"
+    },
+    {
+      "id": "l18",
+      "title": "Disclosure of paid endorsements",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified disclosure of paid endorsements with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l18"
+    },
+    {
+      "id": "l19",
+      "title": "Temporary action on rights-infringing posts",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified temporary action on rights-infringing posts with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l19"
+    },
+    {
+      "id": "l20",
+      "title": "Prevention of illegal intimate content distribution",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified prevention of illegal intimate content distribution with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l20"
+    },
+    {
+      "id": "l21",
+      "title": "Required privacy notice coverage",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified required privacy notice coverage with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#l21"
+    },
+    {
+      "id": "r01",
+      "title": "Production infrastructure, domains and environment separation",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified production infrastructure, domains and environment separation with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r01"
+    },
+    {
+      "id": "r02",
+      "title": "Release versioning and rollback plans",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified release versioning and rollback plans with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r02"
+    },
+    {
+      "id": "r03",
+      "title": "Staged rollouts and feature flags",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified staged rollouts and feature flags with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r03"
+    },
+    {
+      "id": "r04",
+      "title": "Complete app store listings",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified complete app store listings with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r04"
+    },
+    {
+      "id": "r05",
+      "title": "App review response readiness",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified app review response readiness with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r05"
+    },
+    {
+      "id": "r06",
+      "title": "Current target API and SDK requirements",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified current target api and sdk requirements with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r06"
+    },
+    {
+      "id": "r07",
+      "title": "App store keywords, categories and age ratings",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified app store keywords, categories and age ratings with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r07"
+    },
+    {
+      "id": "r08",
+      "title": "Search engine optimization basics",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified search engine optimization basics with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r08"
+    },
+    {
+      "id": "r09",
+      "title": "Validated analytics, tags and conversion tracking",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified validated analytics, tags and conversion tracking with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r09"
+    },
+    {
+      "id": "r10",
+      "title": "Browser support policy and outdated-browser guidance",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified browser support policy and outdated-browser guidance with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r10"
+    },
+    {
+      "id": "u01",
+      "title": "Consistent design system and components",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified consistent design system and components with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u01"
+    },
+    {
+      "id": "u02",
+      "title": "Reviewed interface copy and error messages",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified reviewed interface copy and error messages with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u02"
+    },
+    {
+      "id": "u03",
+      "title": "WCAG 2.2 AA review",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified wcag 2.2 aa review with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u03"
+    },
+    {
+      "id": "u04",
+      "title": "Usability testing and issue resolution",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified usability testing and issue resolution with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u04"
+    },
+    {
+      "id": "u05",
+      "title": "Onboarding and first-use experience",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified onboarding and first-use experience with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u05"
+    },
+    {
+      "id": "u06",
+      "title": "Screen readers and dynamic text size",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified screen readers and dynamic text size with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u06"
+    },
+    {
+      "id": "u07",
+      "title": "Screen sizes, cutouts and gestures",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified screen sizes, cutouts and gestures with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u07"
+    },
+    {
+      "id": "u08",
+      "title": "Keyboard-only navigation and skip links",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified keyboard-only navigation and skip links with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u08"
+    },
+    {
+      "id": "u09",
+      "title": "Semantic HTML, ARIA, labels and errors",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified semantic html, aria, labels and errors with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u09"
+    },
+    {
+      "id": "u10",
+      "title": "Brand identity",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified brand identity with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u10"
+    },
+    {
+      "id": "u11",
+      "title": "Dark mode",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified dark mode with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u11"
+    },
+    {
+      "id": "u12",
+      "title": "Motion and transitions",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified motion and transitions with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u12"
+    },
+    {
+      "id": "u13",
+      "title": "Loading and skeleton states",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified loading and skeleton states with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u13"
+    },
+    {
+      "id": "u14",
+      "title": "Korean web accessibility requirements",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified korean web accessibility requirements with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u14"
+    },
+    {
+      "id": "u15",
+      "title": "Mobile app accessibility requirements",
+      "platform": "M",
+      "gate": true,
+      "question": "Have you verified mobile app accessibility requirements with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#u15"
+    },
+    {
+      "id": "o01",
+      "title": "Monitoring, alerts and thresholds",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified monitoring, alerts and thresholds with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o01"
+    },
+    {
+      "id": "o02",
+      "title": "On-call coverage, escalation and incident runbooks",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified on-call coverage, escalation and incident runbooks with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o02"
+    },
+    {
+      "id": "o03",
+      "title": "Service objectives and status page",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified service objectives and status page with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o03"
+    },
+    {
+      "id": "o04",
+      "title": "Support channels and response commitments",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified support channels and response commitments with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o04"
+    },
+    {
+      "id": "o05",
+      "title": "Support administration tools",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified support administration tools with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o05"
+    },
+    {
+      "id": "o06",
+      "title": "Administrative roles and audit trails",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified administrative roles and audit trails with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o06"
+    },
+    {
+      "id": "o07",
+      "title": "Automated delivery and zero-downtime releases",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified automated delivery and zero-downtime releases with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o07"
+    },
+    {
+      "id": "o08",
+      "title": "Incident communication and postmortems",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified incident communication and postmortems with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o08"
+    },
+    {
+      "id": "o09",
+      "title": "Operational documentation, handover and training",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified operational documentation, handover and training with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o09"
+    },
+    {
+      "id": "o10",
+      "title": "Cost forecasting and unit economics",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified cost forecasting and unit economics with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o10"
+    },
+    {
+      "id": "o11",
+      "title": "Frequently asked questions",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified frequently asked questions with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o11"
+    },
+    {
+      "id": "o12",
+      "title": "Announcements and release notes",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified announcements and release notes with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o12"
+    },
+    {
+      "id": "o13",
+      "title": "Support request classification and routing",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified support request classification and routing with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o13"
+    },
+    {
+      "id": "o14",
+      "title": "Customer satisfaction measurement",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified customer satisfaction measurement with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o14"
+    },
+    {
+      "id": "o15",
+      "title": "Chatbot and automated responses",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified chatbot and automated responses with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o15"
+    },
+    {
+      "id": "o16",
+      "title": "Administrative feature coverage",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified administrative feature coverage with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#o16"
+    },
+    {
+      "id": "b01",
+      "title": "Target customers and competitive positioning",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified target customers and competitive positioning with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#b01"
+    },
+    {
+      "id": "b02",
+      "title": "Revenue model and unit economics validation",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified revenue model and unit economics validation with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#b02"
+    },
+    {
+      "id": "b03",
+      "title": "North-star metric, KPI tree and dashboard",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified north-star metric, kpi tree and dashboard with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#b03"
+    },
+    {
+      "id": "b04",
+      "title": "Event definitions and funnel measurement",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified event definitions and funnel measurement with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#b04"
+    },
+    {
+      "id": "b05",
+      "title": "Retention targets and beta observations",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified retention targets and beta observations with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#b05"
+    },
+    {
+      "id": "b06",
+      "title": "Payment conversion and revenue per user baseline",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified payment conversion and revenue per user baseline with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#b06"
+    },
+    {
+      "id": "b07",
+      "title": "Go-to-market plan and landing page",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified go-to-market plan and landing page with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#b07"
+    },
+    {
+      "id": "b08",
+      "title": "A/B testing and experiment infrastructure",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified a/b testing and experiment infrastructure with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#b08"
+    },
+    {
+      "id": "b09",
+      "title": "Promotion, coupon and discount operations",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified promotion, coupon and discount operations with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#b09"
+    },
+    {
+      "id": "b10",
+      "title": "Attribution and advertising measurement",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified attribution and advertising measurement with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#b10"
+    },
+    {
+      "id": "n01",
+      "title": "Information taxonomy",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified information taxonomy with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#n01"
+    },
+    {
+      "id": "n02",
+      "title": "Primary navigation",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified primary navigation with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#n02"
+    },
+    {
+      "id": "n03",
+      "title": "Secondary navigation",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified secondary navigation with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#n03"
+    },
+    {
+      "id": "n04",
+      "title": "Current location indicators",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified current location indicators with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#n04"
+    },
+    {
+      "id": "n05",
+      "title": "Consistent back navigation",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified consistent back navigation with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#n05"
+    },
+    {
+      "id": "n06",
+      "title": "List and detail round trips",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified list and detail round trips with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#n06"
+    },
+    {
+      "id": "n07",
+      "title": "List loading policy",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified list loading policy with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#n07"
+    },
+    {
+      "id": "n08",
+      "title": "Detail page information hierarchy",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified detail page information hierarchy with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#n08"
+    },
+    {
+      "id": "n09",
+      "title": "Filters and sorting",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified filters and sorting with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#n09"
+    },
+    {
+      "id": "n10",
+      "title": "User-facing sitemap",
+      "platform": "W",
+      "gate": false,
+      "question": "Have you verified user-facing sitemap with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#n10"
+    },
+    {
+      "id": "n11",
+      "title": "Recently viewed items",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified recently viewed items with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#n11"
+    },
+    {
+      "id": "n12",
+      "title": "Information architecture validation",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified information architecture validation with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#n12"
+    },
+    {
+      "id": "s101",
+      "title": "Search entry points",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified search entry points with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s101"
+    },
+    {
+      "id": "s102",
+      "title": "Autocomplete and suggestions",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified autocomplete and suggestions with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s102"
+    },
+    {
+      "id": "s103",
+      "title": "Typo correction and synonyms",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified typo correction and synonyms with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s103"
+    },
+    {
+      "id": "s104",
+      "title": "No-results guidance",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified no-results guidance with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s104"
+    },
+    {
+      "id": "s105",
+      "title": "Search filters and facets",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified search filters and facets with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s105"
+    },
+    {
+      "id": "s106",
+      "title": "Ranking and relevance",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified ranking and relevance with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s106"
+    },
+    {
+      "id": "s107",
+      "title": "Recent and popular searches",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified recent and popular searches with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s107"
+    },
+    {
+      "id": "s108",
+      "title": "Search performance",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified search performance with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s108"
+    },
+    {
+      "id": "s109",
+      "title": "Search log analysis",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified search log analysis with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s109"
+    },
+    {
+      "id": "s110",
+      "title": "Search result diversity",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified search result diversity with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s110"
+    },
+    {
+      "id": "s111",
+      "title": "Voice and image search",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified voice and image search with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#s111"
+    },
+    {
+      "id": "r101",
+      "title": "Related recommendations",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified related recommendations with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r101"
+    },
+    {
+      "id": "r102",
+      "title": "Personalized home screen",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified personalized home screen with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r102"
+    },
+    {
+      "id": "r103",
+      "title": "New-user cold-start handling",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified new-user cold-start handling with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r103"
+    },
+    {
+      "id": "r104",
+      "title": "Explanations for recommendations",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified explanations for recommendations with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r104"
+    },
+    {
+      "id": "r105",
+      "title": "Recommendation outcomes",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified recommendation outcomes with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r105"
+    },
+    {
+      "id": "r106",
+      "title": "Recommendation diversity and bias review",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified recommendation diversity and bias review with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r106"
+    },
+    {
+      "id": "r107",
+      "title": "Turning off recommendations",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified turning off recommendations with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r107"
+    },
+    {
+      "id": "r108",
+      "title": "Automated decision disclosures",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified automated decision disclosures with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r108"
+    },
+    {
+      "id": "r109",
+      "title": "Recommendation infrastructure",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified recommendation infrastructure with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#r109"
+    },
+    {
+      "id": "a101",
+      "title": "Ad placement policy",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified ad placement policy with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#a101"
+    },
+    {
+      "id": "a102",
+      "title": "Clear separation of ads and content",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified clear separation of ads and content with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#a102"
+    },
+    {
+      "id": "a103",
+      "title": "Advertising SDK integration",
+      "platform": "M",
+      "gate": false,
+      "question": "Have you verified advertising sdk integration with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#a103"
+    },
+    {
+      "id": "a104",
+      "title": "Ad review and blocking",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified ad review and blocking with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#a104"
+    },
+    {
+      "id": "a105",
+      "title": "Advertising performance measurement",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified advertising performance measurement with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#a105"
+    },
+    {
+      "id": "a106",
+      "title": "Ad removal option",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified ad removal option with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#a106"
+    },
+    {
+      "id": "a107",
+      "title": "Consent for advertising identifiers",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified consent for advertising identifiers with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#a107"
+    },
+    {
+      "id": "a108",
+      "title": "Affiliate and referral disclosures",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified affiliate and referral disclosures with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#a108"
+    },
+    {
+      "id": "a109",
+      "title": "Advertising impact on performance",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified advertising impact on performance with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#a109"
+    },
+    {
+      "id": "a110",
+      "title": "Native advertising design",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified native advertising design with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#a110"
+    },
+    {
+      "id": "a111",
+      "title": "Advertiser reporting dashboard",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified advertiser reporting dashboard with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#a111"
+    },
+    {
+      "id": "g101",
+      "title": "Content management system",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified content management system with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#g101"
+    },
+    {
+      "id": "g102",
+      "title": "Reporting inappropriate content",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified reporting inappropriate content with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#g102"
+    },
+    {
+      "id": "g103",
+      "title": "Blocking and hiding",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified blocking and hiding with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#g103"
+    },
+    {
+      "id": "g104",
+      "title": "Content moderation",
+      "platform": "C",
+      "gate": true,
+      "question": "Have you verified content moderation with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#g104"
+    },
+    {
+      "id": "g105",
+      "title": "Content deletion, restoration and appeals",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified content deletion, restoration and appeals with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#g105"
+    },
+    {
+      "id": "g106",
+      "title": "Copyright infringement reporting",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified copyright infringement reporting with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#g106"
+    },
+    {
+      "id": "g107",
+      "title": "Community guidelines",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified community guidelines with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#g107"
+    },
+    {
+      "id": "g108",
+      "title": "Content quality controls",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified content quality controls with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#g108"
+    },
+    {
+      "id": "g109",
+      "title": "Content backup and retention",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified content backup and retention with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#g109"
+    },
+    {
+      "id": "g110",
+      "title": "Media processing",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified media processing with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#g110"
+    },
+    {
+      "id": "g111",
+      "title": "Content export",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified content export with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#g111"
+    },
+    {
+      "id": "g112",
+      "title": "Content operations metrics",
+      "platform": "C",
+      "gate": false,
+      "question": "Have you verified content operations metrics with reproducible evidence?",
+      "sourceReference": "lens-core-v2.1.json#g112"
+    }
+  ]
+}

@@ -1,14 +1,94 @@
 {
-  "schema": "crh-domain-lens/v1",
   "id": "saas",
   "name": "SaaS·업무 도구",
-  "version": "1.0.0",
+  "description": "계정·조직 권한·데이터 내보내기·복구·가용성·지원 체계를 강조합니다.",
+  "priorityItems": [
+    "f01",
+    "f14",
+    "s02",
+    "s03",
+    "s08",
+    "q06",
+    "o01",
+    "o03",
+    "o04",
+    "o06",
+    "o09",
+    "b02"
+  ],
+  "applicabilityNotes": {
+    "s02": "조직별 자료 격리와 최소 권한을 실제 요청으로 검증",
+    "o01": "장애 감지와 알림을 실제 담당 경로에 연결"
+  },
+  "checks": [
+    {
+      "id": "saas-1",
+      "itemId": "s02",
+      "question": "다른 조직의 자료를 URL·API 변경으로 볼 수 없나요?",
+      "evidence": "서로 다른 가상 조직의 권한 거부 시험",
+      "action": "두 조직 계정으로 교차 접근 시험",
+      "sourceReference": "lens-core-v2.1.json#s02"
+    },
+    {
+      "id": "saas-2",
+      "itemId": "f14",
+      "question": "초대·역할 변경·퇴사자의 접근 해제가 정확한가요?",
+      "evidence": "초대 만료·역할 회수·세션 종료 기록",
+      "action": "가상 구성원 한 명의 생애주기 시험",
+      "sourceReference": "lens-core-v2.1.json#f14"
+    },
+    {
+      "id": "saas-3",
+      "itemId": "s03",
+      "question": "저장·전송 자료와 비밀값을 분리해 보호하나요?",
+      "evidence": "민감정보 분류·암호화 설정의 가린 근거",
+      "action": "민감 자료 흐름과 접근 경로를 목록화",
+      "sourceReference": "lens-core-v2.1.json#s03"
+    },
+    {
+      "id": "saas-4",
+      "itemId": "q06",
+      "question": "백업을 새 환경에 복원하고 고객 자료를 확인했나요?",
+      "evidence": "복구 시간·손실 범위·검사 결과",
+      "action": "합성 자료로 독립 복원 시험",
+      "sourceReference": "lens-core-v2.1.json#q06"
+    },
+    {
+      "id": "saas-5",
+      "itemId": "o03",
+      "question": "가용성 목표·장애 상태·지원 책임이 연결되나요?",
+      "evidence": "목표 문서와 상태 공지·지원 절차",
+      "action": "장애 시나리오 한 건을 모의 훈련",
+      "sourceReference": "lens-core-v2.1.json#o03"
+    },
+    {
+      "id": "saas-6",
+      "itemId": "o06",
+      "question": "관리자 작업의 권한과 감사 이력을 확인할 수 있나요?",
+      "evidence": "권한 거부 결과·가린 관리자 활동 이력",
+      "action": "관리자 역할별 허용·금지 작업 시험",
+      "sourceReference": "lens-core-v2.1.json#o06"
+    }
+  ],
+  "changesBaseDenominator": false,
+  "reviewedAt": "2026-09-04",
+  "nextReviewAt": "2026-12-04",
+  "ownerRole": "제품·콘텐츠 검토 담당",
+  "benchmarkStatus": "계산 불가 — 이 렌즈에는 검증된 비교 대상 3개가 내장되어 있지 않습니다. 작업대에 동일 축·출처·관찰일을 입력하세요.",
+  "schema": "crh-domain-lens/v1",
+  "version": "1.1.0",
   "baseLens": "lens-core-v2.1",
   "baseItemCount": 197,
-  "changesBaseDenominator": false,
-  "priorityItems": ["f01","f03","f14","s03","s05","s08","r02","r03","o03","o05","o09","b02"],
   "overrides": [
-    {"itemId":"s03","reason":"조직별 자료 격리와 최소 권한을 서버에서 검증","approvedAt":"2026-08-31"},
-    {"itemId":"r02","reason":"장애 감지·알림·복구 목표와 공개 상태를 연결","approvedAt":"2026-08-31"}
+    {
+      "itemId": "s02",
+      "reason": "조직별 자료 격리와 최소 권한을 실제 요청으로 검증",
+      "approvedAt": "2026-09-04"
+    },
+    {
+      "itemId": "o01",
+      "reason": "장애 감지와 알림을 실제 담당 경로에 연결",
+      "approvedAt": "2026-09-04"
+    }
   ]
 }

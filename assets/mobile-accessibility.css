@@ -1,0 +1,10 @@
+/* WCAG 2.5.8 target-size fallback for the mobile/PWA shell. */
+.icb { width:44px; height:44px; min-width:44px; min-height:44px; }
+button { min-width:44px; min-height:44px; }
+.crh-account-launch { min-height:44px; padding-top:9px; padding-bottom:9px; }
+.crh-start label { min-height:44px; }
+.crh-start input[type="radio"] { width:44px; height:44px; }
+.crh-start-actions button,
+.crh-start-actions a { min-height:44px; }
+/* Footer/help links remain easy to tap without changing their wording. */
+a { min-width:44px; min-height:44px; display:inline-flex; align-items:center; }

@@ -148,7 +148,7 @@
     style.id = 'crh-auth-style';
     style.textContent = '.crh-account-bar{display:flex;justify-content:flex-end;align-items:center;gap:8px;padding:7px 14px;background:var(--panel,#fff);border-bottom:1px solid var(--bd,var(--border,#ddd));font:12px/1.4 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--muted,#666)}'
       + '.crh-account-bar button,.crh-account-dialog button,.crh-account-dialog input,.crh-account-dialog select{font:inherit}'
-      + '.crh-account-launch{min-height:36px;padding:7px 12px;border:1px solid var(--bd,var(--border,#ccc));border-radius:8px;background:var(--panel,#fff);color:var(--ink,#111);font-weight:650;cursor:pointer}'
+      + '.crh-account-launch{min-height:44px;padding:9px 12px;border:1px solid var(--bd,var(--border,#ccc));border-radius:8px;background:var(--panel,#fff);color:var(--ink,#111);font-weight:650;cursor:pointer}'
       + '.crh-account-launch:focus-visible,.crh-account-dialog button:focus-visible,.crh-account-dialog input:focus-visible,.crh-account-dialog select:focus-visible{outline:3px solid #2a78d6;outline-offset:2px}'
       + '.crh-account-dialog{width:560px;max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);border:1px solid rgba(127,127,127,.35);border-radius:14px;padding:0;background:var(--panel,#fff);color:var(--ink,#111);box-shadow:0 20px 80px rgba(0,0,0,.28)}'
       + '.crh-account-dialog::backdrop{background:rgba(0,0,0,.48)}.crh-account-head{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid rgba(127,127,127,.24)}'

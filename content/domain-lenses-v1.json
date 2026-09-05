@@ -9,22 +9,77 @@
       "description": "강의·학습 기록·평가·미성년자·접근성을 강조합니다.",
       "priorityItems": [
         "f01",
-        "f07",
-        "f17",
-        "l01",
-        "l06",
-        "l07",
+        "f08",
+        "f11",
+        "u03",
+        "u06",
         "q04",
-        "q07",
-        "a01",
-        "a02",
-        "c03",
-        "c07"
+        "l09",
+        "l02",
+        "l10",
+        "g108",
+        "g110",
+        "q06"
       ],
       "applicabilityNotes": {
-        "l06": "아동·학생 데이터 처리와 보호자 동의를 실제 대상 연령에 맞춰 확인",
-        "q04": "학습 과업 완료율과 중도 이탈 사유를 실제 학습자 기준으로 확인"
-      }
+        "l09": "실제 학습자 연령에 맞는 보호 조치를 확인; 구체 법 적용은 별도 검토",
+        "q04": "강의 재생·진도 복원·평가 제출을 QA 시나리오에 포함"
+      },
+      "checks": [
+        {
+          "id": "education-1",
+          "itemId": "f01",
+          "question": "강의 수강 → 진도 저장 → 평가 제출을 끝까지 수행할 수 있나요?",
+          "evidence": "새 학습자로 핵심 과업을 재현한 단계별 기록",
+          "action": "강의 한 개로 시작부터 결과 확인까지 시험",
+          "sourceReference": "lens-core-v2.1.json#f01"
+        },
+        {
+          "id": "education-2",
+          "itemId": "f11",
+          "question": "새로고침·재로그인 후 학습 진도가 정확히 이어지나요?",
+          "evidence": "진도 저장 전후 값과 중복 제출 시험",
+          "action": "중간 종료·재접속·중복 클릭 시나리오 추가",
+          "sourceReference": "lens-core-v2.1.json#f11"
+        },
+        {
+          "id": "education-3",
+          "itemId": "u06",
+          "question": "자막·전사문·키보드로 핵심 수업을 이용할 수 있나요?",
+          "evidence": "자막 정확도 표본과 키보드·화면 읽기 기록",
+          "action": "대표 강의 한 개의 대체 콘텐츠 검토",
+          "sourceReference": "lens-core-v2.1.json#u06"
+        },
+        {
+          "id": "education-4",
+          "itemId": "l09",
+          "question": "미성년자 대상 여부와 보호·동의 경로를 구분했나요?",
+          "evidence": "타깃 연령·관할·보호 절차에 관한 운영자 확인",
+          "action": "대상 연령과 수집 자료 목록을 먼저 작성",
+          "sourceReference": "lens-core-v2.1.json#l09"
+        },
+        {
+          "id": "education-5",
+          "itemId": "g108",
+          "question": "학습 목표·정답 해설·콘텐츠 검수 책임이 있나요?",
+          "evidence": "학습 목표와 평가 문항 연결표·오류 수정 이력",
+          "action": "과정 하나의 목표와 평가를 연결",
+          "sourceReference": "lens-core-v2.1.json#g108"
+        },
+        {
+          "id": "education-6",
+          "itemId": "q06",
+          "question": "학습 진도·성적을 백업에서 실제 복원할 수 있나요?",
+          "evidence": "개인정보를 가린 새 환경 복원 결과",
+          "action": "가상 학습 자료로 복원 훈련",
+          "sourceReference": "lens-core-v2.1.json#q06"
+        }
+      ],
+      "changesBaseDenominator": false,
+      "reviewedAt": "2026-09-04",
+      "nextReviewAt": "2026-12-04",
+      "ownerRole": "제품·콘텐츠 검토 담당",
+      "benchmarkStatus": "계산 불가 — 이 렌즈에는 검증된 비교 대상 3개가 내장되어 있지 않습니다. 작업대에 동일 축·출처·관찰일을 입력하세요."
     },
     {
       "id": "commerce",
@@ -33,21 +88,76 @@
       "priorityItems": [
         "f01",
         "f03",
-        "m01",
         "m02",
         "m03",
-        "m04",
-        "m06",
-        "l01",
-        "l04",
-        "o02",
-        "o03",
-        "r06"
+        "m07",
+        "m14",
+        "l07",
+        "l08",
+        "o04",
+        "o05",
+        "s09",
+        "q06"
       ],
       "applicabilityNotes": {
-        "m02": "결제를 켜기 전에도 총액·취소·환불·영수증 계약을 먼저 확정",
-        "o02": "주문·환불을 개발자 없이 처리할 운영 화면과 이력 확인"
-      }
+        "m14": "상품 가격·배송비·세금을 포함한 실제 최종 금액 표시",
+        "o05": "운영자가 주문·취소·환불을 권한에 맞게 처리하는지 확인"
+      },
+      "checks": [
+        {
+          "id": "commerce-1",
+          "itemId": "f01",
+          "question": "상품 탐색부터 주문 조회까지 과업이 이어지나요?",
+          "evidence": "대표 상품 주문 전 과정과 품절 예외 기록",
+          "action": "가상 주문의 정상·품절 경로를 시험",
+          "sourceReference": "lens-core-v2.1.json#f01"
+        },
+        {
+          "id": "commerce-2",
+          "itemId": "m14",
+          "question": "결제 직전 배송비·세금 포함 총액이 명확한가요?",
+          "evidence": "장바구니와 최종 주문 총액 비교",
+          "action": "추가 비용이 생기는 모든 분기를 검토",
+          "sourceReference": "lens-core-v2.1.json#m14"
+        },
+        {
+          "id": "commerce-3",
+          "itemId": "m07",
+          "question": "실패·중복 결제가 중복 주문이나 청구를 만들지 않나요?",
+          "evidence": "결제 제공자 시험 환경의 재시도 기록",
+          "action": "동일 주문의 중복 요청을 시험",
+          "sourceReference": "lens-core-v2.1.json#m07"
+        },
+        {
+          "id": "commerce-4",
+          "itemId": "m03",
+          "question": "취소·반품·환불 범위와 진행 상태를 알 수 있나요?",
+          "evidence": "실제 운영 정책과 환불 흐름 대조",
+          "action": "정책별 허용·거절·부분 환불 사례 작성",
+          "sourceReference": "lens-core-v2.1.json#m03"
+        },
+        {
+          "id": "commerce-5",
+          "itemId": "o05",
+          "question": "운영자는 최소 권한으로 배송·환불을 처리하나요?",
+          "evidence": "역할별 접근 검사와 가린 변경 이력",
+          "action": "조회 담당과 환불 담당 권한 분리 검사",
+          "sourceReference": "lens-core-v2.1.json#o05"
+        },
+        {
+          "id": "commerce-6",
+          "itemId": "s09",
+          "question": "쿠폰·재고·대량 구매 악용을 탐지하나요?",
+          "evidence": "수량 제한·경합·쿠폰 중복 시험 기록",
+          "action": "가상 주문으로 재고 경합 시험",
+          "sourceReference": "lens-core-v2.1.json#s09"
+        }
+      ],
+      "changesBaseDenominator": false,
+      "reviewedAt": "2026-09-04",
+      "nextReviewAt": "2026-12-04",
+      "ownerRole": "제품·콘텐츠 검토 담당",
+      "benchmarkStatus": "계산 불가 — 이 렌즈에는 검증된 비교 대상 3개가 내장되어 있지 않습니다. 작업대에 동일 축·출처·관찰일을 입력하세요."
     },
     {
       "id": "saas",
@@ -55,22 +165,77 @@
       "description": "계정·조직 권한·데이터 내보내기·복구·가용성·지원 체계를 강조합니다.",
       "priorityItems": [
         "f01",
-        "f03",
         "f14",
+        "s02",
         "s03",
-        "s05",
         "s08",
-        "r02",
-        "r03",
+        "q06",
+        "o01",
         "o03",
-        "o05",
+        "o04",
+        "o06",
         "o09",
         "b02"
       ],
       "applicabilityNotes": {
-        "s03": "조직별 자료 격리와 최소 권한을 서버에서 검증",
-        "r02": "장애 감지·알림·복구 목표와 공개 상태를 연결"
-      }
+        "s02": "조직별 자료 격리와 최소 권한을 실제 요청으로 검증",
+        "o01": "장애 감지와 알림을 실제 담당 경로에 연결"
+      },
+      "checks": [
+        {
+          "id": "saas-1",
+          "itemId": "s02",
+          "question": "다른 조직의 자료를 URL·API 변경으로 볼 수 없나요?",
+          "evidence": "서로 다른 가상 조직의 권한 거부 시험",
+          "action": "두 조직 계정으로 교차 접근 시험",
+          "sourceReference": "lens-core-v2.1.json#s02"
+        },
+        {
+          "id": "saas-2",
+          "itemId": "f14",
+          "question": "초대·역할 변경·퇴사자의 접근 해제가 정확한가요?",
+          "evidence": "초대 만료·역할 회수·세션 종료 기록",
+          "action": "가상 구성원 한 명의 생애주기 시험",
+          "sourceReference": "lens-core-v2.1.json#f14"
+        },
+        {
+          "id": "saas-3",
+          "itemId": "s03",
+          "question": "저장·전송 자료와 비밀값을 분리해 보호하나요?",
+          "evidence": "민감정보 분류·암호화 설정의 가린 근거",
+          "action": "민감 자료 흐름과 접근 경로를 목록화",
+          "sourceReference": "lens-core-v2.1.json#s03"
+        },
+        {
+          "id": "saas-4",
+          "itemId": "q06",
+          "question": "백업을 새 환경에 복원하고 고객 자료를 확인했나요?",
+          "evidence": "복구 시간·손실 범위·검사 결과",
+          "action": "합성 자료로 독립 복원 시험",
+          "sourceReference": "lens-core-v2.1.json#q06"
+        },
+        {
+          "id": "saas-5",
+          "itemId": "o03",
+          "question": "가용성 목표·장애 상태·지원 책임이 연결되나요?",
+          "evidence": "목표 문서와 상태 공지·지원 절차",
+          "action": "장애 시나리오 한 건을 모의 훈련",
+          "sourceReference": "lens-core-v2.1.json#o03"
+        },
+        {
+          "id": "saas-6",
+          "itemId": "o06",
+          "question": "관리자 작업의 권한과 감사 이력을 확인할 수 있나요?",
+          "evidence": "권한 거부 결과·가린 관리자 활동 이력",
+          "action": "관리자 역할별 허용·금지 작업 시험",
+          "sourceReference": "lens-core-v2.1.json#o06"
+        }
+      ],
+      "changesBaseDenominator": false,
+      "reviewedAt": "2026-09-04",
+      "nextReviewAt": "2026-12-04",
+      "ownerRole": "제품·콘텐츠 검토 담당",
+      "benchmarkStatus": "계산 불가 — 이 렌즈에는 검증된 비교 대상 3개가 내장되어 있지 않습니다. 작업대에 동일 축·출처·관찰일을 입력하세요."
     }
   ]
 }

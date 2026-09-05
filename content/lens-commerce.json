@@ -1,14 +1,94 @@
 {
-  "schema": "crh-domain-lens/v1",
   "id": "commerce",
   "name": "쇼핑몰·거래 서비스",
-  "version": "1.0.0",
+  "description": "상품 정보·총액·결제 전 고지·환불·주문 운영을 강조합니다.",
+  "priorityItems": [
+    "f01",
+    "f03",
+    "m02",
+    "m03",
+    "m07",
+    "m14",
+    "l07",
+    "l08",
+    "o04",
+    "o05",
+    "s09",
+    "q06"
+  ],
+  "applicabilityNotes": {
+    "m14": "상품 가격·배송비·세금을 포함한 실제 최종 금액 표시",
+    "o05": "운영자가 주문·취소·환불을 권한에 맞게 처리하는지 확인"
+  },
+  "checks": [
+    {
+      "id": "commerce-1",
+      "itemId": "f01",
+      "question": "상품 탐색부터 주문 조회까지 과업이 이어지나요?",
+      "evidence": "대표 상품 주문 전 과정과 품절 예외 기록",
+      "action": "가상 주문의 정상·품절 경로를 시험",
+      "sourceReference": "lens-core-v2.1.json#f01"
+    },
+    {
+      "id": "commerce-2",
+      "itemId": "m14",
+      "question": "결제 직전 배송비·세금 포함 총액이 명확한가요?",
+      "evidence": "장바구니와 최종 주문 총액 비교",
+      "action": "추가 비용이 생기는 모든 분기를 검토",
+      "sourceReference": "lens-core-v2.1.json#m14"
+    },
+    {
+      "id": "commerce-3",
+      "itemId": "m07",
+      "question": "실패·중복 결제가 중복 주문이나 청구를 만들지 않나요?",
+      "evidence": "결제 제공자 시험 환경의 재시도 기록",
+      "action": "동일 주문의 중복 요청을 시험",
+      "sourceReference": "lens-core-v2.1.json#m07"
+    },
+    {
+      "id": "commerce-4",
+      "itemId": "m03",
+      "question": "취소·반품·환불 범위와 진행 상태를 알 수 있나요?",
+      "evidence": "실제 운영 정책과 환불 흐름 대조",
+      "action": "정책별 허용·거절·부분 환불 사례 작성",
+      "sourceReference": "lens-core-v2.1.json#m03"
+    },
+    {
+      "id": "commerce-5",
+      "itemId": "o05",
+      "question": "운영자는 최소 권한으로 배송·환불을 처리하나요?",
+      "evidence": "역할별 접근 검사와 가린 변경 이력",
+      "action": "조회 담당과 환불 담당 권한 분리 검사",
+      "sourceReference": "lens-core-v2.1.json#o05"
+    },
+    {
+      "id": "commerce-6",
+      "itemId": "s09",
+      "question": "쿠폰·재고·대량 구매 악용을 탐지하나요?",
+      "evidence": "수량 제한·경합·쿠폰 중복 시험 기록",
+      "action": "가상 주문으로 재고 경합 시험",
+      "sourceReference": "lens-core-v2.1.json#s09"
+    }
+  ],
+  "changesBaseDenominator": false,
+  "reviewedAt": "2026-09-04",
+  "nextReviewAt": "2026-12-04",
+  "ownerRole": "제품·콘텐츠 검토 담당",
+  "benchmarkStatus": "계산 불가 — 이 렌즈에는 검증된 비교 대상 3개가 내장되어 있지 않습니다. 작업대에 동일 축·출처·관찰일을 입력하세요.",
+  "schema": "crh-domain-lens/v1",
+  "version": "1.1.0",
   "baseLens": "lens-core-v2.1",
   "baseItemCount": 197,
-  "changesBaseDenominator": false,
-  "priorityItems": ["f01","f03","m01","m02","m03","m04","m06","l01","l04","o02","o03","r06"],
   "overrides": [
-    {"itemId":"m02","reason":"결제 전 총액·취소·환불·영수증 계약을 실제 화면과 정책으로 확인","approvedAt":"2026-08-31"},
-    {"itemId":"o02","reason":"주문·환불을 개발자 없이 처리할 운영 화면과 이력을 확인","approvedAt":"2026-08-31"}
+    {
+      "itemId": "m14",
+      "reason": "상품 가격·배송비·세금을 포함한 실제 최종 금액 표시",
+      "approvedAt": "2026-09-04"
+    },
+    {
+      "itemId": "o05",
+      "reason": "운영자가 주문·취소·환불을 권한에 맞게 처리하는지 확인",
+      "approvedAt": "2026-09-04"
+    }
   ]
 }

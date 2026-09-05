@@ -37,7 +37,7 @@ button{cursor:pointer}
   display:flex;align-items:center;gap:9px}
 .top h1{font-size:15px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .top h1 b{color:var(--c1)}
-.icb{border:1px solid var(--bd);background:var(--panel);border-radius:9px;width:38px;height:38px;
+.icb{border:1px solid var(--bd);background:var(--panel);border-radius:9px;width:44px;height:44px;min-width:44px;min-height:44px;
   display:inline-flex;align-items:center;justify-content:center;color:var(--ink2);font-size:15px;flex:none}
 .hero{background:var(--panel);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:12px}
 .hero .lb{font-size:12px;color:var(--muted)}
@@ -170,7 +170,7 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
   <!-- 퀵체크 -->
   <section class="pane on" id="p-quick">
     <div class="hero" id="qHero"></div>
-    <div class="card"><h2>⚡ 퀵체크 12문항</h2>
+    <div class="card"><h2>⚡ 퀵체크 핵심 8 · 선택 4문항</h2>
       <div class="cap">방향 9 + 핵심 게이트 3. 세계 상위 20개 서비스 실측 기준선과 즉시 비교됩니다.</div></div>
     <div id="qList"></div>
     <button class="btn pri" id="bQuickGo" style="margin-top:6px">프로파일 적용하고 전체 진단 →</button>
@@ -356,11 +356,11 @@ function renderQuick(){
     '<div style="margin-top:6px">'+vb+'</div>'+
     '<div class="bar"><i style="width:'+(dirN/9*100).toFixed(0)+'%;background:var(--c1)"></i></div>'+
     '<div class="lb" style="margin-top:5px">방향 '+dirN+'/9 · 게이트 '+vals.length+'/3 · 목표 기준선 '+targetLevel()+'점</div>';
-  var h='';
+  var h='<p>빠른 시작: 방향 5개 + 필수 조건 3개. 나머지 방향 4개는 선택입니다.</p>',optional='',optionalOpen=document.getElementById('optionalDir')?.open;
   DIRQ.forEach(function(q,i){
-    h+='<div class="q"><div class="qn">Q'+(i+1)+'</div><div class="qt">'+q.q+'</div><div class="opts">'+
+    var card='<div class="q"><div class="qn">Q'+(i+1)+'</div><div class="qt">'+q.q+'</div><div class="opts">'+
       q.opts.map(function(o){return '<button data-qq="'+q.id+'" data-k="'+o.k+'" aria-pressed="'+(S.dir[q.id]===o.k)+'">'+o.t+'</button>';}).join('')+
-      '</div></div>';});
+      '</div></div>';if(i<5)h+=card;else optional+=card;});
   QGATES.forEach(function(g,i){
     var mine=S.quick[g.id];
     var cmp=(g.b!==null&&mine!==undefined)?'<div class="bench">업계 '+g.b.toFixed(2)+
@@ -370,7 +370,7 @@ function renderQuick(){
       '<div class="g3">'+[[4,'예'],[2,'부분'],[0,'아니오']].map(function(p){
         return '<button data-qg="'+g.id+'" data-v="'+p[0]+'" aria-pressed="'+(S.quick[g.id]===p[0])+'">'+p[1]+'</button>';}).join('')+
       '</div>'+cmp+'</div>';});
-  document.getElementById('qList').innerHTML=h;
+  document.getElementById('qList').innerHTML=h+'<details id="optionalDir"'+(optionalOpen?' open':'')+'><summary>선택: 추가 방향 4문항</summary>'+optional+'</details>';
 }
 
 function renderScope(){
@@ -620,5 +620,6 @@ renderInitialView();
 <script src="../assets/content-guide.js?v=1.0.0"></script>
 <script src="../assets/auth.js?v=0.7.0"></script>
 <script src="../assets/shell.js?v=0.8.0"></script>
+<link rel="stylesheet" href="../assets/mobile-accessibility.css?v=1.0.0">
 </body>
 </html>

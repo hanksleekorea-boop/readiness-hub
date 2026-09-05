@@ -1,219 +1,33 @@
 {
   "svc": "readiness-hub",
-  "date": "2026-08-31",
+  "date": "2026-08-14",
   "scores": {
     "mobile": {},
-    "web": {
-      "p07": 4,
-      "p09": 2,
-      "p08": 4,
-      "u03": 4,
-      "r08": 4,
-      "s01": 4,
-      "s11": 2,
-      "p03": 4,
-      "p10": 4,
-      "l01": 3,
-      "f03": 3
-    }
+    "web": {"p07": 4, "p09": 4, "p08": 2, "u03": 3, "r08": 3, "s01": 4, "s11": 2, "p03": 4, "p10": 4, "l01": 0, "f03": 0}
   },
   "when": {
     "mobile": {},
-    "web": {
-      "p07": "2026-08-31",
-      "p09": "2026-08-31",
-      "p08": "2026-08-31",
-      "u03": "2026-08-31",
-      "r08": "2026-08-31",
-      "s01": "2026-08-31",
-      "s11": "2026-08-31",
-      "p03": "2026-08-31",
-      "p10": "2026-08-31",
-      "l01": "2026-08-31",
-      "f03": "2026-08-31"
-    }
+    "web": {"p07": "2026-08-14", "p09": "2026-08-14", "p08": "2026-08-14", "u03": "2026-08-14", "r08": "2026-08-14", "s01": "2026-08-14", "s11": "2026-08-14", "p03": "2026-08-14", "p10": "2026-08-14", "l01": "2026-08-14", "f03": "2026-08-14"}
   },
   "ev": {
     "mobile": {},
-    "web": {
-      "p07": 1,
-      "p09": 1,
-      "p08": 1,
-      "u03": 1,
-      "r08": 1,
-      "s01": 1,
-      "s11": 1,
-      "p03": 1,
-      "p10": 1,
-      "l01": 1,
-      "f03": 1
-    }
+    "web": {"p07": 1, "p09": 1, "p08": 1, "u03": 1, "r08": 1, "s01": 1, "s11": 1, "p03": 1, "p10": 1, "l01": 1, "f03": 1}
   },
   "notes": {
     "mobile": {},
     "web": {
-      "p07": "[자동 측정] LCP 2450ms",
-      "p09": "[자동 측정] CLS 0.145",
-      "p08": "[자동 측정] TBT 109ms (INP 대용)",
-      "u03": "[자동 측정] Lighthouse 접근성 96",
-      "r08": "[자동 측정] Lighthouse SEO 100",
+      "p07": "[자동 측정] LCP 1390ms",
+      "p09": "[자동 측정] CLS 0.000",
+      "p08": "[자동 측정] TBT 371ms (INP 대용)",
+      "u03": "[자동 측정] Lighthouse 접근성 94",
+      "r08": "[자동 측정] Lighthouse SEO 90",
       "s01": "[자동 측정] https:",
       "s11": "[자동 측정] HSTS/CSP/XFO 1/3",
       "p03": "[자동 측정] GitHub.com",
       "p10": "[자동 측정] gzip",
-      "l01": "[자동 측정] 약관/처리방침 2/2",
-      "f03": "[자동 측정] HTTP 200"
+      "l01": "[자동 측정] 약관/처리방침 0/2",
+      "f03": "[자동 측정] HTTP 404"
     }
   },
-  "autoLog": [
-    {
-      "at": "2026-08-14",
-      "n": 11,
-      "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
-    },
-    {
-      "at": "2026-08-31",
-      "checkedAt": "2026-08-31T22:09:18.311Z",
-      "n": 11,
-      "target": "https://hanksleekorea-boop.github.io/readiness-hub/",
-      "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/33444810158",
-      "commit": "08941cf77a1e",
-      "securityGaps": [
-        "security-header-csp",
-        "security-header-frameProtection"
-      ]
-    }
-  ],
-  "evidenceV1": {
-    "mobile": {},
-    "web": {
-      "p07": {
-        "score": 4,
-        "tier": "auto",
-        "observedAt": "2026-08-31",
-        "note": "LCP 2450ms",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/33444810158",
-        "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
-      },
-      "p09": {
-        "score": 2,
-        "tier": "auto",
-        "observedAt": "2026-08-31",
-        "note": "CLS 0.145",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/33444810158",
-        "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
-      },
-      "p08": {
-        "score": 4,
-        "tier": "auto",
-        "observedAt": "2026-08-31",
-        "note": "TBT 109ms (INP 대용)",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/33444810158",
-        "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
-      },
-      "u03": {
-        "score": 4,
-        "tier": "auto",
-        "observedAt": "2026-08-31",
-        "note": "Lighthouse 접근성 96",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/33444810158",
-        "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
-      },
-      "r08": {
-        "score": 4,
-        "tier": "auto",
-        "observedAt": "2026-08-31",
-        "note": "Lighthouse SEO 100",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/33444810158",
-        "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
-      },
-      "s01": {
-        "score": 4,
-        "tier": "auto",
-        "observedAt": "2026-08-31",
-        "note": "https:",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/33444810158",
-        "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
-      },
-      "s11": {
-        "score": 2,
-        "tier": "auto",
-        "observedAt": "2026-08-31",
-        "note": "HSTS/CSP/XFO 1/3",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/33444810158",
-        "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
-      },
-      "p03": {
-        "score": 4,
-        "tier": "auto",
-        "observedAt": "2026-08-31",
-        "note": "GitHub.com",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/33444810158",
-        "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
-      },
-      "p10": {
-        "score": 4,
-        "tier": "auto",
-        "observedAt": "2026-08-31",
-        "note": "gzip",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/33444810158",
-        "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
-      },
-      "l01": {
-        "score": 3,
-        "tier": "auto",
-        "observedAt": "2026-08-31",
-        "note": "약관/처리방침 2/2",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/33444810158",
-        "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
-      },
-      "f03": {
-        "score": 3,
-        "tier": "auto",
-        "observedAt": "2026-08-31",
-        "note": "HTTP 200",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/33444810158",
-        "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
-      }
-    }
-  },
-  "automaticChecks": {
-    "securityHeaders": {
-      "observedAt": "2026-08-31T22:09:18.311Z",
-      "target": "https://hanksleekorea-boop.github.io/readiness-hub/",
-      "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/33444810158",
-      "values": {
-        "hsts": {
-          "ok": true,
-          "ev": "max-age=31556952"
-        },
-        "csp": {
-          "ok": false,
-          "ev": "없음"
-        },
-        "frameProtection": {
-          "ok": false,
-          "ev": "없음"
-        }
-      }
-    }
-  },
-  "automaticGaps": [
-    {
-      "id": "security-header-csp",
-      "itemId": "s11",
-      "status": "open",
-      "severity": "high",
-      "reason": "없음",
-      "resolution": "호스팅 계층에서 헤더를 적용하거나 CDN·프록시 대안과 책임자를 기록한 뒤 재측정"
-    },
-    {
-      "id": "security-header-frameProtection",
-      "itemId": "s11",
-      "status": "open",
-      "severity": "high",
-      "reason": "없음",
-      "resolution": "호스팅 계층에서 헤더를 적용하거나 CDN·프록시 대안과 책임자를 기록한 뒤 재측정"
-    }
-  ]
+  "autoLog": [{"at": "2026-08-14", "n": 11, "target": "https://hanksleekorea-boop.github.io/readiness-hub/"}]
 }

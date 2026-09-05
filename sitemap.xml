@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/</loc><lastmod>2026-08-31</lastmod></url>
+  <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/m/</loc><lastmod>2026-08-15</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/dashboard.html</loc><lastmod>2026-08-15</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/spec.html</loc><lastmod>2026-08-15</lastmod></url>
@@ -8,6 +8,9 @@
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/privacy/</loc><lastmod>2026-08-15</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/account/delete/</loc><lastmod>2026-08-15</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/help/account/</loc><lastmod>2026-08-26</lastmod></url>
+  <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/help/states/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/glossary/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/samples/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/support/</loc><lastmod>2026-08-31</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/status/</loc><lastmod>2026-08-31</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/security/</loc><lastmod>2026-08-31</lastmod></url>
@@ -18,4 +21,6 @@
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/learn/mobile-pwa-release/</loc><lastmod>2026-08-31</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/learn/honest-benchmarking/</loc><lastmod>2026-08-31</lastmod></url>
   <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/advertising/</loc><lastmod>2026-08-31</lastmod></url>
+  <url><loc>https://hanksleekorea-boop.github.io/readiness-hub/en/</loc><lastmod>2026-09-04</lastmod></url>
 </urlset>
+<!-- English core assessment is an additional interface; detailed source rubrics remain Korean. -->
