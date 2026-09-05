@@ -1,0 +1,32 @@
+/* 콘텐츠 허브형 UI — 확보 콘텐츠를 한눈에 탐색하는 공통 디자인 */
+.crh-content-hub{margin:18px 0 24px;display:grid;gap:14px}
+.crh-hub-hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#101827 0%,#193354 58%,#2a78d6 100%);color:#fff;border-radius:18px;padding:24px 26px;box-shadow:0 14px 40px rgba(22,52,88,.18)}
+.crh-hub-hero:after{content:"";position:absolute;right:-70px;top:-100px;width:260px;height:260px;border:1px solid rgba(255,255,255,.2);border-radius:50%;box-shadow:0 0 0 22px rgba(255,255,255,.04),0 0 0 44px rgba(255,255,255,.025)}
+.crh-hub-eyebrow{position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#b9d8ff;font-weight:700}
+.crh-hub-eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:#7be3b2;box-shadow:0 0 0 4px rgba(123,227,178,.17)}
+.crh-hub-hero h2{position:relative;z-index:1;margin:8px 0 5px;font-size:clamp(23px,3vw,34px);letter-spacing:-.04em;max-width:720px}
+.crh-hub-hero p{position:relative;z-index:1;margin:0;max-width:700px;color:#dce9f8;font-size:14px}
+.crh-hub-actions{position:relative;z-index:1;display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}
+.crh-hub-actions a,.crh-hub-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;border-radius:10px;padding:8px 14px;border:1px solid rgba(255,255,255,.35);font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+.crh-hub-actions .primary{background:#fff;color:#10213a;border-color:#fff}
+.crh-hub-actions .secondary{background:rgba(255,255,255,.08);color:#fff}
+.crh-hub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.crh-hub-card{display:flex;min-height:142px;flex-direction:column;gap:8px;background:var(--panel,#fff);border:1px solid var(--border,rgba(11,11,11,.1));border-radius:14px;padding:15px 16px;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.crh-hub-card:hover{transform:translateY(-2px);border-color:var(--axis,#c3c2b7);box-shadow:0 8px 22px rgba(11,11,11,.08)}
+.crh-hub-card .kicker{display:flex;align-items:center;gap:7px;color:var(--muted,#686762);font-size:11px;font-weight:750;letter-spacing:.04em;text-transform:uppercase}
+.crh-hub-card .icon{display:inline-flex;width:25px;height:25px;align-items:center;justify-content:center;border-radius:8px;background:rgba(42,120,214,.12);color:#2a78d6;font-size:14px}
+.crh-hub-card h3{font-size:16px;letter-spacing:-.02em}
+.crh-hub-card p{margin:0;color:var(--ink-2,#52514e);font-size:12.5px;line-height:1.5}
+.crh-hub-card .metric{margin-top:auto;display:flex;align-items:baseline;gap:6px;color:var(--ink,#0b0b0b);font-size:20px;font-weight:750}
+.crh-hub-card .metric small{font-size:11px;color:var(--muted,#686762);font-weight:550}
+.crh-hub-card a{margin-top:auto;align-self:flex-start;color:var(--ink,#0b0b0b);font-size:12px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.crh-hub-card.accent{background:linear-gradient(160deg,rgba(42,120,214,.1),var(--panel,#fff) 65%)}
+.crh-hub-rail{display:flex;align-items:center;gap:10px;overflow:auto;padding:10px 12px;border:1px solid var(--border,rgba(11,11,11,.1));border-radius:12px;background:var(--panel,#fff);font-size:12px;white-space:nowrap}
+.crh-hub-rail strong{font-size:11px;letter-spacing:.04em;color:var(--muted,#686762);text-transform:uppercase}
+.crh-hub-rail a{color:var(--ink-2,#52514e);font-weight:650;text-decoration:none;padding:4px 8px;border-radius:7px}
+.crh-hub-rail a:hover,.crh-hub-rail a:focus-visible{background:rgba(42,120,214,.12);color:var(--ink,#0b0b0b);outline:none}
+html[data-theme="dark"] .crh-hub-card{box-shadow:none}
+html[data-theme="dark"] .crh-hub-card.accent{background:linear-gradient(160deg,rgba(57,135,229,.2),var(--panel,#1a1a19) 65%)}
+@media (max-width:900px){.crh-hub-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.crh-content-hub{margin:12px 0 18px;gap:10px}.crh-hub-hero{padding:19px 18px;border-radius:15px}.crh-hub-hero h2{font-size:24px}.crh-hub-hero p{font-size:13px}.crh-hub-actions a,.crh-hub-actions button{flex:1;min-width:138px}.crh-hub-grid{grid-template-columns:1fr 1fr;gap:8px}.crh-hub-card{min-height:155px;padding:13px 12px;border-radius:12px}.crh-hub-card h3{font-size:14px}.crh-hub-card p{font-size:11.5px}.crh-hub-card .metric{font-size:18px}.crh-hub-rail{margin-inline:-2px}}
+@media (max-width:360px){.crh-hub-grid{grid-template-columns:1fr}.crh-hub-card{min-height:0}.crh-hub-actions{display:grid}.crh-hub-actions a,.crh-hub-actions button{width:100%}}

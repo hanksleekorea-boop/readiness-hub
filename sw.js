@@ -1,9 +1,9 @@
 /* 오프라인 지원 — 이 앱이 소유한 공개 정적 파일만 임시 저장한다. */
 var CACHE_PREFIX = 'crh-readiness-hub-';
-var V = CACHE_PREFIX + 'beta-1.1.0-content-stage-3-local';
+var V = CACHE_PREFIX + 'beta-1.1.0-content-hub';
 var ASSETS = ['./','./index.html','./m/','./m/index.html','./dashboard.html',
   './terms/','./privacy/','./account/delete/','./help/','./help/account/','./help/states/','./glossary/','./samples/','./support/','./status/','./security/','./accessibility/','./feedback/','./workbench/','./advertising/','./learn/','./learn/evidence-first-launch/','./learn/mobile-pwa-release/','./learn/honest-benchmarking/','./robots.txt','./sitemap.xml','./ads.txt',
-  './assets/qr.js','./assets/auth.js','./assets/shell.js','./assets/legal.css','./assets/content-guide.js','./assets/content-guide.css','./assets/mobile-accessibility.css','./assets/workbench.js','./assets/workbench.css','./assets/gap-lifecycle.js','./assets/release-passport.js','./assets/adsense-config.js','./assets/adsense.js','./assets/adsense.css','./assets/learn.css','./manifest.webmanifest',
+  './assets/qr.js','./assets/auth.js','./assets/shell.js','./assets/legal.css','./assets/content-guide.js','./assets/content-guide.css','./assets/content-hub.js','./assets/content-hub.css','./assets/mobile-accessibility.css','./assets/workbench.js','./assets/workbench.css','./assets/gap-lifecycle.js','./assets/release-passport.js','./assets/adsense-config.js','./assets/adsense.js','./assets/adsense.css','./assets/learn.css','./manifest.webmanifest',
   './assets/icon-192.png','./assets/icon-512.png','./progress.json','./persona-report.json','./en/','./assets/english-assessment.js','./assets/workbench-contracts.js','./assets/stage3-contracts.js','./assets/stage3-local.js','./assets/stage3-backup-bridge.js','./content/content-en-v1.json','./engine/benchmark-evidence.mjs','./engine/domain-classifier.mjs',
   './lens/lens-core-v2.1.json','./lens/lens-eu-v1.0.json','./lens/lens-us-v1.0.json',
   './content/content-guide-v2.json','./content/gate-guides.json','./content/glossary-v1.json','./content/help-faq-v1.json','./content/sample-cases-v1.json','./content/domain-lenses-v1.json','./content/domain-catalog-v1.json','./content/lens-education.json','./content/lens-commerce.json','./content/lens-saas.json','./content/locale-en-v1.json'];

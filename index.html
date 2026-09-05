@@ -257,6 +257,7 @@ td.nowrap{white-space:nowrap}
 
 <div class="wrap">
   <section class="summary" id="summary"></section>
+  <section id="crh-content-hub" aria-label="확보 콘텐츠 탐색"></section>
 
   <div class="tabs" role="tablist">
     <button class="tab" role="tab" data-t="quick" aria-selected="false">⚡ 퀵체크</button>
@@ -3470,7 +3471,7 @@ document.getElementById('btnTheme').onclick = () => {
 };
 
 document.getElementById('btnExport').onclick = () => {
-  const backup = { schema: 'crh-local-backup/v1', appVersion: 'beta 0.7.0', createdAt: new Date().toISOString(), state: { v: 1, ...S } };
+  const backup = { schema: 'crh-local-backup/v1', appVersion: 'beta 1.1.0', createdAt: new Date().toISOString(), state: { v: 1, ...S } };
   const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
   dl(blob, (S.svc || 'readiness') + '-' + S.date + '.json');
 };
@@ -3542,5 +3543,7 @@ bootLoad().then(msg => {
 <script src="assets/content-guide.js?v=1.0.0"></script>
 <script src="assets/auth.js?v=0.7.0"></script>
 <script src="assets/shell.js?v=0.8.0"></script>
+<link rel="stylesheet" href="assets/content-hub.css?v=1.1.0">
+<script src="assets/content-hub.js?v=1.1.0"></script>
 </body>
 </html>
