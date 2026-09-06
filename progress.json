@@ -59,7 +59,7 @@
     {
       "n": "공개 배포",
       "pct": 100,
-      "note": "2026-09-06 공개 Pages 재배포 완료: PC·모바일·대시보드·작업대·엔진·콘텐츠 핵심 URL HTTP 200, 새 공개 저장 기록 cae640897b8c3740f61cc82e10d1acbe8b7cb0ae 및 Pages 실행 34009305702 success 확인"
+      "note": "2026-09-06 공개 Pages 재배포 완료: PC·모바일·대시보드·작업대·엔진·콘텐츠 핵심 URL HTTP 200 및 Pages success 확인. 정확한 저장 기록은 배포 로그와 최종 보고를 기준으로 한다."
     },
     {
       "n": "자동 러너",
@@ -308,7 +308,7 @@
     },
     {
       "t": "2026-09-06 공개 배포",
-      "r": "공개 결과 저장소 main에 91개 파일 반영, 제거 0개, 저장 기록 cae640897b8c3740f61cc82e10d1acbe8b7cb0ae, Pages 실행 34009305702 success, 13개 핵심 공개 URL HTTP 200 및 Last-Modified 2026-09-06 03:34:12 GMT 확인",
+      "r": "공개 결과 저장소 main에 91개 파일 반영, 제거 0개, Pages success, 13개 핵심 공개 URL HTTP 200 및 공개 응답 갱신 확인",
       "ok": true,
       "evidencePeriod": "2026-09-06"
     }
