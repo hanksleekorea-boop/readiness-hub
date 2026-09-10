@@ -93,8 +93,12 @@
       + '<a href="' + base + 'help/">처음 사용법</a></div>'
       + '<p class="crh-role-advice" role="status"></p><a href="' + base + 'en/" lang="en">English assessment · 197 checkpoints</a>'
       + '<p class="crh-limit">점수는 법률 자문·준수 인증·앱마켓 승인 또는 출시 허가가 아닙니다.</p>';
-    var target = document.querySelector('.wrap') || document.body.firstElementChild;
-    target.parentNode.insertBefore(box, target);
+    var slot = document.getElementById('crh-start-slot');
+    if (slot) slot.replaceWith(box);
+    else {
+      var target = document.querySelector('.wrap') || document.body.firstElementChild;
+      target.parentNode.insertBefore(box, target);
+    }
     restorePreferences(box);
     savePreferences(box);
     box.addEventListener('change', function () { savePreferences(box); });

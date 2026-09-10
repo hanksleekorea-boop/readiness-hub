@@ -12,6 +12,7 @@
 <link rel="icon" href="../assets/icon-192.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <title>준비도 허브 β — 모바일</title>
+<link rel="stylesheet" href="../assets/content-guide.css?v=1.0.0">
 <link rel="stylesheet" href="../assets/content-hub.css?v=1.1.0">
 <style>
 :root{
@@ -167,6 +168,7 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
   <input type="file" id="fIn" accept="application/json" hidden>
 </div>
 
+<aside id="crh-start-slot" class="crh-start-slot" data-mobile="true" aria-hidden="true"></aside>
 <div class="wrap">
   <section id="crh-content-hub" data-mobile="true" aria-label="확보 콘텐츠 탐색"></section>
   <!-- 퀵체크 -->
@@ -618,7 +620,6 @@ if('serviceWorker' in navigator && location.protocol!=='file:'){
 
 renderInitialView();
 </script>
-<link rel="stylesheet" href="../assets/content-guide.css?v=1.0.0">
 <script src="../assets/content-guide.js?v=1.0.0"></script>
 <script src="../assets/auth.js?v=0.7.0"></script>
 <script src="../assets/shell.js?v=0.8.0"></script>
