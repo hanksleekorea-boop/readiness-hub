@@ -250,7 +250,9 @@
   }
 
   function openDialog(title, fields, onSave) {
-    var dialog = document.getElementById('editDialog'); document.getElementById('dialogTitle').textContent = title;
+    var dialog = document.getElementById('editDialog');
+    var form = document.getElementById('editForm');
+    document.getElementById('dialogTitle').textContent = title;
     var host = document.getElementById('dialogFields');
     host.innerHTML = fields.map(function (f) {
       var control = f.type === 'select' ? '<select name="' + esc(f.name) + '">' + f.options.map(function (o) { return '<option value="' + esc(o[0]) + '">' + esc(o[1]) + '</option>'; }).join('') + '</select>' : f.type === 'textarea'
@@ -258,16 +260,65 @@
         : '<input name="' + esc(f.name) + '" type="' + esc(f.type || 'text') + '" value="' + esc(f.value || '') + '" ' + (f.required ? 'required' : '') + '>';
       return '<label class="field"><span>' + esc(f.label) + '</span>' + control + '</label>';
     }).join('');
+    // Native dialog validation used to leave an invalid form looking frozen.  Run
+    // one predictable validation path and make every cancel/close affordance
+    // explicit so keyboard, backdrop and button dismissal behave identically.
+    form.noValidate = true;
+    var warning = host.querySelector('[role="alert"]');
+    if (warning) warning.remove();
+    var close = function () { if (dialog.open) dialog.close('cancel'); };
+    form.querySelectorAll('[value="cancel"]').forEach(function (button) {
+      button.onclick = function (event) { event.preventDefault(); close(); };
+    });
+    dialog.oncancel = function (event) { event.preventDefault(); close(); };
+    dialog.onclick = function (event) { if (event.target === dialog) close(); };
     var save = document.getElementById('dialogSave');
-    save.onclick = function (event) { event.preventDefault(); var values={}; fields.forEach(function (f) { values[f.name]=host.querySelector('[name="'+f.name+'"]').value.trim(); }); if (fields.some(function (f) { return f.required && !values[f.name]; })) return; try { onSave(values); dialog.close(); renderAll(); } catch (error) { var warning=host.querySelector('[role="alert"]'); if(!warning){warning=document.createElement('p');warning.setAttribute('role','alert');host.appendChild(warning);} warning.textContent=error.message; } };
+    save.onclick = function (event) {
+      event.preventDefault();
+      var values={};
+      fields.forEach(function (f) { values[f.name]=host.querySelector('[name="'+f.name+'"]').value.trim(); });
+      var missing = fields.filter(function (f) { return f.required && !values[f.name]; });
+      if (missing.length) {
+        var requiredWarning = document.createElement('p');
+        requiredWarning.setAttribute('role','alert');
+        requiredWarning.textContent = '필수 입력을 확인하세요: ' + missing.map(function (f) { return f.label; }).join(', ');
+        host.appendChild(requiredWarning);
+        var first = host.querySelector('[name="'+missing[0].name+'"]');
+        if (first) first.focus();
+        return;
+      }
+      try {
+        onSave(values);
+        close();
+        renderAll();
+      } catch (error) {
+        var errorWarning=host.querySelector('[role="alert"]');
+        if(!errorWarning){errorWarning=document.createElement('p');errorWarning.setAttribute('role','alert');host.appendChild(errorWarning);}
+        errorWarning.textContent=error.message;
+        errorWarning.focus();
+      }
+    };
+    if (dialog.open) dialog.close();
     dialog.showModal();
   }
 
+  function selectView(view) {
+    var button = document.querySelector('.wb-tabs button[data-view="'+view+'"]');
+    var target = document.getElementById('view-'+view);
+    if (!button || !target) return;
+    document.querySelectorAll('.wb-tabs button').forEach(function(b){b.removeAttribute('aria-current');});
+    button.setAttribute('aria-current','page');
+    document.querySelectorAll('.view').forEach(function(v){v.classList.remove('on');});
+    target.classList.add('on');
+    document.getElementById('main').focus();
+  }
   document.querySelector('.wb-tabs').addEventListener('click', function (event) {
     var button=event.target.closest('button[data-view]'); if(!button)return;
-    document.querySelectorAll('.wb-tabs button').forEach(function(b){b.removeAttribute('aria-current');}); button.setAttribute('aria-current','page');
-    document.querySelectorAll('.view').forEach(function(v){v.classList.remove('on');}); document.getElementById('view-'+button.dataset.view).classList.add('on'); document.getElementById('main').focus();
+    selectView(button.dataset.view);
+    if (history.replaceState) history.replaceState(null, '', '#'+button.dataset.view);
   });
+  window.addEventListener('hashchange', function () { selectView((location.hash || '').slice(1)); });
+  if (location.hash) selectView(location.hash.slice(1));
   document.getElementById('themeBtn').onclick=function(){var html=document.documentElement;var next=html.dataset.theme==='dark'?'light':'dark';html.dataset.theme=next;localStorage.setItem(THEME_KEY,next);};
   document.documentElement.dataset.theme=localStorage.getItem(THEME_KEY)||'light';
   document.getElementById('exportBtn').onclick=function(){download({schema:'crh-complete-backup/v1',exportedAt:new Date().toISOString(),workbench:store,assessment:activeAssessment()},'readiness-hub-complete-backup.json');};

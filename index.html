@@ -234,7 +234,7 @@ td.nowrap{white-space:nowrap}
   <div class="top-in">
     <div class="brand">
       <h1>상업화 준비도 허브 <span style="color:var(--s-mobile)">β</span> <span class="hint" style="font-weight:400">Continuous Readiness Index · PC Web Beta</span></h1>
-      <div class="sub">3축 진단 × 업계 기준선 20개 실측 × <b>증거 신선도·목표 대비 점수(v4)</b> · 렌즈 v2.1 (15영역 197개 기준 · 필수 게이트 40개) · 자동 저장 안 됨 — JSON 저장 필수</div>
+      <div class="sub">3축 진단 × 업계 기준선 20개 실측 × <b>증거 신선도·목표 대비 점수(v4)</b> · 렌즈 v2.1 (15영역 197개 기준 · 필수 게이트 40개) · 이 브라우저에 자동 저장 · JSON 백업 권장</div>
     </div>
     <div class="meta">
       <input id="svcName" placeholder="서비스명" aria-label="서비스명">
@@ -3167,6 +3167,14 @@ function loadFromString(j) {
   S.bench = { ours: {}, comps: [], ...(o.bench || {}) };
   S.axisW = { a1: 50, a2: 25, a3: 25, ...(o.axisW || {}) };
 }
+const LOCAL_STATE_KEY = 'crh-active-assessment-v2';
+function persistLocalState() {
+  try {
+    if (!S) return;
+    localStorage.setItem(LOCAL_STATE_KEY, JSON.stringify({ v: 2, savedAt: new Date().toISOString(), ...S }));
+  } catch (_) { /* 저장 공간이 없으면 JSON 내보내기를 사용 */ }
+}
+function clearLocalState() { try { localStorage.removeItem(LOCAL_STATE_KEY); } catch (_) {} }
 async function bootLoad() {
   try {
     if (location.hash.startsWith('#d=')) {
@@ -3178,6 +3186,11 @@ async function bootLoad() {
       const r = await fetch(q); if (!r.ok) throw new Error(r.status);
       loadFromString(await r.text());
       return '프로파일을 불러왔습니다: ' + q;
+    }
+    const local = localStorage.getItem(LOCAL_STATE_KEY);
+    if (local) {
+      loadFromString(local);
+      return '이 브라우저에 저장된 진단 상태를 복원했습니다.';
     }
   } catch (e) { console.warn('state load 실패', e); }
   return null;
@@ -3358,6 +3371,9 @@ document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () =>
   if (t.dataset.t === 'gap') renderGap();
   if (t.dataset.t === 'method') { renderMethod(); renderAxisW(); }
 }));
+/* 입력·선택·버튼 뒤에 현재 상태를 이 브라우저에 자동 보존한다. 서버로 전송하지 않는다. */
+['input', 'change'].forEach(type => document.addEventListener(type, () => persistLocalState(), true));
+document.addEventListener('click', () => setTimeout(persistLocalState, 0), true);
 
 document.getElementById('pfSwitch').addEventListener('click', e => {
   const b = e.target.closest('button[data-pf]'); if (!b) return;
@@ -3512,8 +3528,8 @@ function dl(blob, name) {
 }
 document.getElementById('btnPrint').onclick = () => window.print();
 document.getElementById('btnReset').onclick = () => {
-  if (!confirm('입력한 모든 점수와 메모가 지워집니다. 계속할까요?\n(브라우저에 자동 저장되지 않으니 필요하면 먼저 JSON으로 저장하세요.)')) return;
-  S = blank(); loadMeta(); renderAll();
+  if (!confirm('입력한 모든 점수와 메모가 지워집니다. 계속할까요?\n(필요하면 먼저 JSON으로 백업하세요.)')) return;
+  S = blank(); clearLocalState(); loadMeta(); renderAll(); persistLocalState();
 };
 function loadMeta() {
   document.getElementById('svcName').value = S.svc || '';
@@ -3523,6 +3539,7 @@ function loadMeta() {
 
 window.addEventListener('beforeunload', e => {
   const dirty = ['mobile', 'web'].some(pf => Object.keys(S.scores[pf]).length || Object.keys(S.notes[pf]).length || Object.keys(S.actions[pf]).length);
+  persistLocalState();
   if (dirty) { e.preventDefault(); e.returnValue = ''; }
 });
 
