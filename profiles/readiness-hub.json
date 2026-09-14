@@ -1,12 +1,12 @@
 {
   "svc": "readiness-hub",
-  "date": "2026-09-10",
+  "date": "2026-09-14",
   "scores": {
     "mobile": {},
     "web": {
       "p07": 4,
       "p09": 4,
-      "p08": 2,
+      "p08": 4,
       "u03": 4,
       "r08": 4,
       "s01": 4,
@@ -20,17 +20,17 @@
   "when": {
     "mobile": {},
     "web": {
-      "p07": "2026-09-10",
-      "p09": "2026-09-10",
-      "p08": "2026-09-10",
-      "u03": "2026-09-10",
-      "r08": "2026-09-10",
-      "s01": "2026-09-10",
-      "s11": "2026-09-10",
-      "p03": "2026-09-10",
-      "p10": "2026-09-10",
-      "l01": "2026-09-10",
-      "f03": "2026-09-10"
+      "p07": "2026-09-14",
+      "p09": "2026-09-14",
+      "p08": "2026-09-14",
+      "u03": "2026-09-14",
+      "r08": "2026-09-14",
+      "s01": "2026-09-14",
+      "s11": "2026-09-14",
+      "p03": "2026-09-14",
+      "p10": "2026-09-14",
+      "l01": "2026-09-14",
+      "f03": "2026-09-14"
     }
   },
   "ev": {
@@ -52,9 +52,9 @@
   "notes": {
     "mobile": {},
     "web": {
-      "p07": "[자동 측정] LCP 1926ms",
+      "p07": "[자동 측정] LCP 1826ms",
       "p09": "[자동 측정] CLS 0.000",
-      "p08": "[자동 측정] TBT 251ms (INP 대용)",
+      "p08": "[자동 측정] TBT 179ms (INP 대용)",
       "u03": "[자동 측정] Lighthouse 접근성 100",
       "r08": "[자동 측정] Lighthouse SEO 100",
       "s01": "[자동 측정] https:",
@@ -82,6 +82,18 @@
         "security-header-csp",
         "security-header-frameProtection"
       ]
+    },
+    {
+      "at": "2026-09-14",
+      "checkedAt": "2026-09-14T21:08:54.277Z",
+      "n": 11,
+      "target": "https://hanksleekorea-boop.github.io/readiness-hub/",
+      "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34897056469",
+      "commit": "7dbb9d330101",
+      "securityGaps": [
+        "security-header-csp",
+        "security-header-frameProtection"
+      ]
     }
   ],
   "evidenceV1": {
@@ -90,98 +102,98 @@
       "p07": {
         "score": 4,
         "tier": "auto",
-        "observedAt": "2026-09-10",
-        "note": "LCP 1926ms",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34442505418",
+        "observedAt": "2026-09-14",
+        "note": "LCP 1826ms",
+        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34897056469",
         "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
       },
       "p09": {
         "score": 4,
         "tier": "auto",
-        "observedAt": "2026-09-10",
+        "observedAt": "2026-09-14",
         "note": "CLS 0.000",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34442505418",
+        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34897056469",
         "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
       },
       "p08": {
-        "score": 2,
+        "score": 4,
         "tier": "auto",
-        "observedAt": "2026-09-10",
-        "note": "TBT 251ms (INP 대용)",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34442505418",
+        "observedAt": "2026-09-14",
+        "note": "TBT 179ms (INP 대용)",
+        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34897056469",
         "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
       },
       "u03": {
         "score": 4,
         "tier": "auto",
-        "observedAt": "2026-09-10",
+        "observedAt": "2026-09-14",
         "note": "Lighthouse 접근성 100",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34442505418",
+        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34897056469",
         "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
       },
       "r08": {
         "score": 4,
         "tier": "auto",
-        "observedAt": "2026-09-10",
+        "observedAt": "2026-09-14",
         "note": "Lighthouse SEO 100",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34442505418",
+        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34897056469",
         "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
       },
       "s01": {
         "score": 4,
         "tier": "auto",
-        "observedAt": "2026-09-10",
+        "observedAt": "2026-09-14",
         "note": "https:",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34442505418",
+        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34897056469",
         "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
       },
       "s11": {
         "score": 2,
         "tier": "auto",
-        "observedAt": "2026-09-10",
+        "observedAt": "2026-09-14",
         "note": "HSTS/CSP/XFO 1/3",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34442505418",
+        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34897056469",
         "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
       },
       "p03": {
         "score": 4,
         "tier": "auto",
-        "observedAt": "2026-09-10",
+        "observedAt": "2026-09-14",
         "note": "GitHub.com",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34442505418",
+        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34897056469",
         "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
       },
       "p10": {
         "score": 4,
         "tier": "auto",
-        "observedAt": "2026-09-10",
+        "observedAt": "2026-09-14",
         "note": "gzip",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34442505418",
+        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34897056469",
         "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
       },
       "l01": {
         "score": 3,
         "tier": "auto",
-        "observedAt": "2026-09-10",
+        "observedAt": "2026-09-14",
         "note": "약관/처리방침 2/2",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34442505418",
+        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34897056469",
         "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
       },
       "f03": {
         "score": 3,
         "tier": "auto",
-        "observedAt": "2026-09-10",
+        "observedAt": "2026-09-14",
         "note": "HTTP 200",
-        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34442505418",
+        "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34897056469",
         "target": "https://hanksleekorea-boop.github.io/readiness-hub/"
       }
     }
   },
   "automaticChecks": {
     "securityHeaders": {
-      "observedAt": "2026-09-10T05:48:34.661Z",
+      "observedAt": "2026-09-14T21:08:54.277Z",
       "target": "https://hanksleekorea-boop.github.io/readiness-hub/",
-      "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34442505418",
+      "sourceUrl": "https://github.com/hanksleekorea-boop/readiness-hub/actions/runs/34897056469",
       "values": {
         "hsts": {
           "ok": true,
